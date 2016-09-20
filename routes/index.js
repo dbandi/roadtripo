@@ -6,6 +6,24 @@ var _ = require('underscore-node');
 var rp = require('request-promise');
 var request = require('request');
 var Promise = require("bluebird");
+var mysql = require('mysql');
+
+// MySql Connection
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'roadtripo'
+});
+connection.connect();
+connection.query('SELECT * from users', function(err, rows, fields) {
+  if (!err)
+    console.log('The solution is: ', rows);
+  else
+    console.log('Error while performing Query.');
+});
+
+connection.end();
 
 var brandings = [];
 var directions = [];
