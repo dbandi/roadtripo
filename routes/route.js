@@ -15,6 +15,7 @@ var connection = mysql.createConnection({
   password : '',
   database : 'roadtripo'
 });
+
 connection.connect();
 connection.query('SELECT * from users', function(err, rows, fields) {
   if (!err)
@@ -22,7 +23,6 @@ connection.query('SELECT * from users', function(err, rows, fields) {
   else
     console.log('Error while performing Query.');
 });
-
 connection.end();
 
 var brandings = [];
@@ -31,6 +31,9 @@ var totalDistance = 0;
 var totalMilesDistance = 0;
 var totalDuration = 0;
 var allCities = new Array();
+var allCitiesLatLng = {};
+var allCitiesKeyCount = 0;
+var allLatLong = {};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -59,7 +62,6 @@ router.get('/plantrip', function(req, res, next) {
 
                 var totalSteps = directions.routes[0].legs[0].steps.length;
 
-                var allLatLong = {};
                 /* (lenght-1) since 1st legs [steps] does not have end location */
 
                 for (var m=0; m < totalSteps - 1; m++) {
@@ -98,13 +100,20 @@ router.get('/plantrip', function(req, res, next) {
                                             //allCities.push(results.results[j].address_components[k].long_name);
                                             if(!(_.contains(allCities, results.results[j].address_components[k].long_name))){
                                                 allCities.push(results.results[j].address_components[k].long_name);
+                                                allCitiesLatLng[allCitiesKeyCount] = {
+                                                    city : results.results[j].address_components[k].long_name,
+                                                    lat : results.results[j].geometry.location.lat,
+                                                    lng : results.results[j].geometry.location.lng,
+                                                    placeId : results.results[j].place_id
+                                                }
+                                                allCitiesKeyCount++;
                                             }
                                         }
                                     }
                                 }
 
                                 if( temp == allCitiesLength){
-                                    res.json( allCities);
+                                    res.json(allCitiesLatLng);
                                 }
                             }
                         })
@@ -118,5 +127,29 @@ router.get('/plantrip', function(req, res, next) {
 
 });
 
+
+router.get('/places', function(req, res, next) {
+    var placetypes = req.query.placetypes;
+    var lat = req.query.lat;
+    var lng = req.query.lng;
+
+    var placesNearby = {
+        method: 'GET',
+        uri: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+lat+','+lng+'&radius=50000&types='+placetypes+'&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM',
+        resolveWithFullResponse: true
+    };
+
+    rp(placesNearby)
+        .then(function (response) {
+            if (response.statusCode == 200) {
+                results = JSON.parse( response.body );
+                res.json(results);
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+
+});
 
 module.exports = router;

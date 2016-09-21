@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="angularjsNodejsTutorial">
+<html ng-app="roadtripo">
     <head>
-        <title>Integrating AngularJS with NodeJS</title>
+        <title>Roadtripo</title>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
-        <script src="javascripts/app.js" type="text/javascript"></script> <!-- not created yet -->
+        <script src="app/app.js" type="text/javascript"></script>
+        <script src="app/factory.js" type="text/javascript"></script>
+        <script src="app/services.js" type="text/javascript"></script>
     </head>
     <body >
         <div ng-controller="myController">
-            <ul ng-repeat="item in data">
-            	<li>Name: {{item.name}}, City: {{item.city}}</li>
-            </ul>
+
+            <div class="listCities">
+                <ul ng-repeat="city in data">
+                	<li ng-click="getPlacesofCities('', city.lat, city.lng)">Name: {{city.city}}, Lat: {{city.lat}}, Lng: {{city.lng}}</li>
+                </ul>
+            </div>
+
+            <div class="listPlaces">
+
+            </div>
         </div>
     </body>
 </html>
