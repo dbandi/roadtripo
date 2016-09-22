@@ -10,14 +10,16 @@
     <body >
         <div ng-controller="myController">
 
-            <div class="listCities">
-                <ul ng-repeat="city in data">
+            <div class="listCities" ng-if="listCities">
+                <ul ng-repeat="city in cities">
                 	<li ng-click="getPlacesofCities('', city.lat, city.lng)">Name: {{city.city}}, Lat: {{city.lat}}, Lng: {{city.lng}}</li>
                 </ul>
             </div>
 
-            <div class="listPlaces">
-
+            <div class="listPlaces" ng-if="listPlaces">
+                <ul ng-repeat="place in places">
+                    <li>Name: {{place.venue.name}}, Place Id: {{place.venue.name}}, Lat: {{place.geometry.location.lat}}, Lng: {{place.geometry.location.lng}}</li>
+                </ul>
             </div>
         </div>
     </body>

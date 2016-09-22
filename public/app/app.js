@@ -1,11 +1,15 @@
 var app = angular.module('roadtripo',[]);
 
 app.controller('myController',['$scope', '$http', 'dataService', function($scope, $http, dataService) {
-    $scope.data = [];
+    $scope.cities = [];
+    $scope.places = [];
+    $scope.listCities = false;
+    $scope.listPlaces = false;
 
     dataService.getCities().then(function (response) {
-        console.log(response.data);
-        $scope.data = response.data;
+        $scope.listCities = true;
+        $scope.listPlaces = false;
+        $scope.cities = response.data;
     });
 
     $scope.getPlacesofCities = function(placetypes, lat, lng){
@@ -14,8 +18,10 @@ app.controller('myController',['$scope', '$http', 'dataService', function($scope
         }
 
         dataService.getPlaces(placetypes, lat, lng).then(function (response) {
-            console.log(response.data);
-            $scope.places = response.data;
+            $scope.listPlaces = true;
+            $scope.listCities = false;
+            console.log(response.data.response.groups[0].items);
+            $scope.places = response.data.response.groups[0].items;
         });
     };
 }]);

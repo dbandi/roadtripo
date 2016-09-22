@@ -10,7 +10,7 @@ app.service('dataService', function($http) {
 
      this.getPlaces = function(placetypes, lat, lng) {
          return $http({
-             method: 'GET',
+             method: 'GET',             
              url: '/places?placetypes='+placetypes+"&lat="+lat+"&lng="+lng,
              headers: {'Content-Type': 'application/json; charset=utf-8'}
          });

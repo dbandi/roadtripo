@@ -124,7 +124,6 @@ router.get('/plantrip', function(req, res, next) {
             }
          }
     });
-
 });
 
 
@@ -135,7 +134,7 @@ router.get('/places', function(req, res, next) {
 
     var placesNearby = {
         method: 'GET',
-        uri: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+lat+','+lng+'&radius=50000&types='+placetypes+'&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM',
+        uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&query=Popular+with+Visitors',
         resolveWithFullResponse: true
     };
 
