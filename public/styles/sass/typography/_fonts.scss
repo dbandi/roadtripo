@@ -1,0 +1,58 @@
+// Set true if using google fonts
+@import '../master/_brandguide.scss';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+/*********************************
+    Fonts Styling
+*********************************/
+
+$google-font: true;
+
+@mixin font-face($font-name, $font-family, $file-path, $font-weight, $font-style) {
+
+    @if $google-font == true{
+        @font-face {
+          font-family: $font-family;
+          font-weight: $font-weight;
+          font-style: $font-style;
+        }
+    }
+    @else{
+        @font-face {
+          font-family: $font-family;
+            src: url('#{$file-path}.eot');
+            src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+                 url('#{$file-path}.woff') format('woff'),
+                 url('#{$file-path}.ttf') format('truetype'),
+                 url('#{$file-path}.svg##{$font-family}') format('svg');
+          font-weight: $font-weight;
+          font-style: $font-style;
+        }
+    }
+
+    %#{$font-name} {
+        font: {
+            family: "#{$font-family}";
+            weight: #{$font-weight};
+            style: $font-style;
+        }
+    }
+}
+
+@include font-face(Font-Thin , $brand-font, '../../../fonts/librebaskerville-regular-webfont', 100, normal);
+@include font-face(Font-Thin-Italic, $brand-font, '../../../fonts/librebaskerville-italic-webfont', 100, italic);
+@include font-face(Font-Extra-Light, $brand-font, '../../../fonts/librebaskerville-regular-webfont', 200, normal);
+@include font-face(Font-Extra-Light-Italic, $brand-font, '../../../fonts/librebaskerville-italic-webfont', 200, italic);
+@include font-face(Font-Light, $brand-font, '../../../fonts/librebaskerville-regular-webfont', 300, normal);
+@include font-face(Font-Light-Italic, $brand-font, '../../../fonts/librebaskerville-italic-webfont', 300, italic);
+@include font-face(Font-Regular, $brand-font, '../../../fonts/librebaskerville-regular-webfont', 400, normal);
+@include font-face(Font-Regular-Italic, $brand-font, '../../../fonts/librebaskerville-italic-webfont', 400, italic);
+@include font-face(Font-Medium, $brand-font, '../../../fonts/librebaskerville-regular-webfont', 500, normal);
+@include font-face(Font-Medium-Italic, $brand-font, '../../../fonts/librebaskerville-italic-webfont', 500, italic);
+@include font-face(Font-Semi-Bold, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 600, normal);
+@include font-face(Font-Semi-Bold-Italic, $brand-font, '../../../fonts/librebaskerville-italic-webfont', 600, italic);
+@include font-face(Font-Bold, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 700, normal);
+@include font-face(Font-Bold-Italic, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 700, italic);
+@include font-face(Font-Extra-Bold, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 800, normal);
+@include font-face(Font-Extra-Bold-Italic, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 800, italic);
+@include font-face(Font-Ultra-Bold, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 900, normal);
+@include font-face(Font-Ultra-Bold-Italic, $brand-font, '../../../fonts/librebaskerville-bold-webfont', 900, italic);

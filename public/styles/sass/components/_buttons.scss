@@ -1,0 +1,21 @@
+@import '../master/_brandguide.scss';
+
+/*********************************
+    Default Button Style
+*********************************/
+// button(16px, #000, #F0F0F0, 3px);
+@mixin button($btn-font-size: $btn-font-size, $btn-color: $btn-color, $btn-background: $btn-background, $btn-radius: $btn-radius){
+    border-radius: $btn-radius;
+    background-color: $btn-background;
+    color: $btn-color;
+    font-size: $btn-font-size;
+}
+
+// button-inverse(16px, #000, #F0F0F0, 3px);
+@mixin button-inverse($btn-font-size: $btn-font-size, $btn-color: $btn-color, $btn-background: $btn-background, $btn-radius: $btn-radius){
+    border-radius: $btn-radius;
+    background-color: transparent;
+    color: $btn-background;
+    font-size: $btn-font-size;
+    border: 1px solid $btn-background;
+}

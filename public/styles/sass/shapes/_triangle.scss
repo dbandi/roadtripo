@@ -1,0 +1,44 @@
+
+@mixin twosided-arrow-btn($btn-height, $arrow-width, $padding, $font-color:#000, $background-color: transparent, $border-color: #000, $border-width: 1px){
+    position: relative;
+    padding: $padding;
+    height: $btn-height;
+    line-height: $btn-height;
+    display: inline-block;
+    color: $font-color;
+    background-color: $background-color;
+    border: $border-width solid $border-color;
+    border-right: none;
+    border-left: none;
+    z-index:1;
+
+    &:before{
+        content: '';
+        position: absolute;
+        left: auto;
+        z-index:-1;
+        width: $arrow-width;
+        height: $arrow-width;
+        border-right: $border-width solid $border-color;
+        border-bottom: $border-width solid $border-color;
+        transform: rotate(-45deg);
+        background: $background-color;
+        right:$arrow-width/2 * -1;
+        top:$arrow-width/6;
+    }
+
+    &:after{
+        content: '';
+        position: absolute;
+        z-index:-1;
+        width: $arrow-width;
+        height: $arrow-width;
+        border-left: $border-width solid $border-color;
+        border-top: $border-width solid $border-color;
+        transform: rotate(-45deg);
+        background: $background-color;
+        left:$arrow-width/2 * -1;
+        top:$arrow-width/6;
+
+    }
+}

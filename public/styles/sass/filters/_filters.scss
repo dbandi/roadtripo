@@ -1,0 +1,51 @@
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+}
+
+@mixin black($opacity) {
+    background-color: rgba(0, 0, 0, $opacity);
+}
+
+@mixin white($opacity) {
+    background-color: rgba(255, 255, 255, $opacity);
+}
+
+/* $color can be HEX code */
+@mixin color-opacity($color, $opacity){
+    background-color: rgba($color, $opacity);
+}
+
+@mixin gradient($start: left, $end: right){
+    background: -webkit-linear-gradient($start, $brand-para-text, rgba(255,0,0,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($end, $brand-para-text, rgba(255,0,0,0)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($end, $brand-para-text, rgba(255,0,0,0)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to $end, $brand-para-text, rgba(255,0,0,0)); 
+}
+
+
+/* $color can be HEX code */
+@mixin animate-bg-fill(){
+    background: linear-gradient(90deg, #404041, transparent);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 3s ease 1;
+    -moz-animation: AnimationName 3s ease 1;
+    animation: AnimationName 3s ease 1;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+}

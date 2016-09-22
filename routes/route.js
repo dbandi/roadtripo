@@ -134,7 +134,7 @@ router.get('/places', function(req, res, next) {
 
     var placesNearby = {
         method: 'GET',
-        uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&query=Popular+with+Visitors',
+        uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&venuePhotos=1&query=Popular+with+Visitors',
         resolveWithFullResponse: true
     };
 
@@ -149,6 +149,27 @@ router.get('/places', function(req, res, next) {
             console.log(err);
     });
 
+});
+
+router.get('/photos', function(req, res, next) {
+    var placeName = req.query.placeName;
+
+    var placesNearby = {
+        method: 'GET',
+        uri: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6f879817c92af79cc71ad4f6db8d45c8&text=Millennium+Park%2C+Chicago&per_page=1&format=json&nojsoncallback=1&api_sig=ecbac332b0249bfd73d35b268007b374',
+        resolveWithFullResponse: true
+    };
+
+    rp(placesNearby)
+        .then(function (response) {
+            if (response.statusCode == 200) {
+                results = JSON.parse( response.body );
+                res.json(results);
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
 });
 
 module.exports = router;

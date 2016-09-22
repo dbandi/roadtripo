@@ -1,0 +1,11 @@
+/*********************************
+    All transitions
+*********************************/
+// transition(0.3, width);
+@mixin transition($time, $type: all) {
+    -webkit-transition: $type $time+s ease;
+    -moz-transition: $type $time+s ease;
+    -o-transition: $type $time+s ease;
+    -ms-transition: $type $time+s ease;
+    transition: $type $time+s ease;
+}

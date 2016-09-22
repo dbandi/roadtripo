@@ -1,0 +1,249 @@
+$local-brand-title : #c0c0c0;
+$local-brand-text : #f0f0f0;
+$local-default-color : #fff;
+$local-brand-color : #e3e3e3;
+
+@mixin i-navigation($brand-title: $local-brand-title, $brand-text: $local-brand-text, $default-color: $local-default-color, $brand-color: $local-brand-color){
+
+        display: table;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        float: none;
+        padding: 0px;
+
+        .i-nav-wrapper{
+            .logo-placeholder{
+                display: inline-block;
+                float: left;
+                padding-right: 50px;
+                padding-top: 14px;
+                padding-bottom: 15px;
+
+                @media (max-width: 992px){
+                    display: block;
+                    float: none;
+                }
+
+                img{
+                    @media (max-width:992px){
+                        display: block;
+                        margin: 0 auto;
+                        max-width: 35%;
+                    }
+                }
+            }
+
+            #i-nav-toggle{
+                position: absolute;
+                right: 30px;
+                top: 40px;
+                max-width: 60px;
+
+                @media (min-width: 992px){
+                    display: none;
+                }
+            }
+
+            .i-nav{
+                @media (max-width: 992px){
+                    display: none;
+                    float: none;
+
+                    &.open{
+                        display: block;
+                    }
+                }
+            }
+
+            > ul{
+                float: right;
+                li{
+                    display: inline-block;
+                    position: relative;
+
+                    @media (max-width: 992px){
+                        display: block;
+                        float: none;
+                        text-align: center;
+                        background-color: #1A315C;
+                    }
+
+                    a{
+                        @include web-font(Font-Regular, 14px, $brand-title, 17px, 1px);
+                        padding: 45px 20px;
+                        display: inline-block;
+                        text-transform: capitalize;
+                        position: relative;
+
+                        @media (max-width: 1100px){
+                            padding: 45px 10px;
+                        }
+
+                        @media (max-width: 992px){
+                            @include web-font(Font-Light, 15px, $brand-title, 17px, 1px);
+                            text-align: center;
+                            padding: 15px 20px;
+                            color: $default-color;
+                            width: 100%;
+                        }
+                    }
+
+                    ul{
+                        /*display: none;*/
+                        position: absolute;
+                        background-color: #F8FBFB;
+                        z-index: 10;
+
+                        max-height: 0;
+                    	overflow: hidden;
+
+                    	/* Set our transitions up. */
+                    	-webkit-transition: max-height 0s;
+                    	-moz-transition: max-height 0s;
+                    	transition: max-height 0s;
+
+                        @media (max-width: 992px){
+                            /* Set our transitions up. */
+                        	-webkit-transition: max-height 0.45s;
+                        	-moz-transition: max-height 0.45s;
+                        	transition: max-height 0.45s;
+                        }
+
+                        &.open{
+                            max-height: 800px;
+                            -webkit-transition: max-height 0.8s;
+                        	-moz-transition: max-height 0.8s;
+                        	transition: max-height 0.8s;
+                        }
+
+                        @media (max-width: 992px){
+                            position: relative;
+                            /*display: block;*/
+                            background-color: $default-color;
+                        }
+
+                        li{
+                            display: block;
+                            width: auto;
+                            white-space: nowrap;
+
+                            @media (min-width: 992px){
+                                &:first-child{
+                                    display: none;
+                                }
+                            }
+
+                            a{
+                                padding: 15px;
+                                @include web-font(Font-Light, 14px, $brand-title, 17px, 1px);
+                                width: 100%;
+                                border-top: 1px solid transparent;
+                                border-bottom: 1px solid transparent;
+                                &:before{
+                                    background: transparent !important;
+                                }
+
+                                &:hover{
+                                    border-top: 1px solid $brand-text;
+                                    border-bottom: 1px solid $brand-text;
+                                }
+                            }
+
+                            @media (max-width: 992px){
+                                background-color: $default-color;
+
+                                &:first-child{
+                                    background-color: $brand-color;
+
+                                    a{
+                                        color: $default-color;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    &:hover{
+                        @media (min-width: 992px){
+                            ul{
+                                display: block;
+                                max-height: 800px;
+                                -webkit-transition: max-height 0.8s;
+                            	-moz-transition: max-height 0.8s;
+                            	transition: max-height 0.8s;
+                            }
+                        }
+                    }
+
+                    .active{
+                        ul{
+                            display: block;
+                        }
+                    }
+
+                }
+
+                > li:not(:last-child){
+                    a{
+                        &:before {
+                          content: "";
+                          position: absolute;
+                          width: 40%;
+                          height: 2px;
+                          bottom: 28px;
+                          left: 0;
+                          right: 0;
+                          margin: 0 auto;
+                          background-color: $brand-color;
+                          visibility: hidden;
+                          -webkit-transform: scaleX(0);
+                          transform: scaleX(0);
+                          -webkit-transition: all 0.3s ease-in-out 0s;
+                          transition: all 0.3s ease-in-out 0s;
+
+                          @media (max-width: 992px){
+                              display: none;
+                          }
+                        }
+                    }
+
+                    &:hover{
+                        a{
+                            &:before{
+                                visibility: visible;
+                                -webkit-transform: scaleX(1);
+                                transform: scaleX(1);
+                            }
+                        }
+                    }
+                }
+
+                > li:last-child{
+                    a{
+                        padding: 12px 38px;
+                        background-color: $brand-color;
+                        border-radius: 10px;
+                        color: $default-color;
+
+                        @extend .btn;
+                        overflow: initial;
+
+                        @media (max-width: 992px){
+                            background-color: transparent;
+                            color: $default-color;
+
+                            &:before{
+                                display: none;
+                            }
+                            &:hover{
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+}

@@ -1,0 +1,65 @@
+/*********************************
+    Layout Grid
+*********************************/
+// layout(6, 10, 10, 1, 1);
+@mixin layout($columns, $left: 10, $right: 10, $offset-left: 0, $offset-right: 0) {
+
+  $width: (100% / 12 * $columns) - (100% / 12 * $offset-left) - (100% / 12 * $offset-right);
+  @include grid($width, $left + $right);
+
+  float: left;
+  padding-left: $left + px;
+  padding-right: $right + px;
+  margin-left: (100% / 12) * $offset-left;
+  margin-right: (100% / 12) * $offset-right;
+}
+
+
+@mixin grid($width, $spacing) {
+  width: -webkit-calc(#{$width});
+  width: -moz-calc(#{$width});
+  width: calc(#{$width});
+}
+
+/*********************************
+    Padding
+*********************************/
+// padding(10, 12, 15, 10);
+@mixin padding($top, $left: $top, $bottom: $top,  $right: $left){
+	padding-top: $top;
+    padding-left: $left;
+    padding-bottom: $bottom;
+	padding-right: $right;
+}
+
+/*********************************
+    Margin
+*********************************/
+// margin(10, 12, 15, 10);
+@mixin margin($top, $left: $top, $bottom: $top,  $right: $left){
+	margin-top: $top;
+    margin-left: $left;
+	margin-bottom: $bottom;
+    margin-right: $right;
+}
+
+/*********************************
+    Media Queries
+*********************************/
+
+@mixin media-queries-min-max($min-width, $max-width){
+	@media (min-width: $min-width) and (max-width: $max-width){
+        @content;
+    }
+}
+@mixin media-queries-max($max-width){
+	@media (max-width: $max-width){
+		@content;
+    }
+}
+
+@mixin media-queries-min($min-width){
+    @media (min-width: $min-width){
+		@content
+    }
+}

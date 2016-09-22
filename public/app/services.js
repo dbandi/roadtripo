@@ -10,9 +10,17 @@ app.service('dataService', function($http) {
 
      this.getPlaces = function(placetypes, lat, lng) {
          return $http({
-             method: 'GET',             
+             method: 'GET',
              url: '/places?placetypes='+placetypes+"&lat="+lat+"&lng="+lng,
              headers: {'Content-Type': 'application/json; charset=utf-8'}
          });
       };
+
+      this.getPhotos = function(placeName) {
+          return $http({
+              method: 'GET',
+              url: '/photos?placeName='+placeName,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
 });

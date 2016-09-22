@@ -1,0 +1,7 @@
+@mixin square($width, $color, $border-width, $border-color: transparent, $border-style: solid, $position: absolute){
+    position: $position;
+	width: $width;
+	height: $width;
+	background-color: $color;
+    border: $border-width $border-style $border-color;
+}

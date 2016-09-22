@@ -1,0 +1,14 @@
+@import '_brandguide.scss';
+
+/*********************************
+    Center Align
+*********************************/
+%horizontal-center{
+    display: block;
+    margin: 0 auto;
+}
+
+%horizontal-center-table{
+    display: table;
+    margin: 0 auto;
+}

@@ -20,8 +20,12 @@ app.controller('myController',['$scope', '$http', 'dataService', function($scope
         dataService.getPlaces(placetypes, lat, lng).then(function (response) {
             $scope.listPlaces = true;
             $scope.listCities = false;
-            console.log(response.data.response.groups[0].items);
+            console.log(JSON.stringify(response.data.response.groups[0].items));
             $scope.places = response.data.response.groups[0].items;
         });
+
+        /*dataService.getPhotos(listCities).then(function (response) {
+
+        });*/
     };
 }]);

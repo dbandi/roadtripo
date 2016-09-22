@@ -2,6 +2,9 @@
 <html ng-app="roadtripo">
     <head>
         <title>Roadtripo</title>
+
+        <link rel="stylesheet" href="styles/css/master/global.css" media="screen">
+
         <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
         <script src="app/app.js" type="text/javascript"></script>
         <script src="app/factory.js" type="text/javascript"></script>
@@ -9,17 +12,22 @@
     </head>
     <body >
         <div ng-controller="myController">
+            <div class="main-container">
 
-            <div class="listCities" ng-if="listCities">
-                <ul ng-repeat="city in cities">
-                	<li ng-click="getPlacesofCities('', city.lat, city.lng)">Name: {{city.city}}, Lat: {{city.lat}}, Lng: {{city.lng}}</li>
-                </ul>
-            </div>
+                <section class="listCities" ng-if="listCities">
+                    <ul ng-repeat="city in cities">
+                    	<li ng-click="getPlacesofCities('', city.lat, city.lng)">Name: {{city.city}}, Lat: {{city.lat}}, Lng: {{city.lng}}</li>
+                    </ul>
+                </section>
 
-            <div class="listPlaces" ng-if="listPlaces">
-                <ul ng-repeat="place in places">
-                    <li>Name: {{place.venue.name}}, Place Id: {{place.venue.name}}, Lat: {{place.geometry.location.lat}}, Lng: {{place.geometry.location.lng}}</li>
-                </ul>
+                <section class="listPlaces" ng-if="listPlaces">
+                    <ul ng-repeat="place in places">
+                        <li>Name: {{place.venue.name}}, Place Id: {{place.venue.name}}, Lat: {{place.geometry.location.lat}}, Lng: {{place.venue.photos.groups[0].items[0].prefix}}
+                            <img ng-src="{{place.venue.photos.groups[0].items[0].prefix}}300x300{{place.venue.photos.groups[0].items[0].suffix}}"/>
+                        </li>
+                    </ul>
+                </section>
+
             </div>
         </div>
     </body>

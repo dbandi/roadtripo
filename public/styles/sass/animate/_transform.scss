@@ -1,0 +1,12 @@
+/*********************************
+    Rotate
+*********************************/
+// rotate(30deg, -3);
+@mixin rotate($degree, $ie-degree) {
+    -webkit-transform: rotate($degree);
+    -moz-transform: rotate($degree);
+    -ms-transform: rotate($degree);
+    -o-transform: rotate($degree);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$ie-degree);
+    transform: rotate($degree);
+}
