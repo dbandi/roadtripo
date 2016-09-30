@@ -1,0 +1,8 @@
+<section class="listPlaces" >
+    <ul ng-repeat="place in places">
+        <li>Name: {{place.venue.name}}, Place Id: {{place.venue.name}}, Lat: {{place.geometry.location.lat}}, Lng: {{place.venue.photos.groups[0].items[0].prefix}}
+            <img ng-src="{{place.venue.photos.groups[0].items[0].prefix}}300x300{{place.venue.photos.groups[0].items[0].suffix}}"/>
+            <button class="addTrip()" type="button">Add Trip</button>
+        </li>
+    </ul>
+</section>

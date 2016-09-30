@@ -1,0 +1,49 @@
+<section>
+    <div class="listCities hide" ng-if="listCities">
+        <ul ng-repeat="city in cities">
+            <li ng-click="getPlacesofCities('', city.lat, city.lng)">Name: {{city.city}}, Lat: {{city.lat}}, Lng: {{city.lng}}</li>
+        </ul>
+    </div>
+
+    <div class="filter-nav">
+        <ul>
+            <li><a href="#"><span><img src="images/hotel.png"/></span><p>Hotels</p></a></li>
+            <li><a href="#"><span><img src="images/restaurant.png"/></span><p>Restaurant</p></a></li>
+            <li><a href="#"><span><img src="images/gas_station.png"/></span><p>Gas Station</p></a></li>
+            <li><a href="#"><span><img src="images/event.png"/></span><p>Events</p></a></li>
+            <li><a href="#"><span><img src="images/shop.png"/></span><p>Shop</p></a></li>
+            <li><a href="#"><span><img src="images/drinks.png"/></span><p>Drinks</p></a></li>
+            <li><a href="#"><span><img src="images/entertainment.png"/></span><p>Entertainment</p></a></li>
+            <li><a href="#"><span><img src="images/outdoor.png"/></span><p>Outdoor</p></a></li>
+        </ul>
+    </div>
+
+    <section class="listPlaces">
+        <div class="list-places-wrapper">
+            <div class="container">
+                <div class="list-places-block">
+                    <div class="places-block" ng-repeat="place in places">
+                        <div ng-repeat="spot in place">
+                            <div class="individual-place-block">
+                                <div class="individual-place-block-wrapper">
+                                    <div class="place-image-block">
+                                        <span>{{spot.venue.categories[0].shortName}}</span>
+                                        <div class="img-cover"></div>
+                                        <img ng-src="{{spot.venue.photos.groups[0].items[0].prefix}}365x205{{spot.venue.photos.groups[0].items[0].suffix}}"/>
+                                    </div>
+                                    <div class="place-content-block">
+                                        <h4>{{spot.venue.name}}</h4>
+                                        <p>{{spot.venue.location.city}}</p>
+                                        <span class="hide" id="lat">{{spot.venue.lat}}</span>
+                                        <span class="hide" id="lng">{{spot.venue.lng}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</section>

@@ -1,14 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
+var User = require('../models/user');
 var path = require('path');
 var _ = require('underscore-node');
 var rp = require('request-promise');
 var request = require('request');
 var Promise = require("bluebird");
+var passport = require('passport');
+var LocalStrategy   = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var mysql = require('mysql');
+var mysqlModel = require('mysql-model');
 
-// MySql Connection
+/* =========== MySql Connection ============ */
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -16,14 +22,33 @@ var connection = mysql.createConnection({
   database : 'roadtripo'
 });
 
-connection.connect();
+/*connection.connect();
 connection.query('SELECT * from users', function(err, rows, fields) {
   if (!err)
     console.log('The solution is: ', rows);
   else
     console.log('Error while performing Query.');
 });
-connection.end();
+connection.end();*/
+
+/* =========== End of MySql connection ============ */
+
+/* =========== Passport Facebook =========== */
+
+passport.use(new FacebookStrategy({
+    clientID: '1576754455964708',
+    clientSecret: 'e105dad8a885bffc1e7d48f4064aeb2a',
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+      User.findOrCreate(profile, function(err, user) {
+          if (err) { return done(err); }
+          return done();
+      });
+  }
+));
+
+/* =========== End of Passport Facebook =========== */
 
 var brandings = [];
 var directions = [];
@@ -39,6 +64,15 @@ var allLatLong = {};
 router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
 });
+
+router.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+  var options = {
+      successRedirect: '/plantrip',
+      failureRedirect: '/bummer-dude'
+  };
+  router.get('/auth/facebook/callback', passport.authenticate('facebook', options));
 
 router.get('/plantrip', function(req, res, next) {
 
@@ -128,6 +162,7 @@ router.get('/plantrip', function(req, res, next) {
 
 
 router.get('/places', function(req, res, next) {
+
     var placetypes = req.query.placetypes;
     var lat = req.query.lat;
     var lng = req.query.lng;
@@ -171,5 +206,7 @@ router.get('/photos', function(req, res, next) {
             console.log(err);
     });
 });
+
+
 
 module.exports = router;

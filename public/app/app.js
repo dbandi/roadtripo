@@ -1,31 +1,40 @@
-var app = angular.module('roadtripo',[]);
+var app = angular.module('roadtripo',['ngAutocomplete']);
 
 app.controller('myController',['$scope', '$http', 'dataService', function($scope, $http, dataService) {
     $scope.cities = [];
     $scope.places = [];
+    $scope.allPlaces = [];
+
+    $scope.source = "";
+    $scope.destination = "";
+    $scope.autocomplete = "";
+
+    $scope.homePage = true;
     $scope.listCities = false;
     $scope.listPlaces = false;
 
-    dataService.getCities().then(function (response) {
-        $scope.listCities = true;
-        $scope.listPlaces = false;
-        $scope.cities = response.data;
-    });
+    $scope.plantrip = function(){
+        $scope.homePage = false;
+        $scope.listCities = false;
+        $scope.listPlaces = true;
+        var source = $scope.source;
+        var destination = $scope.destination;
+        console.log(source);
+        dataService.getCities(source, destination).then(function (response) {
+            $scope.cities = response.data;
 
-    $scope.getPlacesofCities = function(placetypes, lat, lng){
-        if(placetypes == ''){
-            placetypes = ['amusement_park', 'art_gallery', 'zoo', 'park'];
-        }
+            var citiesLength = Object.keys($scope.cities).length;
+            for (var i = 0; i < citiesLength; i++) {
+                $scope.listPlaces = true;
+                var placetypes = '';
 
-        dataService.getPlaces(placetypes, lat, lng).then(function (response) {
-            $scope.listPlaces = true;
-            $scope.listCities = false;
-            console.log(JSON.stringify(response.data.response.groups[0].items));
-            $scope.places = response.data.response.groups[0].items;
+                dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
+                    $scope.places.push(response.data.response.groups[0].items);
+                    console.log($scope.places);
+                });
+            }
         });
+    }
 
-        /*dataService.getPhotos(listCities).then(function (response) {
 
-        });*/
-    };
 }]);

@@ -1,9 +1,16 @@
 var express = require('express');
 var path = require('path');
+var _ = require('underscore-node');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var LocalStrategy   = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
+var mysql = require('mysql');
+var mysqlModel = require('mysql-model');
 
 var routes = require('./routes/route');
 
@@ -20,6 +27,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes);
 
