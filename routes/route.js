@@ -65,19 +65,20 @@ router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'index.html'));
 });
 
-router.get('/auth/facebook',
-  passport.authenticate('facebook'));
+/* Facebook Auth. */
+router.get('/auth/facebook', passport.authenticate('facebook'));
 
-  var options = {
-      successRedirect: '/plantrip',
-      failureRedirect: '/bummer-dude'
-  };
-  router.get('/auth/facebook/callback', passport.authenticate('facebook', options));
+var options = {
+    successRedirect: '/plantrip',
+    failureRedirect: '/bummer-dude'
+};
+router.get('/auth/facebook/callback', passport.authenticate('facebook', options));
+
+/* Local Auth. */
 
 router.get('/plantrip', function(req, res, next) {
-
     var request = require('request');
-    request('https://maps.googleapis.com/maps/api/directions/json?origin=Chicago&destination=Los+Angeles&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM', function (error, response, body) {
+    request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //directions = body; // Print the google web page.
 
@@ -87,10 +88,6 @@ router.get('/plantrip', function(req, res, next) {
                 totalDistance = directions.routes[0].legs[0].distance.value;
                 totalMilesDistance = totalDistance*0.000621371192;
                 totalDuration = directions.routes[0].legs[0].duration.value;
-
-                console.log(totalDistance);
-                console.log(totalMilesDistance);
-                console.log(totalDuration);
 
                 /*res.send(JSON.stringify(directions.routes[0].legs[0].steps));*/
 
@@ -170,6 +167,31 @@ router.get('/places', function(req, res, next) {
     var placesNearby = {
         method: 'GET',
         uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&venuePhotos=1&query=Popular+with+Visitors',
+        resolveWithFullResponse: true
+    };
+
+    rp(placesNearby)
+        .then(function (response) {
+            if (response.statusCode == 200) {
+                results = JSON.parse( response.body );
+                res.json(results);
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+    });
+
+});
+
+router.get('/placefilter', function(req, res, next) {
+
+    var placetypes = req.query.placetypes;
+    var lat = req.query.lat;
+    var lng = req.query.lng;
+
+    var placesNearby = {
+        method: 'GET',
+        uri: 'https://api.foursquare.com/v2/venues/search?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&venuePhotos=1&categoryId='+placetypes,
         resolveWithFullResponse: true
     };
 

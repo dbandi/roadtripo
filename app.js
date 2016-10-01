@@ -33,6 +33,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
+app.get('/login', function(req, res) {
+  res.sendfile('views/login.html');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

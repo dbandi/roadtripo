@@ -1,16 +1,28 @@
-app.directive("listCities", function(dataService) {
+app.directive("listCities", function(dataService,$timeout) {
 
     function link($scope) {
 
-        $scope.listCities = false;
-
-        $scope.getPlacesofCities = function(placetypes, lat, lng){
-            $scope.listPlaces = true;
+        $scope.listCities = true;
+        /*$timeout(function() {
+            google.maps.event.trigger(map, "resize");
+        });*/
+        $scope.getPlacesofCities = function(placetypes){
             $scope.listCities = true;
 
-            dataService.getPlaces(placetypes, lat, lng).then(function (response) {
-                $scope.places = response.data.response.groups[0].items;
-            });
+            //Reset PLaces
+            $scope.places = [];
+            var citiesLength = Object.keys($scope.cities).length;
+
+            for (var i = 0; i < citiesLength; i++) {
+                $scope.listPlaces = true;
+
+                dataService.getPlacesFilter(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
+                    //$scope.places.push(response.data.response.venue);
+                    console.log(response.data.response.venue);
+                });
+            }
+
+            //console.log($scope.places);
         };
     }
 
