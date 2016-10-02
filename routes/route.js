@@ -13,6 +13,10 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var mysql = require('mysql');
 var mysqlModel = require('mysql-model');
+var Yelp = require('yelp');
+
+var googleapikey = 'AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM';
+var foursquareauth = 'MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z'
 
 /* =========== MySql Connection ============ */
 var connection = mysql.createConnection({
@@ -50,6 +54,17 @@ passport.use(new FacebookStrategy({
 
 /* =========== End of Passport Facebook =========== */
 
+/* =========== Yelp Auth =========== */
+
+var yelp = new Yelp({
+    consumer_key: 'E8O3cJKY8nxFD_Z5lD7oZw',
+    consumer_secret: 'XboQmv0xrpz0x904tBOdQTEO_dQ',
+    token: 'wAJzxxEATBegum2Ugo0kXwaAcqXXZi5B',
+    token_secret: 'eh7K2We4uUkn0KZ5vsOM76jh8l0',
+});
+
+/* =========== End of Yelp Auth =========== */
+
 var brandings = [];
 var directions = [];
 var totalDistance = 0;
@@ -78,7 +93,7 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', options)
 
 router.get('/plantrip', function(req, res, next) {
     var request = require('request');
-    request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM', function (error, response, body) {
+    request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //directions = body; // Print the google web page.
 
@@ -111,7 +126,7 @@ router.get('/plantrip', function(req, res, next) {
                     var temp=0;
                     var city_options = {
                         method: 'GET',
-                        uri: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + allLatLong[i].lat + ' , ' + allLatLong[i].lng + '&sensor=false&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM',
+                        uri: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + allLatLong[i].lat + ' , ' + allLatLong[i].lng + '&sensor=false&key='+googleapikey,
                         resolveWithFullResponse: true    //  <---  <---  <---  <---
                     };
 
@@ -166,7 +181,7 @@ router.get('/places', function(req, res, next) {
 
     var placesNearby = {
         method: 'GET',
-        uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&venuePhotos=1&query=Popular+with+Visitors',
+        uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token='+foursquareauth+'&v=20160921&venuePhotos=1&query=Popular+with+Visitors',
         resolveWithFullResponse: true
     };
 
@@ -184,28 +199,17 @@ router.get('/places', function(req, res, next) {
 });
 
 router.get('/placefilter', function(req, res, next) {
-
     var placetypes = req.query.placetypes;
     var lat = req.query.lat;
     var lng = req.query.lng;
 
-    var placesNearby = {
-        method: 'GET',
-        uri: 'https://api.foursquare.com/v2/venues/search?ll='+lat+','+lng+'&oauth_token=MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z&v=20160921&venuePhotos=1&categoryId='+placetypes,
-        resolveWithFullResponse: true
-    };
-
-    rp(placesNearby)
-        .then(function (response) {
-            if (response.statusCode == 200) {
-                results = JSON.parse( response.body );
-                res.json(results);
-            }
-        })
-        .catch(function (err) {
-            console.log(err);
+    yelp.search({ term: placetypes, ll: lat+','+lng })
+    .then(function (data) {
+        res.json(data);
+    })
+    .catch(function (err) {
+      console.error(err);
     });
-
 });
 
 router.get('/photos', function(req, res, next) {

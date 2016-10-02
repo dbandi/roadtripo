@@ -1,6 +1,6 @@
 var app = angular.module('roadtripo',['ngAutocomplete','ngMap']);
 
-app.controller('myController',['$scope', '$http', 'dataService', 'NgMap', function($scope, $http, dataService, NgMap) {
+app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 'NgMap', function($scope, $http, dataService, dataFactory, NgMap) {
 
     NgMap.getMap({id:'contactmap'}).then(function(map) {
       map.setZoom(4);
@@ -32,11 +32,16 @@ app.controller('myController',['$scope', '$http', 'dataService', 'NgMap', functi
                 $scope.listPlaces = true;
                 var placetypes = 'Popular+with+Visitors';
 
-                dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
-                    $scope.places.push(response.data.response.groups[0].items);
+                dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {                    
+                    for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
+                        var responseData = response.data.response.groups[0].items[j].venue;
+                        var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);
+                        $scope.places.push(placesModel);
+                    }
                 });
             }
         });
+
     }
 
 

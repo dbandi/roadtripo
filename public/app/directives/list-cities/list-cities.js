@@ -1,4 +1,4 @@
-app.directive("listCities", function(dataService,$timeout) {
+app.directive("listCities", function(dataService, dataFactory, $timeout) {
 
     function link($scope) {
 
@@ -6,7 +6,7 @@ app.directive("listCities", function(dataService,$timeout) {
         /*$timeout(function() {
             google.maps.event.trigger(map, "resize");
         });*/
-        $scope.getPlacesofCities = function(placetypes){
+        $scope.getYelpPlacesofCities = function(placetypes){
             $scope.listCities = true;
 
             //Reset PLaces
@@ -15,14 +15,14 @@ app.directive("listCities", function(dataService,$timeout) {
 
             for (var i = 0; i < citiesLength; i++) {
                 $scope.listPlaces = true;
-
                 dataService.getPlacesFilter(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
-                    //$scope.places.push(response.data.response.venue);
-                    console.log(response.data.response.venue);
+                    for (var j = 0; j < response.data.businesses.length; j++) {
+                        var responseData = response.data.businesses[j];
+                        var placesModel = dataFactory.getYelpAPIplacesModel(responseData);
+                        $scope.places.push(placesModel);
+                    }
                 });
             }
-
-            //console.log($scope.places);
         };
     }
 

@@ -135,6 +135,10 @@ input{
             margin-top: 25px;
             font-family: 'Montserrat';
 
+            &:nth-child(4){
+                clear: both;
+            }
+
             .individual-place-block-wrapper{
                 background-color: $default-color;
                 box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
@@ -143,7 +147,9 @@ input{
 
             .place-image-block{
                 position: relative;
-
+                max-height: 205px;
+                min-height: 205px;
+                overflow: hidden;
                 span{
                     position: absolute;
                     right: 6px;
