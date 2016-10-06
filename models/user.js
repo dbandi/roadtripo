@@ -12,7 +12,6 @@ var User = MyUserModel.extend({
 });
 
 user = new User();
-console.log("Here");
 
 var findOrCreate = function(profile){
     console.log(profile);
@@ -21,5 +20,5 @@ var findOrCreate = function(profile){
 
 
 module.exports = {
-        findOrCreate: findOrCreate
-    }
+    findOrCreate: findOrCreate
+}

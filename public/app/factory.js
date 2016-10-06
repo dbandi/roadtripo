@@ -4,6 +4,7 @@ app.factory('dataFactory', function () {
     function getFoursquareAPIplacesModel(responseData) {
         APIplacesModel = {};
         APIplacesModel.placeid = responseData.id;
+        APIplacesModel.placeAPI = 'Foursquare';
         APIplacesModel.placename = responseData.name;
         APIplacesModel.address = responseData.location.formattedAddress.join();
         APIplacesModel.lat = parseFloat(responseData.location.lat);
@@ -17,6 +18,7 @@ app.factory('dataFactory', function () {
     function getYelpAPIplacesModel(responseData) {
         APIplacesModel = {};
         APIplacesModel.placeid = responseData.id;
+        APIplacesModel.placeAPI = 'Yelp';
         APIplacesModel.placename = responseData.name;
         APIplacesModel.address = responseData.id;
         APIplacesModel.lat = parseFloat(responseData.location.coordinate.latitude);
@@ -33,8 +35,29 @@ app.factory('dataFactory', function () {
         return APIplacesModel;
     }
 
+    function getTrip(source, destination, trip) {
+        APItripModel = {};
+        APItripModel.user_id = 1;
+        var trip_name = "Trip";
+
+        if (source.indexOf(',') > -1) {
+             trip_name = source.split(',')[0];
+        }
+
+        if (destination.indexOf(',') > -1) {
+             trip_name = trip_name + " - " + destination.split(',')[0];
+         }
+
+        APItripModel.trip_name = trip_name;
+        APItripModel.trip_start = source;
+        APItripModel.trip_end = destination;
+        APItripModel.trip_details = trip;
+        return APItripModel;
+    }
+
     return {
         getFoursquareAPIplacesModel : getFoursquareAPIplacesModel,
-        getYelpAPIplacesModel : getYelpAPIplacesModel
+        getYelpAPIplacesModel : getYelpAPIplacesModel,
+        getTrip : getTrip
     }
 });

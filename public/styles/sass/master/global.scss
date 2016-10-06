@@ -147,8 +147,8 @@ input{
 
             .place-image-block{
                 position: relative;
-                max-height: 205px;
-                min-height: 205px;
+                max-height: 185px;
+                min-height: 185px;
                 overflow: hidden;
                 span{
                     position: absolute;
@@ -159,6 +159,25 @@ input{
                     padding: 3px 8px;
                 }
 
+            }
+
+            .place-content-block{
+                position: relative;
+
+                a{
+                    position: absolute;
+                    font-size: 14px;
+                    letter-spacing: initial;
+                    font-family: 'raleway';
+                    float: right;
+                    display: block;
+                    right: 10px;
+                    bottom: 10px;                    
+                    padding: 6px 10px;
+                    border-radius: 2px;
+                    background-color: #e74949;
+                    color: #fff;
+                }
             }
 
             h4{

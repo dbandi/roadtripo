@@ -15,9 +15,9 @@
 
     <section class="listPlaces">
         <div id="map" class="map-places-wrapper">
-            <ng-map zoom="11" center="[40.74, -74.18]">
+            <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]">
                 <div class="maps-block" ng-repeat="place in places">
-                    <marker position="[{{place.lat}}, {{place.lng}}]" title="hello"></marker>
+                    <marker center="{{place.lat}},{{place.lng}}" position="[{{place.lat}}, {{place.lng}}]" title="marker" animation="Animation.DROP" icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"></marker>
                     <!--<marker position="[40.71, -74.21]" title="hello"></marker>
                     <marker position="[40.72, -74.20]" title="marker" animation="Animation.DROP"></marker>
                     <marker position="[40.73, -74.19]" title="drag me" draggable="true"></marker>
@@ -33,6 +33,9 @@
         <div class="list-places-wrapper">
             <div class="container">
                 <div class="list-places-block">
+                    <div class="save-places-block">
+                        <a href="#" ng-click="saveTrip()" class="btn"> Save Trip </a>
+                    </div>
                     <div class="places-block" ng-repeat="place in places">
                         <div class="individual-place-block">
                             <div class="individual-place-block-wrapper">
@@ -46,6 +49,7 @@
                                     <p>{{place.city}}</p>
                                     <span class="hide" id="lat">{{place.lat}}</span>
                                     <span class="hide" id="lng">{{place.lng}}</span>
+                                    <a href="#" ng-click="addToTrip(place)"> Add to Trip </a>
                                 </div>
                             </div>
                         </div>

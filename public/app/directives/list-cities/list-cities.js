@@ -24,13 +24,27 @@ app.directive("listCities", function(dataService, dataFactory, $timeout) {
                 });
             }
         };
+
+        $scope.addToTrip = function(place){
+            $scope.trip.push(place);
+        };
+
+        $scope.saveTrip = function(){        
+            var trip = dataFactory.getTrip($scope.source, $scope.destination, $scope.trip);
+            dataService.saveTrip(trip).then(function (response) {
+
+            });
+        };
     }
 
     return {
         restrict: 'E',
         scope: {
             cities: '=',
-            places: '='
+            places: '=',
+            trip: '=',
+            source: '=',
+            destination: '='
         },
         templateUrl: "app/directives/list-cities/list-cities.html",
         link: link

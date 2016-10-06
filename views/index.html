@@ -4,6 +4,7 @@
         <title>Roadtripo</title>
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
+        <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" media="screen" title="no title">
         <link rel="stylesheet" href="styles/css/master/global.css" media="screen">
 
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM"></script>
@@ -51,7 +52,7 @@
                     </div>
                 </section>
 
-                <list-cities cities="cities" places="places" ng-if="listCities"></list-cities>
+                <list-cities cities="cities" places="places" trip="trip" source="source" destination="destination" ng-if="listCities"></list-cities>
             </div>
         </div>
     </body>

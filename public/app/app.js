@@ -10,6 +10,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
     $scope.cities = [];
     $scope.places = [];
     $scope.allPlaces = [];
+    $scope.trip = [];
 
     $scope.source = "";
     $scope.destination = "";
@@ -22,7 +23,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
         $scope.listCities = true;
 
         var source = $scope.source.replace(/ /g, '+');;
-        var destination = $scope.destination.replace(/ /g, '+');;
+        var destination = $scope.destination.replace(/ /g, '+');
 
         dataService.getCities(source, destination).then(function (response) {
             $scope.cities = response.data;
@@ -32,7 +33,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
                 $scope.listPlaces = true;
                 var placetypes = 'Popular+with+Visitors';
 
-                dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {                    
+                dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
                     for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
                         var responseData = response.data.response.groups[0].items[j].venue;
                         var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);

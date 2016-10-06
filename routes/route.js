@@ -26,7 +26,9 @@ var connection = mysql.createConnection({
   database : 'roadtripo'
 });
 
-/*connection.connect();
+
+connection.connect();
+/*
 connection.query('SELECT * from users', function(err, rows, fields) {
   if (!err)
     console.log('The solution is: ', rows);
@@ -93,6 +95,8 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', options)
 
 router.get('/plantrip', function(req, res, next) {
     var request = require('request');
+    console.log(req.query.source);
+    console.log(req.query.destination);
     request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //directions = body; // Print the google web page.
@@ -233,6 +237,28 @@ router.get('/photos', function(req, res, next) {
     });
 });
 
+router.post('/savetrip', function(req, res, next) {
+    console.log("Raw");
+    console.log((req.body.trip_details));
+    console.log("JSON");
+    console.log(JSON.stringify (req.body.trip_details));
+    var trip = {
+        user_id: req.body.user_id,
+        trip_name: req.body.trip_name,
+        trip_start: req.body.trip_start,
+        trip_end: req.body.trip_end,
+        trip_details: JSON.stringify (req.body.trip_details)
+    };
 
+    connection.query('INSERT INTO trip SET ?', trip, function(err, result) {
+        if (!err){
+            return res.sendStatus(200);
+        }
+        else{
+            return res.sendStatus(400);
+        }
+
+    });
+});
 
 module.exports = router;

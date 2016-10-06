@@ -31,4 +31,13 @@ app.service('dataService', function($http) {
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }
+
+      this.saveTrip = function(places) {
+          return $http({
+              method: 'POST',
+              url: '/savetrip',
+              data: places,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
 });
