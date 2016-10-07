@@ -29,6 +29,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
             $scope.cities = response.data;
 
             var citiesLength = Object.keys($scope.cities).length;
+            console.log($scope.cities);
             for (var i = 0; i < citiesLength; i++) {
                 $scope.listPlaces = true;
                 var placetypes = 'Popular+with+Visitors';

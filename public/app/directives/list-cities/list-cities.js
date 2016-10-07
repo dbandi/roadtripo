@@ -29,7 +29,7 @@ app.directive("listCities", function(dataService, dataFactory, $timeout) {
             $scope.trip.push(place);
         };
 
-        $scope.saveTrip = function(){        
+        $scope.saveTrip = function(){
             var trip = dataFactory.getTrip($scope.source, $scope.destination, $scope.trip);
             dataService.saveTrip(trip).then(function (response) {
 
