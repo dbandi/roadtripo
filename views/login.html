@@ -6,18 +6,20 @@
     </head>
     <body>
         <form action="/login" method="post">
-          <div>
-            <label>Username:</label>
-            <input type="text" name="username" />
-            <br/>
-          </div>
-          <div>
-            <label>Password:</label>
-            <input type="password" name="password" />
-          </div>
-          <div>
-            <input type="submit" value="Submit" />
-          </div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="form-group">
+                <label>Remember Me</label>
+                <input type="checkbox" class="form-control" name="remember" value="yes">
+            </div>
+
+            <button type="submit" class="btn btn-warning btn-lg">Login</button>
         </form>
     </body>
 </html>

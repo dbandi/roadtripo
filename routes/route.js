@@ -1,4 +1,5 @@
 var express = require('express');
+var session  = require('express-session');
 var router = express.Router();
 
 var User = require('../models/user');
@@ -8,6 +9,7 @@ var rp = require('request-promise');
 var request = require('request');
 var Promise = require("bluebird");
 var passport = require('passport');
+var flash    = require('connect-flash');
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
@@ -85,11 +87,13 @@ router.get('/', function(req, res, next) {
 /* Facebook Auth. */
 router.get('/auth/facebook', passport.authenticate('facebook'));
 
-var options = {
-    successRedirect: '/plantrip',
-    failureRedirect: '/bummer-dude'
-};
-router.get('/auth/facebook/callback', passport.authenticate('facebook', options));
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/plantrip' }),
+  function(req, res) {
+    console.log("Success Login");
+    res.redirect('/');
+    res.send();
+  });
 
 /* Local Auth. */
 
@@ -260,5 +264,7 @@ router.post('/savetrip', function(req, res, next) {
 
     });
 });
+
+
 
 module.exports = router;
