@@ -1,5 +1,5 @@
 // app/plantrip.js
-module.exports = function(app, passport, path, express, Yelp, rp, request, Promise, _) {
+module.exports = function(app, passport, path, express, Yelp, Bing, rp, request, Promise, _) {
 
     var googleapikey = 'AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM';
     var foursquareauth = 'MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z';
@@ -139,6 +139,27 @@ module.exports = function(app, passport, path, express, Yelp, rp, request, Promi
           console.error(err);
         });
     });
+
+    // =====================================
+	// Bing Image ===========================
+	// =====================================
+    app.get('/destinationImage', function(req, res, next) {
+        var city = req.query.city;
+        var img_url = "";
+        Bing.images("Chicago", {
+            top: 1,
+            imageFilters: {
+              size: 'large'
+            }
+        }, function(error, result, body){
+              console.log(body.d.results[0].MediaUrl);
+              img_url = body.d.results[0].MediaUrl;
+              res.send(img_url);
+          });
+          //console.log("Image : " + img_url);
+
+    });
+
 
     // =====================================
 	// Photos ===========================

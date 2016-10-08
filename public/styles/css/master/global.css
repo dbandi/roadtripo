@@ -1909,6 +1909,21 @@ nav {
   height: 75vh;
 }
 
+.listPlaces .full-screen-section {
+  height: auto;
+}
+
+.listPlaces .btn, .listPlaces .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .listPlaces a, .listPlaces .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .listPlaces button {
+  background-color: transparent;
+  border: 2px solid #E74949;
+  padding: 10px 40px;
+  margin: 15px;
+}
+
+.listPlaces #map {
+  display: none;
+}
+
 .full-screen-block {
   text-align: center;
   padding-top: 225px;

@@ -90,6 +90,24 @@ nav{
     @include img-cover();
     height: 75vh;
 }
+
+.listPlaces{
+    .full-screen-section{
+        height: auto;
+    }
+
+    .btn{
+        background-color: transparent;
+        border: 2px solid $brand-color;
+        padding: 10px 40px;
+        margin: 15px;
+    }
+
+    #map{
+        display: none;
+    }
+}
+
 .full-screen-block{
     text-align: center;
     @include padding(225px, 0, 180px);

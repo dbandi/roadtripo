@@ -1,19 +1,31 @@
 <section>
 
-    <div class="filter-nav">
-        <ul>
-            <li><a href="#" ng-click="getYelpPlacesofCities('hotelstravel');"><span><img src="images/hotel.png"/></span><p>Hotels</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('food');"><span><img src="images/restaurant.png"/></span><p>Restaurant</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('servicestations');"><span><img src="images/gas_station.png"/></span><p>Gas Station</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('event');"><span><img src="images/event.png"/></span><p>Events</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('shopping');"><span><img src="images/shop.png"/></span><p>Shop</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('nightlife');"><span><img src="images/drinks.png"/></span><p>Drinks</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('arts');"><span><img src="images/entertainment.png"/></span><p>Entertainment</p></a></li>
-            <li><a href="#" ng-click="getYelpPlacesofCities('active');"><span><img src="images/outdoor.png"/></span><p>Outdoor</p></a></li>
-        </ul>
-    </div>
-
     <section class="listPlaces">
+        <div class="full-screen-section" style="background-image: url({{bannerImage}});">
+            <div class="full-screen-wrapper">
+                <div class="container">
+                    <div class="full-screen-block">
+                        <h1>Its time for a trip</h1>
+                        <h4>Make a iteneray with RoadTripo and keep travelling.</h4>
+                        <a class="btn">View Map</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-nav">
+            <ul>
+                <li><a href="#" ng-click="getYelpPlacesofCities('hotelstravel');"><span><img src="images/hotel.png"/></span><p>Hotels</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('food');"><span><img src="images/restaurant.png"/></span><p>Restaurant</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('servicestations');"><span><img src="images/gas_station.png"/></span><p>Gas Station</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('event');"><span><img src="images/event.png"/></span><p>Events</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('shopping');"><span><img src="images/shop.png"/></span><p>Shop</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('nightlife');"><span><img src="images/drinks.png"/></span><p>Drinks</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('arts');"><span><img src="images/entertainment.png"/></span><p>Entertainment</p></a></li>
+                <li><a href="#" ng-click="getYelpPlacesofCities('active');"><span><img src="images/outdoor.png"/></span><p>Outdoor</p></a></li>
+            </ul>
+        </div>
+
         <div id="map" class="map-places-wrapper">
             <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]">
                 <div class="maps-block" ng-repeat="place in places">

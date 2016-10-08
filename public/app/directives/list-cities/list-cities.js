@@ -3,9 +3,16 @@ app.directive("listCities", function(dataService, dataFactory, $timeout) {
     function link($scope) {
 
         $scope.listCities = true;
+        $scope.bannerImage = "../../../images/bg.jpg";
         /*$timeout(function() {
             google.maps.event.trigger(map, "resize");
         });*/
+
+        dataService.getBannerImage($scope.destination).then(function (response) {
+            $scope.bannerImage = (response.data);
+        });
+
+
         $scope.getYelpPlacesofCities = function(placetypes){
             $scope.listCities = true;
 
