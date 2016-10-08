@@ -52,7 +52,8 @@ app.use(flash());
 
 // routes ======================================================================
 require('./app/auth.js')(app, passport, path, express);
-require('./app/plantrip.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
+require('./app/plantrip.js')(app, passport, path, express, Yelp, rp, request, Promise, _);
+require('./app/trip.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
 
 // launch ======================================================================
 app.listen(port);

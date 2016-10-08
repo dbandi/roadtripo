@@ -37,7 +37,7 @@ a{
     z-index: 10;
     background-color: $brand-color;
     text-transform: uppercase;
-    border-radius: 23px;
+    border-radius: 10px;
     outline: none;
     cursor: pointer;
     @include web-font(Font-Medium, 15px, $default-color, initial, 1px);
@@ -70,25 +70,34 @@ input{
 //@include layout(12);
 
 /* ======== NAV : GLOBAL ========= */
+nav{
+    position: absolute;
+    display: block;
+    width: 100%;
+    z-index: 1000;
+}
 .nav-wrapper{
-    padding: 10px 50px;
+    padding: 35px 50px;
 
 }
 
 /* ======== HOME PAGE ========= */
+.homePage{
+    border: 15px solid #fff;
+}
 .full-screen-section{
     background-image: url('../../../images/bg.jpg');
     @include img-cover();
-
+    height: 75vh;
 }
 .full-screen-block{
     text-align: center;
-    @include padding(100px, 0, 180px);
+    @include padding(225px, 0, 180px);
     h1{
-        @include web-font(Font-Light, 36px, $default-color, 34px, initial);
+        @include web-font(Font-Light, 46px, $default-color, 34px, initial);
     }
     h4{
-        @include web-font(Font-Light, 18px, $default-color, initial, initial);
+        @include web-font(Font-Light, 22px, $default-color, initial, initial);
         margin-top: 15px;
     }
     .form-group{
@@ -98,12 +107,14 @@ input{
         .form-input{
             display: table-cell;
             input{
-                padding: 15px 45px;
+                padding: 25px 40px;
                 border: none;
+                text-transform: uppercase;
                 @include web-font(Font-Light, 15px, $brand-text, initial, initial);
+                min-width: 350px;
                 &:first-child{
-                    border-top-left-radius: 23px;
-                    border-bottom-left-radius: 23px;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
                 }
                 &:nth-child(2){
                     margin-left: -5px;
@@ -115,6 +126,7 @@ input{
             display: table-cell;
             button{
                 @extend .btn;
+                padding: 24px 40px 26px;
                 margin-left: 0px;
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
@@ -172,7 +184,7 @@ input{
                     float: right;
                     display: block;
                     right: 10px;
-                    bottom: 10px;                    
+                    bottom: 10px;
                     padding: 6px 10px;
                     border-radius: 2px;
                     background-color: #e74949;
@@ -225,6 +237,98 @@ input{
                 @include web-font(Font-Bold, 14px, $brand-text, initial, 1px);
                 text-transform: uppercase;
                 padding-top: 8px;
+            }
+        }
+    }
+}
+
+.explore-places-block{
+    margin-top: 50px;
+
+    h4{
+        @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
+        text-align: center;
+        margin-bottom: 15px
+    }
+
+    p{
+        @include web-font(Font-Regular, 18px, $brand-text, initial, 1px);
+        text-align: center;
+        margin-bottom: 60px;
+        padding-top: 15px;
+        position: relative;
+
+        &:after{
+            content: '';
+            position: absolute;
+            width: 125px;
+            height: 3px;
+            background-color: #E74949;
+            top: 0px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .explore-left-block{
+        @include layout(6, 0, 0);
+        .single-explore-block{
+            @include layout(12, 10, 10);
+            margin-bottom: 10px;
+        }
+    }
+
+    .explore-right-block{
+        @include layout(6, 0, 0);
+
+        .explore-top-right-block{
+            .single-explore-block{
+                @include layout(6, 10, 10);
+            }
+        }
+
+        .explore-bottom-right-block{
+            margin-top: 14px;
+            @include layout(12, 0, 0);
+            .single-explore-block{
+                @include layout(12, 10, 10);
+            }
+        }
+
+    }
+
+    .explore-full-block{
+        @include layout(12, 0, 0);
+        margin-top: 5px;
+
+        .single-explore-block{
+            @include layout(4, 10, 10);
+        }
+    }
+
+    .single-explore-block{
+        position: relative;
+        cursor: pointer;
+    }
+
+    figcaption{
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+
+        h2{
+            @include web-font(Font-Semi-Bold, 24px, $default-color, initial, 1px);
+
+        }
+        p{
+            @include web-font(Font-Regular, 18px, $default-color, initial, 1px);
+            margin-bottom: 15px;
+            text-align: left;
+            padding-top: 0px;
+
+            &:after{
+                display: none;
             }
         }
     }

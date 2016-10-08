@@ -345,133 +345,139 @@ a {
     Fonts Styling
 *********************************/
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 100;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 300;
   font-style: normal;
 }
 
 .i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .list-places-wrapper .list-places-block .individual-place-block p {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
 }
 
-body, .i-navigation-section .i-nav-wrapper > ul li a {
-  font-family: "Raleway";
+body, .i-navigation-section .i-nav-wrapper > ul li a, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p {
+  font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 500;
   font-style: normal;
 }
 
 .btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
+  font-weight: 600;
+  font-style: normal;
+}
+
+.explore-places-block figcaption h2 {
+  font-family: "Ubuntu";
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
 }
 
 .list-places-wrapper .list-places-block .individual-place-block .place-image-block span, .list-places-wrapper .list-places-block .individual-place-block h4, .filter-nav ul li p {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 800;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Raleway";
+  font-family: "Ubuntu";
   font-weight: 900;
   font-style: italic;
 }
@@ -1839,7 +1845,7 @@ a {
   z-index: 10;
   background-color: #E74949;
   text-transform: uppercase;
-  border-radius: 23px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
   font-size: 15px;
@@ -1851,7 +1857,7 @@ a {
 }
 
 a {
-  color: #71777f;
+  color: #343638;
 }
 
 input {
@@ -1879,28 +1885,40 @@ input {
 }
 
 /* ======== NAV : GLOBAL ========= */
+nav {
+  position: absolute;
+  display: block;
+  width: 100%;
+  z-index: 1000;
+}
+
 .nav-wrapper {
-  padding: 10px 50px;
+  padding: 35px 50px;
 }
 
 /* ======== HOME PAGE ========= */
+.homePage {
+  border: 15px solid #fff;
+}
+
 .full-screen-section {
   background-image: url("../../../images/bg.jpg");
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  height: 75vh;
 }
 
 .full-screen-block {
   text-align: center;
-  padding-top: 100px;
+  padding-top: 225px;
   padding-left: 0;
   padding-bottom: 180px;
   padding-right: 0;
 }
 
 .full-screen-block h1 {
-  font-size: 36px;
+  font-size: 46px;
   color: #ffffff;
   line-height: 34px;
   letter-spacing: initial;
@@ -1909,7 +1927,7 @@ input {
 }
 
 .full-screen-block h4 {
-  font-size: 18px;
+  font-size: 22px;
   color: #ffffff;
   line-height: initial;
   letter-spacing: initial;
@@ -1929,19 +1947,21 @@ input {
 }
 
 .full-screen-block .form-group .form-input input {
-  padding: 15px 45px;
+  padding: 25px 40px;
   border: none;
+  text-transform: uppercase;
   font-size: 15px;
-  color: #71777f;
+  color: #343638;
   line-height: initial;
   letter-spacing: initial;
   margin-bottom: 0px;
   margin-top: 0px;
+  min-width: 350px;
 }
 
 .full-screen-block .form-group .form-input input:first-child {
-  border-top-left-radius: 23px;
-  border-bottom-left-radius: 23px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .full-screen-block .form-group .form-input input:nth-child(2) {
@@ -1954,6 +1974,7 @@ input {
 }
 
 .full-screen-block .form-group .form-button button {
+  padding: 24px 40px 26px;
   margin-left: 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -2049,7 +2070,7 @@ input {
 .list-places-wrapper .list-places-block .individual-place-block p {
   padding-top: 4px;
   font-size: 13px;
-  color: #71777f;
+  color: #343638;
   line-height: initial;
   letter-spacing: initial;
   margin-bottom: 0px;
@@ -2095,11 +2116,178 @@ input {
 
 .filter-nav ul li p {
   font-size: 14px;
-  color: #71777f;
+  color: #343638;
   line-height: initial;
   letter-spacing: 1px;
   margin-bottom: 0px;
   margin-top: 0px;
   text-transform: uppercase;
   padding-top: 8px;
+}
+
+.explore-places-block {
+  margin-top: 50px;
+}
+
+.explore-places-block h4 {
+  font-size: 36px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.explore-places-block p {
+  font-size: 18px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.explore-places-block p:after {
+  content: '';
+  position: absolute;
+  width: 125px;
+  height: 3px;
+  background-color: #E74949;
+  top: 0px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.explore-places-block .explore-left-block {
+  width: -webkit-calc(50%);
+  width: -moz-calc(50%);
+  width: calc(50%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-places-block .explore-left-block .single-explore-block {
+  width: -webkit-calc(100%);
+  width: -moz-calc(100%);
+  width: calc(100%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-bottom: 10px;
+}
+
+.explore-places-block .explore-right-block {
+  width: -webkit-calc(50%);
+  width: -moz-calc(50%);
+  width: calc(50%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-places-block .explore-right-block .explore-top-right-block .single-explore-block {
+  width: -webkit-calc(50%);
+  width: -moz-calc(50%);
+  width: calc(50%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-places-block .explore-right-block .explore-bottom-right-block {
+  margin-top: 14px;
+  width: -webkit-calc(100%);
+  width: -moz-calc(100%);
+  width: calc(100%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-places-block .explore-right-block .explore-bottom-right-block .single-explore-block {
+  width: -webkit-calc(100%);
+  width: -moz-calc(100%);
+  width: calc(100%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-places-block .explore-full-block {
+  width: -webkit-calc(100%);
+  width: -moz-calc(100%);
+  width: calc(100%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 5px;
+}
+
+.explore-places-block .explore-full-block .single-explore-block {
+  width: -webkit-calc(33.33333%);
+  width: -moz-calc(33.33333%);
+  width: calc(33.33333%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-places-block .single-explore-block {
+  position: relative;
+  cursor: pointer;
+}
+
+.explore-places-block figcaption {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+}
+
+.explore-places-block figcaption h2 {
+  font-size: 24px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.explore-places-block figcaption p {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  text-align: left;
+  padding-top: 0px;
+}
+
+.explore-places-block figcaption p:after {
+  display: none;
 }

@@ -1,5 +1,5 @@
 // app/plantrip.js
-module.exports = function(app, passport, path, express, mysql, Yelp, rp, request, Promise, _) {
+module.exports = function(app, passport, path, express, Yelp, rp, request, Promise, _) {
 
     var googleapikey = 'AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM';
     var foursquareauth = 'MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z';
@@ -9,15 +9,6 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         token: 'wAJzxxEATBegum2Ugo0kXwaAcqXXZi5B',
         token_secret: 'eh7K2We4uUkn0KZ5vsOM76jh8l0',
     });
-
-    /* =========== MySql Connection ============ */
-    var connection = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'root',
-      password : '',
-      database : 'roadtripo'
-    });
-    connection.connect();
 
     var brandings = [];
     var directions = [];
@@ -132,31 +123,9 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
 
     });
 
-    app.get('/places', function(req, res, next) {
-
-        var placetypes = req.query.placetypes;
-        var lat = req.query.lat;
-        var lng = req.query.lng;
-
-        var placesNearby = {
-            method: 'GET',
-            uri: 'https://api.foursquare.com/v2/venues/explore?ll='+lat+','+lng+'&oauth_token='+foursquareauth+'&v=20160921&venuePhotos=1&query=Popular+with+Visitors',
-            resolveWithFullResponse: true
-        };
-
-        rp(placesNearby)
-            .then(function (response) {
-                if (response.statusCode == 200) {
-                    results = JSON.parse( response.body );
-                    res.json(results);
-                }
-            })
-            .catch(function (err) {
-                console.log(err);
-        });
-
-    });
-
+    // =====================================
+	// Place Filter ===========================
+	// =====================================
     app.get('/placefilter', function(req, res, next) {
         var placetypes = req.query.placetypes;
         var lat = req.query.lat;
@@ -171,6 +140,9 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         });
     });
 
+    // =====================================
+	// Photos ===========================
+	// =====================================
     app.get('/photos', function(req, res, next) {
         var placeName = req.query.placeName;
 
@@ -189,30 +161,6 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
             })
             .catch(function (err) {
                 console.log(err);
-        });
-    });
-
-    app.post('/savetrip', function(req, res, next) {
-        console.log("Raw");
-        console.log((req.body.trip_details));
-        console.log("JSON");
-        console.log(JSON.stringify (req.body.trip_details));
-        var trip = {
-            user_id: req.body.user_id,
-            trip_name: req.body.trip_name,
-            trip_start: req.body.trip_start,
-            trip_end: req.body.trip_end,
-            trip_details: JSON.stringify (req.body.trip_details)
-        };
-
-        connection.query('INSERT INTO trip SET ?', trip, function(err, result) {
-            if (!err){
-                return res.sendStatus(200);
-            }
-            else{
-                return res.sendStatus(400);
-            }
-
         });
     });
 
