@@ -3,7 +3,8 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
     function link($scope) {
 
         $scope.listCities = true;
-        $scope.bannerImage = "../../../images/bg.jpg";
+        $scope.sourceCity = $scope.source.split(',')[0];
+        $scope.destinationCity = $scope.destination.split(',')[0];
 
         ngDialog.open({ template: 'app/modals/login.html', className: 'ngdialog-theme-default' });
 

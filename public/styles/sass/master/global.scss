@@ -80,7 +80,10 @@ nav{
     padding: 35px 50px;
 
 }
-
+.nav-wrapper.left-small{
+    padding: 30px 25px;
+    position: absolute;
+}
 /* ======== HOME PAGE ========= */
 .homePage{
     border: 15px solid #fff;
@@ -92,6 +95,43 @@ nav{
 }
 
 .listPlaces{
+    .filter-sidebar-section{
+        @include layout(2, 10, 10);
+        float: left;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .main-container-section{
+        @include layout(10, 10, 10, 2, 0);
+
+        .main-container-header{
+            margin-top: 60px;
+            text-align: center;
+            h6{
+                @include web-font(Font-Regular, 136px, #f6f6f6, 80px, initial);
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+            }
+
+            h1{
+                @include web-font(Font-Medium, 76px, #010101, 34px, initial);
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+            }
+
+            p{
+                @include web-font(Font-Light, 16px, #777777, initial, initial);
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            a{
+                color: #777777;
+            }
+        }
+    }
+
     .full-screen-section{
         height: auto;
     }
@@ -166,6 +206,7 @@ nav{
     background-color: #ffffff;
     position: relative;
     z-index: 100;
+    margin-top: 40px;
 
     .masonry { /* Masonry container */
         column-count: 4;
@@ -188,7 +229,7 @@ nav{
             }
 
             .individual-place-block-wrapper{
-                background-color: #f5f5f5;
+                background-color: #fff;
                 box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
                 border: 1px solid #f3f3f3;
             }
@@ -246,25 +287,29 @@ nav{
                     letter-spacing: initial;
                     display: block;
                     padding: 12px 10px;
-                    background-color: #e74949;
+                    background-color: #272727;
                     color: #fff;
                     width: 100%;
                     text-align: center;
                     text-transform: uppercase;
                     font-weight: 400;
                     font-family: $secondary-font;
+
+                    &:hover{
+                        background-color: $brand-color;
+                    }
                 }
             }
 
             h4{
                 padding-top: 25px;
-                @include web-font(Font-Bold, 20px, #515151, initial, initial);
+                @include web-font(Font-Bold, 20px, #3a3a3a, initial, 1px);
                 padding-left: 8px;
                 overflow: hidden;
                 min-height: 27px;
                 text-align: center;
                 text-transform: uppercase;
-                font-family: $secondary-font;
+                //font-family: $secondary-font;
             }
             p{
                 padding-top: 10px;
@@ -284,28 +329,45 @@ nav{
 
 .filter-nav{
     padding: 10px 0px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
-    border-top: 1px solid #f1f1f1;
+    padding-left: 25px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     ul{
         display: table;
-        max-width: 1366px;
         width: 100%;
         margin: 0 auto;
-        li{
-            @include layout(1.5);
-            text-align: center;
-            img{
-                display: block;
-                margin: 0 auto;
-                max-width: 35px;
-                opacity: 0.7;
-            }
 
-            p{
-                @include web-font(Font-Bold, 14px, $brand-text, initial, 1px);
+        li{
+            @include padding(8px, 0);
+            a{
+                @include web-font(Font-Bold, 18px, #808182, initial, 1px);
                 text-transform: uppercase;
-                padding-top: 8px;
+
+                &:hover{
+                    color: $brand-text;
+                }
             }
+        }
+    }
+
+    a.save-trip{
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 36px;
+        display: block;
+        cursor: pointer;
+
+        i{
+            float: left;
+            font-size: 30px;
+            margin-top: -6px;
+            padding-right: 8px;
+        }
+
+        &:hover{
+            color: $brand-color;
         }
     }
 }

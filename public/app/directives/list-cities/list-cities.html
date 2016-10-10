@@ -1,19 +1,29 @@
 <section>
 
     <section class="listPlaces">
-        <div class="full-screen-section">
-            <div class="full-screen-wrapper" style="background-image: url({{bannerImage}});">
-                <div class="container">
-                    <div class="full-screen-block">
-                        <h1>Its time for a trip</h1>
-                        <h4>Make a iteneray with RoadTripo and keep travelling.</h4>
-                        <a class="btn">View Map</a>
-                    </div>
+
+        <div class="filter-sidebar-section">
+            <div class="nav-wrapper left-small">
+                <div class="left-nav">
+                    <img src="images/logo-dark.png"/>
                 </div>
+            </div>
+            <div class="filter-nav">
+                <ul>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('hotelstravel');">Hotels</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('food');">Restaurant</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('servicestations');">Gas Station</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('event');">Events</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('shopping');">Shop</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('nightlife');">Drinks</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('arts');">Entertainment</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('active');">Outdoor</a></li>
+                </ul>
+                <a class="save-trip" ng-click="saveTrip()"><i class="fa fa-plus-circle" aria-hidden="true"> </i> Save Trip </a>
             </div>
         </div>
 
-        <div class="filter-nav">
+        <!--<div class="filter-nav">
             <ul>
                 <li><a href="#" ng-click="getYelpPlacesofCities('hotelstravel');"><span><img src="images/hotel.png"/></span><p>Hotels</p></a></li>
                 <li><a href="#" ng-click="getYelpPlacesofCities('food');"><span><img src="images/restaurant.png"/></span><p>Restaurant</p></a></li>
@@ -24,50 +34,60 @@
                 <li><a href="#" ng-click="getYelpPlacesofCities('arts');"><span><img src="images/entertainment.png"/></span><p>Entertainment</p></a></li>
                 <li><a href="#" ng-click="getYelpPlacesofCities('active');"><span><img src="images/outdoor.png"/></span><p>Outdoor</p></a></li>
             </ul>
-        </div>
+        </div>-->
 
-        <div id="map" class="map-places-wrapper">
-            <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]">
-                <div class="maps-block" ng-repeat="place in places">
-                    <marker center="{{place.lat}},{{place.lng}}" position="[{{place.lat}}, {{place.lng}}]" title="marker" animation="Animation.DROP" icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"></marker>
-                    <!--<marker position="[40.71, -74.21]" title="hello"></marker>
-                    <marker position="[40.72, -74.20]" title="marker" animation="Animation.DROP"></marker>
-                    <marker position="[40.73, -74.19]" title="drag me" draggable="true"></marker>
-                    <marker position="[40.74, -74.18]" title="how" animation="Animation.BOUNCE"></marker>
-                    <marker position="[40.75, -74.17]" title="are"></marker>
-                    <marker position="[40.76, -74.16]" title="you"
-                      icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"></marker>
-                    <marker position="[40.77, -74.15]" title="from"></marker>
-                    <marker position="[40.78, -74.14]" title="allen"></marker>-->
-                </div>
-            </ng-map>
-        </div>
-        <div class="list-places-wrapper">
-            <div class="container">
-                <div class="list-places-block">                
-                    <div class="masonry">
-                        <div class="places-block" ng-repeat="place in places">
-                            <div class="individual-place-block item">
-                                <div class="individual-place-block-wrapper">
-                                    <div class="place-image-block">
-                                        <span>{{place.placetype}}</span>
-                                        <div class="img-cover"></div>
-                                        <div class="img-photo" style="background-image: url({{place.photo}})"></div>
-                                    </div>
-                                    <div class="place-content-block">
-                                        <img class="curve" ng-src="images/curve-1.png"/>
-                                        <h4>{{place.placename}}</h4>
-                                        <p>{{place.city}}</p>
-                                        <span class="hide" id="lat">{{place.lat}}</span>
-                                        <span class="hide" id="lng">{{place.lng}}</span>
-                                        <!--<div class="rating-icon">
-                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 1"></i>
-                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 2"></i>
-                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 3"></i>
-                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 4"></i>
-                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 5"></i>
-                                        </div>-->
-                                        <a href="#" ng-click="addToTrip(place)"> Add to Trip </a>
+        <div class="main-container-section">
+
+            <div class="main-container-header">
+                <h6>{{sourceCity}}</h6>
+                <h1>{{destinationCity}}</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <a href="#" class="btn">View Map</a>
+            </div>
+
+            <div id="map" class="map-places-wrapper">
+                <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]">
+                    <div class="maps-block" ng-repeat="place in places">
+                        <marker center="{{place.lat}},{{place.lng}}" position="[{{place.lat}}, {{place.lng}}]" title="marker" animation="Animation.DROP" icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"></marker>
+                        <!--<marker position="[40.71, -74.21]" title="hello"></marker>
+                        <marker position="[40.72, -74.20]" title="marker" animation="Animation.DROP"></marker>
+                        <marker position="[40.73, -74.19]" title="drag me" draggable="true"></marker>
+                        <marker position="[40.74, -74.18]" title="how" animation="Animation.BOUNCE"></marker>
+                        <marker position="[40.75, -74.17]" title="are"></marker>
+                        <marker position="[40.76, -74.16]" title="you"
+                          icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"></marker>
+                        <marker position="[40.77, -74.15]" title="from"></marker>
+                        <marker position="[40.78, -74.14]" title="allen"></marker>-->
+                    </div>
+                </ng-map>
+            </div>
+            <div class="list-places-wrapper">
+                <div class="full-width-container">
+                    <div class="list-places-block">
+                        <div class="masonry">
+                            <div class="places-block" ng-repeat="place in places">
+                                <div class="individual-place-block item">
+                                    <div class="individual-place-block-wrapper">
+                                        <div class="place-image-block">
+                                            <span>{{place.placetype}}</span>
+                                            <div class="img-cover"></div>
+                                            <div class="img-photo" style="background-image: url({{place.photo}})"></div>
+                                        </div>
+                                        <div class="place-content-block">
+                                            <img class="curve" ng-src="images/curve-1.png"/>
+                                            <h4>{{place.placename}}</h4>
+                                            <p>{{place.city}}</p>
+                                            <span class="hide" id="lat">{{place.lat}}</span>
+                                            <span class="hide" id="lng">{{place.lng}}</span>
+                                            <!--<div class="rating-icon">
+                                                <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 1"></i>
+                                                <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 2"></i>
+                                                <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 3"></i>
+                                                <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 4"></i>
+                                                <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 5"></i>
+                                            </div>-->
+                                            <a href="#" ng-click="addToTrip(place)"> Add to Trip </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +96,5 @@
                 </div>
             </div>
         </div>
-
     </section>
 </section>
