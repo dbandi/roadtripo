@@ -96,6 +96,10 @@ nav{
         height: auto;
     }
 
+    .full-screen-wrapper{
+        @include img-cover();
+    }
+
     .btn{
         background-color: transparent;
         border: 2px solid $brand-color;
@@ -104,7 +108,8 @@ nav{
     }
 
     #map{
-        display: none;
+        height: 0 !important;
+        opacity: 0;
     }
 }
 
@@ -158,11 +163,24 @@ nav{
     margin-top: 3px;
 }
 .list-places-wrapper{
-    background-color: #fcfcfd;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 100;
+
+    .masonry { /* Masonry container */
+        column-count: 4;
+        column-gap: 1em;
+    }
+
+    .item { /* Masonry bricks or child elements */
+        display: inline-block;
+        width: 100%;
+    }
+
     .list-places-block{
         .individual-place-block{
-            @include layout(3);
-            margin-top: 25px;
+            //@include layout(3);
+            margin-bottom: 12px;
             font-family: 'Montserrat';
 
             &:nth-child(4){
@@ -170,23 +188,35 @@ nav{
             }
 
             .individual-place-block-wrapper{
-                background-color: $default-color;
+                background-color: #f5f5f5;
                 box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
-                padding-bottom: 8px;
+                border: 1px solid #f3f3f3;
             }
 
             .place-image-block{
                 position: relative;
-                max-height: 185px;
-                min-height: 185px;
+                max-height: 22px;
+                min-height: 200px;
                 overflow: hidden;
                 span{
                     position: absolute;
                     right: 6px;
                     top: 8px;
-                    @include web-font(Font-Bold, 11px, $default-color, initial, 1px);
-                    background-color: $brand-color;
+                    @include web-font(Font-Regular, 11px,#131313, initial, 1px);
+                    background-color: rgba(255, 255, 255, 0.72);
                     padding: 3px 8px;
+                    z-index: 10;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+
+                .img-photo{
+                    @include img-cover();
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
                 }
 
             }
@@ -194,39 +224,59 @@ nav{
             .place-content-block{
                 position: relative;
 
-                a{
+                .curve{
+                    width: 100%;
                     position: absolute;
+                    bottom: 95%;
+                }
+
+                .rating-icon{
+                    display: table;
+                    margin: 0 auto 25px;
+                    text-align: center;
+
+                    i{
+                        padding: 0 3px;
+                        color: $brand-color;
+                    }
+                }
+
+                a{
                     font-size: 14px;
                     letter-spacing: initial;
-                    font-family: 'raleway';
-                    float: right;
                     display: block;
-                    right: 10px;
-                    bottom: 10px;
-                    padding: 6px 10px;
-                    border-radius: 2px;
+                    padding: 12px 10px;
                     background-color: #e74949;
                     color: #fff;
+                    width: 100%;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    font-family: $secondary-font;
                 }
             }
 
             h4{
-                padding-top: 8px;
-                @include web-font(Font-Bold, 16px, #2b2f3a, initial, initial);
+                padding-top: 25px;
+                @include web-font(Font-Bold, 20px, #515151, initial, initial);
                 padding-left: 8px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
                 overflow: hidden;
                 min-height: 27px;
+                text-align: center;
+                text-transform: uppercase;
+                font-family: $secondary-font;
             }
             p{
-                padding-top: 4px;
-                @include web-font(Font-Light, 13px, $brand-text, initial, initial);
+                padding-top: 10px;
+                @include web-font(Font-Semi-Bold, 14px, #989898, initial, 1px);
+                text-transform: uppercase;
                 padding-left: 8px;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
                 min-height: 19px;
+                text-align: center;
+                padding-bottom: 22px;
             }
         }
     }
@@ -349,5 +399,268 @@ nav{
                 display: none;
             }
         }
+    }
+}
+
+
+/*********************************
+            Login Modal
+*********************************/
+
+.login-section-wrapper{
+    .login-bg{
+
+    }
+    .screen-logo-section{
+      background-color: #E74949;
+      color: #fff;
+    }
+
+    .layout-half{
+        @include layout(6, 0, 0);
+    }
+
+    .sign-screen{
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 52%;
+        height: auto;
+        display: table;
+        background-color: #292c3d;
+    }
+    .screen-logo-section{
+      padding: 60px 10px 20px;
+    }
+    .sign-screen .col-sm-6{
+      padding: 0px;
+    }
+    .screen-logo-section img{
+      display: block;
+        margin: 0 auto;
+        width: 30px;
+    }
+    .screen-logo-section h2{
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    .screen-title-section{
+      padding: 180px 15px;
+    }
+
+    .screen-title-section h1{
+      text-align: right;
+      padding-left: 20%;
+      font-weight: 100;
+      font-size: 36px;
+    }
+    .screen-logo-section p{
+      text-align: right;
+      margin-bottom: 0px;
+      @include web-font(Font-Light, 16px, $default-color, 21px, 1px);
+       font-family: 'Roboto', sans-serif;
+    }
+    .sing-screen-wrapper{
+      background-color: #292c3d;
+    }
+    .sign-screen .panel{
+      border:none;
+      background-color: #292c3d;
+      border-color: transparent;
+      box-shadow: none;
+    }
+    .sign-screen .panel-body {
+        padding: 80px 0px 0px;
+    }
+
+    .login-title{
+        padding-bottom: 100px;
+        padding-left: 15px;
+        @include web-font(Font-Light, 32px, $default-color, initial, 1px);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .sign-screen .form-group .col-md-12{
+      padding: 0px;
+    }
+    .sign-screen .form-group input{
+      border-radius: 0px;
+      background-color: #2b3043;
+      border-left: transparent;
+      border-right: transparent;
+      color: #fff;
+      border: 1px solid rgba(243, 243, 243, 0.18);
+      transition: none;
+      height: 45px;
+      padding: 0px 15px;
+      width: 75%;
+    }
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px #2b3043 inset;
+        color: #fff;
+    }
+    .sign-button {
+        background: transparent;
+        color: #E74949;
+        border: 1px solid #E74949;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        padding: 10px 50px;
+    }
+    .sign-button:hover, .sign-button:active, .sign-button:focus{
+      color: #E74949;
+    }
+    .form-group {
+        margin-bottom: 25px;
+    }
+    .text-white{
+      color: #fff;
+      opacity: 0.5;
+      font-family: 'Roboto', sans-serif;
+    }
+    input:-webkit-autofill {
+        background-color: #2b3043 !important;
+        border: 1px solid rgba(243, 243, 243, 0.18) !important;
+    }
+
+    .loginwith {
+      display: block;
+      margin-bottom: 40px;
+      font-size: 28px;
+      color: #FFF;
+      text-align: center;
+    }
+
+    button.social-signin {
+      margin-bottom: 20px;
+      width: 220px;
+      height: 36px;
+      border: none;
+      border-radius: 2px;
+      color: #FFF;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    button.social-signin:hover,
+    button.social-signin:focus {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      transition: 0.2s ease;
+    }
+
+    button.social-signin:active {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      transition: 0.2s ease;
+    }
+
+    button.social-signin.facebook {
+      background: #32508E;
+    }
+
+    button.social-signin.twitter {
+      background: #55ACEE;
+    }
+
+    button.social-signin.google {
+      background: #DD4B39;
+    }
+
+    .mt-75{
+        margin-top: 75px;
+    }
+}
+
+
+
+/*********************************
+    nG Dialog
+*********************************/
+
+.ngdialog.ngdialog-theme-plain .ngdialog-close:before{
+    content: url('../../../images/close-modal.png');
+}
+.ngdialog-content{
+    max-width: 800px;
+    /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
+    z-index: 1000;
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: block;
+    float: none;*/
+}
+
+.ngdialog-overlay{
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/*********************************
+        Masonry Responsive
+*********************************/
+.masonry {
+    margin: 1.5em 0;
+    padding: 0;
+    -moz-column-gap: 1.5em;
+    -webkit-column-gap: 1.5em;
+    column-gap: 1.5em;
+    font-size: .85em;
+}
+
+.item {
+    display: inline-block;
+    background: #fff;
+    /*padding: 1em;*/
+    /*margin: 0 0 1.5em;*/
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+@media only screen and (min-width: 400px) {
+    .masonry {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .masonry {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .masonry {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .masonry {
+        -moz-column-count: 5;
+        -webkit-column-count: 5;
+        column-count: 5;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .wrapper {
+        width: 1260px;
     }
 }

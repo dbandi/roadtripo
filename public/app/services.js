@@ -30,15 +30,7 @@ app.service('dataService', function($http) {
               url: '/photos?placeName='+placeName,
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
-      }
-
-      this.getBannerImage = function(city) {
-          return $http({
-              method: 'GET',
-              url: '/destinationImage?city='+city,
-              headers: {'Content-Type': 'application/json; charset=utf-8'}
-          });
-      }
+      }     
 
       this.saveTrip = function(places) {
           return $http({

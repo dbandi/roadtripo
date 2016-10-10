@@ -1,8 +1,8 @@
 <section>
 
     <section class="listPlaces">
-        <div class="full-screen-section" style="background-image: url({{bannerImage}});">
-            <div class="full-screen-wrapper">
+        <div class="full-screen-section">
+            <div class="full-screen-wrapper" style="background-image: url({{bannerImage}});">
                 <div class="container">
                     <div class="full-screen-block">
                         <h1>Its time for a trip</h1>
@@ -44,24 +44,31 @@
         </div>
         <div class="list-places-wrapper">
             <div class="container">
-                <div class="list-places-block">
-                    <div class="save-places-block">
-                        <a href="#" ng-click="saveTrip()" class="btn"> Save Trip </a>
-                    </div>
-                    <div class="places-block" ng-repeat="place in places">
-                        <div class="individual-place-block">
-                            <div class="individual-place-block-wrapper">
-                                <div class="place-image-block">
-                                    <span>{{place.placetype}}</span>
-                                    <div class="img-cover"></div>
-                                    <img ng-src="{{place.photo}}"/>
-                                </div>
-                                <div class="place-content-block">
-                                    <h4>{{place.placename}}</h4>
-                                    <p>{{place.city}}</p>
-                                    <span class="hide" id="lat">{{place.lat}}</span>
-                                    <span class="hide" id="lng">{{place.lng}}</span>
-                                    <a href="#" ng-click="addToTrip(place)"> Add to Trip </a>
+                <div class="list-places-block">                
+                    <div class="masonry">
+                        <div class="places-block" ng-repeat="place in places">
+                            <div class="individual-place-block item">
+                                <div class="individual-place-block-wrapper">
+                                    <div class="place-image-block">
+                                        <span>{{place.placetype}}</span>
+                                        <div class="img-cover"></div>
+                                        <div class="img-photo" style="background-image: url({{place.photo}})"></div>
+                                    </div>
+                                    <div class="place-content-block">
+                                        <img class="curve" ng-src="images/curve-1.png"/>
+                                        <h4>{{place.placename}}</h4>
+                                        <p>{{place.city}}</p>
+                                        <span class="hide" id="lat">{{place.lat}}</span>
+                                        <span class="hide" id="lng">{{place.lng}}</span>
+                                        <!--<div class="rating-icon">
+                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 1"></i>
+                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 2"></i>
+                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 3"></i>
+                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 4"></i>
+                                            <i class="fa fa-heart" aria-hidden="true" ng-if="place.rating > 5"></i>
+                                        </div>-->
+                                        <a href="#" ng-click="addToTrip(place)"> Add to Trip </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

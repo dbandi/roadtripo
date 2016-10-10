@@ -25,8 +25,6 @@ module.exports = function(app, passport, path, express, Yelp, Bing, rp, request,
 	// =====================================
     app.get('/plantrip', function(req, res, next) {
 
-        console.log(req.query.source);
-        console.log(req.query.destination);
         request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //directions = body; // Print the google web page.
@@ -66,8 +64,6 @@ module.exports = function(app, passport, path, express, Yelp, Bing, rp, request,
 
                                         for (var k = 0; k < results.results[j].address_components.length; k++) {
                                             if(results.results[j].address_components[k].types.indexOf('locality') > -1){
-                                                //console.log(results.results[j].address_components[k].long_name);
-                                                //allCities.push(results.results[j].address_components[k].long_name);
                                                 if(!(_.contains(allCities, results.results[j].address_components[k].long_name))){
                                                     allCities.push(results.results[j].address_components[k].long_name);
                                                     allCitiesLatLng[allCitiesKeyCount] = {
@@ -138,26 +134,6 @@ module.exports = function(app, passport, path, express, Yelp, Bing, rp, request,
         .catch(function (err) {
           console.error(err);
         });
-    });
-
-    // =====================================
-	// Bing Image ===========================
-	// =====================================
-    app.get('/destinationImage', function(req, res, next) {
-        var city = req.query.city;
-        var img_url = "";
-        Bing.images("Chicago", {
-            top: 1,
-            imageFilters: {
-              size: 'large'
-            }
-        }, function(error, result, body){
-              console.log(body.d.results[0].MediaUrl);
-              img_url = body.d.results[0].MediaUrl;
-              res.send(img_url);
-          });
-          //console.log("Image : " + img_url);
-
     });
 
 

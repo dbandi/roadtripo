@@ -1,10 +1,9 @@
-var app = angular.module('roadtripo',['ngAutocomplete','ngMap']);
+var app = angular.module('roadtripo',['ngAutocomplete','ngMap', 'ngDialog']);
 
-app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 'NgMap', function($scope, $http, dataService, dataFactory, NgMap) {
+app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 'NgMap', 'ngDialog', function($scope, $http, dataService, dataFactory, NgMap, ngDialog) {
 
     NgMap.getMap({id:'contactmap'}).then(function(map) {
       map.setZoom(4);
-      console.log('done');
     });
 
     $scope.cities = [];
@@ -16,13 +15,13 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
     $scope.destination = "";
 
     $scope.homePage = true;
-    $scope.listCities = false;
+    $scope.listCities = false;    
 
     $scope.plantrip = function(){
         $scope.homePage = false;
         $scope.listCities = true;
 
-        var source = $scope.source.replace(/ /g, '+');;
+        var source = $scope.source.replace(/ /g, '+');
         var destination = $scope.destination.replace(/ /g, '+');
 
         dataService.getCities(source, destination).then(function (response) {
@@ -35,6 +34,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
                 var placetypes = 'Popular+with+Visitors';
 
                 dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
+                    console.log(response.data.response.groups[0]);
                     for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
                         var responseData = response.data.response.groups[0].items[j].venue;
                         var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);

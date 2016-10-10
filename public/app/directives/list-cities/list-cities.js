@@ -1,17 +1,11 @@
-app.directive("listCities", function(dataService, dataFactory, $timeout) {
+app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialog) {
 
     function link($scope) {
 
         $scope.listCities = true;
         $scope.bannerImage = "../../../images/bg.jpg";
-        /*$timeout(function() {
-            google.maps.event.trigger(map, "resize");
-        });*/
 
-        dataService.getBannerImage($scope.destination).then(function (response) {
-            $scope.bannerImage = (response.data);
-        });
-
+        ngDialog.open({ template: 'app/modals/login.html', className: 'ngdialog-theme-default' });
 
         $scope.getYelpPlacesofCities = function(placetypes){
             $scope.listCities = true;
@@ -25,6 +19,7 @@ app.directive("listCities", function(dataService, dataFactory, $timeout) {
                 dataService.getPlacesFilter(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
                     for (var j = 0; j < response.data.businesses.length; j++) {
                         var responseData = response.data.businesses[j];
+                        console.log(responseData);
                         var placesModel = dataFactory.getYelpAPIplacesModel(responseData);
                         $scope.places.push(placesModel);
                     }
@@ -39,7 +34,9 @@ app.directive("listCities", function(dataService, dataFactory, $timeout) {
         $scope.saveTrip = function(){
             var trip = dataFactory.getTrip($scope.source, $scope.destination, $scope.trip);
             dataService.saveTrip(trip).then(function (response) {
+                if(response.data == "403"){
 
+                }
             });
         };
     }
