@@ -30,13 +30,47 @@ app.service('dataService', function($http) {
               url: '/photos?placeName='+placeName,
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
-      }     
+      }
 
-      this.saveTrip = function(places) {
+      this.saveTrip = function(tripDetails) {
           return $http({
               method: 'POST',
               url: '/savetrip',
-              data: places,
+              data: tripDetails,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.updateTrip = function(trip) {
+          return $http({
+              method: 'POST',
+              url: '/updatetrip',
+              data: trip,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.login = function(userDetails) {
+          return $http({
+              method: 'POST',
+              url: '/login',
+              data: userDetails,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.getUserId = function() {
+          return $http({
+              method: 'GET',
+              url: '/getuserid',
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.getTrips = function() {
+          return $http({
+              method: 'GET',
+              url: '/gettrips',
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }

@@ -37,7 +37,7 @@ app.factory('dataFactory', function () {
         return APIplacesModel;
     }
 
-    function getTrip(source, destination, trip) {
+    function getTrip(source, destination, trip, tripId) {
         APItripModel = {};
         APItripModel.user_id = 1;
         var trip_name = "Trip";
@@ -50,6 +50,7 @@ app.factory('dataFactory', function () {
              trip_name = trip_name + " - " + destination.split(',')[0];
          }
 
+        APItripModel.trip_id = tripId;
         APItripModel.trip_name = trip_name;
         APItripModel.trip_start = source;
         APItripModel.trip_end = destination;

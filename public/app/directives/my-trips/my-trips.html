@@ -1,0 +1,76 @@
+<section class="myTrips">
+    <div class="nav-wrapper left-small">
+        <div class="left-nav">
+            <img src="images/logo-dark.png"/>
+        </div>
+        <div class="right-nav">
+            <ul>
+                <li><a class="my-trips" ng-click="viewUserTrips()">My Trip </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="filter-sidebar-section">
+        <div class="filter-nav">
+            <ul>
+
+            </ul>
+            <!--<a class="save-trip" ng-click="viewPlaces()"><i class="fa fa-compass" aria-hidden="true"> </i> View Places </a>-->
+        </div>
+    </div>
+
+    <div class="main-container-section">
+        <div class="main-container-header">
+            <h6>Customize</h6>
+            <h1>My Trips</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+
+        <div class="list-mytrip-wrapper">
+            <div class="full-width-container">
+                <div class="list-mytrip-block">
+                    <div class="mytrip-block" ng-repeat="trips in mytrips">
+
+                        <div class="mytrip-map">
+                            <ng-map zoom="8" default-style="false"
+                                icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"
+                                styles="[{'featureType':'administrative','elementType':'labels.text.fill','stylers':[{'color':'#444444'}]},{'featureType':'landscape','elementType':'all','stylers':[{'color':'#f2f2f2'}]},{'featureType':'poi','elementType':'all','stylers':[{'visibility':'off'}]},{'featureType':'poi','elementType':'labels.icon','stylers':[{'visibility':'off'}]},{'featureType':'road','elementType':'all','stylers':[{'saturation':-100},{'lightness':45}]},{'featureType':'road.highway','elementType':'all','stylers':[{'visibility':'simplified'}]},{'featureType':'road.arterial','elementType':'labels.icon','stylers':[{'visibility':'off'}]},{'featureType':'transit','elementType':'all','stylers':[{'visibility':'off'}]},{'featureType':'transit.line','elementType':'labels.icon','stylers':[{'visibility':'on'}]},{'featureType':'transit.station','elementType':'labels.icon','stylers':[{'visibility':'on'}]},{'featureType':'water','elementType':'all','stylers':[{'color':'#616161'},{'visibility':'on'}]}]"
+                            >
+                                <directions
+                                  draggable="true"
+                                  centered="true"
+                                  icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"
+                                  travel-mode="DRIVING"
+                                  origin="{{trips.trip_start}}"
+                                  destination="{{trips.trip_end}}"
+                                  suppressMarkers"true">
+                                </directions>
+                                <custom-marker id="start"
+                                  position="{{trips.trip_start}}">
+                                  <div><img src="images/marker.png"/></div>
+                                </custom-marker>
+                                <custom-marker id="end"
+                                  position="{{trips.trip_end}}">
+                                  <div><img src="images/marker.png"/></div>
+                                </custom-marker>
+                            </ng-map>
+                        </div>
+                        <div class="mytrip-content">
+                            <div class="mytrip-content-wrapper">
+                                <div class="mytrip-content-block">
+                                    <h2>{{trips.trip_start}}</h2>
+                                    <h4>Start</h4>
+                                </div>
+                                <div class="mytrip-content-block">
+                                    <h2>{{trips.trip_end}}</h2>
+                                    <h4>Destination</h4>
+                                </div>
+                                <a ng-click="viewTrip(trips)" class="btn">View Trip</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

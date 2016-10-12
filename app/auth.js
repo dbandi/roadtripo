@@ -8,6 +8,18 @@ module.exports = function(app, passport, path, express) {
         res.render('index.html');
     });
 
+    // =====================================
+	// CHECK USER LOGGED IN ===========================
+	// =====================================
+    app.get('/getuserid', function(req, res, next) {
+        if(typeof req.user != 'undefined'){
+            res.send(req.user.id.toString());
+        }
+        else{
+            res.send("unauthorized");
+        }
+    });
+
 
 	// =====================================
 	// LOGIN ===============================
@@ -18,7 +30,7 @@ module.exports = function(app, passport, path, express) {
     });
 
 	// process the login form
-    app.post('/login', passport.authenticate('local-login', {
+    /*app.post('/login', passport.authenticate('local-login', {
             successRedirect : '/', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
@@ -33,6 +45,24 @@ module.exports = function(app, passport, path, express) {
               req.session.cookie.expires = false;
             }
         res.redirect('/');
+    });*/
+
+    app.post('/login', function(req, res, next) {
+      passport.authenticate('local-login', function(err, user, info) {
+        if (err) {
+          return next(err); // will generate a 500 error
+        }
+        // Generate a JSON response reflecting authentication status
+        if (! user) {
+          return res.send({ success : false, message : 'authentication failed' });
+        }
+        req.login(user, loginErr => {
+          if (loginErr) {
+            return next(loginErr);
+          }
+          return res.send({ success : true, message : 'authentication succeeded', user_id : user.id });
+        });
+      })(req, res, next);
     });
 
 	// =====================================
@@ -48,7 +78,7 @@ module.exports = function(app, passport, path, express) {
         successRedirect : '/', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
-    }));	
+    }));
 
 	// =====================================
 	// LOGOUT ==============================

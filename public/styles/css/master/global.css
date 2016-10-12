@@ -374,7 +374,7 @@ a {
   font-style: normal;
 }
 
-.i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .listPlaces .main-container-section .main-container-header p, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .login-section-wrapper .screen-logo-section p, .login-section-wrapper .login-title {
+.i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .listPlaces .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .list-mytrip-wrapper .mytrip-block h2, .login-section-wrapper .screen-logo-section p, .login-section-wrapper .login-title {
   font-family: "Ubuntu";
   font-weight: 300;
   font-style: normal;
@@ -392,7 +392,7 @@ a {
   font-style: normal;
 }
 
-body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-container-section .main-container-header h6, .list-places-wrapper .list-places-block .individual-place-block .place-image-block span, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p {
+body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p {
   font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
@@ -410,7 +410,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .listPlaces .main-container-section .main-container-header h1 {
+.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .listPlaces .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1 {
   font-family: "Ubuntu";
   font-weight: 500;
   font-style: normal;
@@ -428,7 +428,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block p, .explore-places-block figcaption h2 {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .explore-places-block figcaption h2 {
   font-family: "Ubuntu";
   font-weight: 600;
   font-style: normal;
@@ -446,7 +446,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block h4, .filter-nav ul li a {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .filter-nav ul li a, .list-mytrip-wrapper .mytrip-block h4 {
   font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
@@ -606,7 +606,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   border-radius: 1px;
   height: 2px;
   width: 13px;
-  background: #E74949;
+  background: #2eb6f5;
   position: absolute;
   display: block;
   content: '';
@@ -1843,7 +1843,7 @@ a {
   display: inline-block;
   position: relative;
   z-index: 10;
-  background-color: #E74949;
+  background-color: #2eb6f5;
   text-transform: uppercase;
   border-radius: 10px;
   outline: none;
@@ -1896,9 +1896,33 @@ nav {
   padding: 35px 50px;
 }
 
+.left-nav {
+  float: left;
+}
+
+.right-nav {
+  float: right;
+}
+
+.right-nav li {
+  margin-top: 5px;
+}
+
+.right-nav .my-trips {
+  cursor: pointer;
+  padding: 8px 22px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #2eb6f5;
+  color: #fff;
+}
+
 .nav-wrapper.left-small {
   padding: 30px 25px;
   position: absolute;
+  width: 100%;
 }
 
 /* ======== HOME PAGE ========= */
@@ -1914,7 +1938,7 @@ nav {
   height: 75vh;
 }
 
-.listPlaces .filter-sidebar-section {
+.listPlaces .filter-sidebar-section, .myTrips .filter-sidebar-section {
   width: -webkit-calc(16.66667%);
   width: -moz-calc(16.66667%);
   width: calc(16.66667%);
@@ -1928,7 +1952,7 @@ nav {
   position: fixed;
 }
 
-.listPlaces .main-container-section {
+.listPlaces .main-container-section, .myTrips .main-container-section {
   width: -webkit-calc(66.66667%);
   width: -moz-calc(66.66667%);
   width: calc(66.66667%);
@@ -1939,12 +1963,12 @@ nav {
   margin-right: 0%;
 }
 
-.listPlaces .main-container-section .main-container-header {
+.listPlaces .main-container-section .main-container-header, .myTrips .main-container-section .main-container-header {
   margin-top: 60px;
   text-align: center;
 }
 
-.listPlaces .main-container-section .main-container-header h6 {
+.listPlaces .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6 {
   font-size: 136px;
   color: #f6f6f6;
   line-height: 80px;
@@ -1955,7 +1979,7 @@ nav {
   text-transform: uppercase;
 }
 
-.listPlaces .main-container-section .main-container-header h1 {
+.listPlaces .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1 {
   font-size: 76px;
   color: #010101;
   line-height: 34px;
@@ -1966,7 +1990,7 @@ nav {
   text-transform: uppercase;
 }
 
-.listPlaces .main-container-section .main-container-header p {
+.listPlaces .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p {
   font-size: 16px;
   color: #777777;
   line-height: initial;
@@ -1977,28 +2001,28 @@ nav {
   margin-bottom: 40px;
 }
 
-.listPlaces .main-container-section .main-container-header a {
+.listPlaces .main-container-section .main-container-header a, .myTrips .main-container-section .main-container-header a {
   color: #777777;
 }
 
-.listPlaces .full-screen-section {
+.listPlaces .full-screen-section, .myTrips .full-screen-section {
   height: auto;
 }
 
-.listPlaces .full-screen-wrapper {
+.listPlaces .full-screen-wrapper, .myTrips .full-screen-wrapper {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
 
-.listPlaces .btn, .listPlaces .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .listPlaces a, .listPlaces .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .listPlaces button {
+.listPlaces .btn, .listPlaces .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .listPlaces a, .listPlaces .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .listPlaces button, .myTrips .btn, .myTrips .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .myTrips a, .myTrips .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .myTrips button {
   background-color: transparent;
-  border: 2px solid #E74949;
+  border: 2px solid #2eb6f5;
   padding: 10px 40px;
   margin: 15px;
 }
 
-.listPlaces #map {
+.listPlaces #map, .myTrips #map {
   height: 0 !important;
   opacity: 0;
 }
@@ -2074,11 +2098,9 @@ nav {
   border-bottom-left-radius: 0px;
 }
 
-/* ======== LIST PLACES ========= */
-.listPlaces {
-  margin-top: 3px;
-}
-
+/*********************************
+            LIST PLACES
+*********************************/
 .list-places-wrapper {
   background-color: #ffffff;
   position: relative;
@@ -2110,17 +2132,23 @@ nav {
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper {
   background-color: #fff;
   box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
-  border: 1px solid #f3f3f3;
+  border: 1px solid #e8e8e8;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-image-block {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .add-trip {
+  display: table;
+  width: 100%;
+  cursor: pointer;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block {
   position: relative;
   max-height: 22px;
   min-height: 200px;
   overflow: hidden;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-image-block span {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category {
   position: absolute;
   right: 6px;
   top: 8px;
@@ -2137,7 +2165,7 @@ nav {
   text-transform: uppercase;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-image-block .img-photo {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .img-photo {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -2148,28 +2176,29 @@ nav {
   right: 0;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-content-block {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block {
   position: relative;
+  z-index: 100;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-content-block .curve {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .curve {
   width: 100%;
   position: absolute;
   bottom: 95%;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-content-block .rating-icon {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .rating-icon {
   display: table;
   margin: 0 auto 25px;
   text-align: center;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-content-block .rating-icon i {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .rating-icon i {
   padding: 0 3px;
-  color: #E74949;
+  color: #2eb6f5;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-content-block a {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block a {
   font-size: 14px;
   letter-spacing: initial;
   display: block;
@@ -2183,11 +2212,11 @@ nav {
   font-family: "Montserrat";
 }
 
-.list-places-wrapper .list-places-block .individual-place-block .place-content-block a:hover {
-  background-color: #E74949;
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block a:hover {
+  background-color: #2eb6f5;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block h4 {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4 {
   padding-top: 25px;
   font-size: 20px;
   color: #3a3a3a;
@@ -2202,7 +2231,7 @@ nav {
   text-transform: uppercase;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block p {
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p {
   padding-top: 10px;
   font-size: 14px;
   color: #989898;
@@ -2218,6 +2247,65 @@ nav {
   min-height: 19px;
   text-align: center;
   padding-bottom: 22px;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .add-on-hover {
+  position: absolute;
+  margin: 0 auto;
+  display: inline-block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  text-align: center;
+  color: #2eb6f5;
+  border: 1px solid #2eb6f5;
+  background-color: rgba(9, 9, 9, 0.37);
+  padding: 9px 15px;
+  max-width: 130px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .addded-trip {
+  position: absolute;
+  z-index: 1000;
+  border: 3px solid #343638;
+  color: #343638;
+  border-radius: 50%;
+  padding: 10px;
+  right: 48px;
+  bottom: 6px;
+  background: #fff;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper:hover .img-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(53, 53, 53, 0.36);
+  z-index: 0;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper:hover .add-on-hover {
+  top: 40%;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper:hover .img-photo {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.list-places-wrapper .list-places-block .individual-place-block.active .addded-trip {
+  border: 3px solid #2eb6f5;
+  color: #ffffff;
+  background-color: #2eb6f5;
 }
 
 .filter-nav {
@@ -2271,8 +2359,13 @@ nav {
   padding-right: 8px;
 }
 
+.filter-nav a.save-trip.view-map i {
+  font-size: 26px;
+  margin-top: -5px;
+}
+
 .filter-nav a.save-trip:hover {
-  color: #E74949;
+  color: #2eb6f5;
 }
 
 .explore-places-block {
@@ -2308,7 +2401,7 @@ nav {
   position: absolute;
   width: 125px;
   height: 3px;
-  background-color: #E74949;
+  background-color: #2eb6f5;
   top: 0px;
   margin: 0 auto;
   left: 0;
@@ -2440,6 +2533,94 @@ nav {
 
 .explore-places-block figcaption p:after {
   display: none;
+}
+
+/*********************************
+            MY TRIPS
+*********************************/
+.list-mytrip-wrapper .mytrip-block {
+  margin: 50px 0px;
+  display: table;
+  width: 100%;
+}
+
+.list-mytrip-wrapper .mytrip-block:nth-child(2n+1) .mytrip-map {
+  width: -webkit-calc(58.33333%);
+  width: -moz-calc(58.33333%);
+  width: calc(58.33333%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.list-mytrip-wrapper .mytrip-block:nth-child(2n+1) .mytrip-content {
+  width: -webkit-calc(41.66667%);
+  width: -moz-calc(41.66667%);
+  width: calc(41.66667%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.list-mytrip-wrapper .mytrip-block:nth-child(2n) .mytrip-map {
+  width: -webkit-calc(58.33333%);
+  width: -moz-calc(58.33333%);
+  width: calc(58.33333%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+  float: right;
+}
+
+.list-mytrip-wrapper .mytrip-block:nth-child(2n) .mytrip-content {
+  width: -webkit-calc(41.66667%);
+  width: -moz-calc(41.66667%);
+  width: calc(41.66667%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+  text-align: right;
+}
+
+.list-mytrip-wrapper .mytrip-block .mytrip-content-block {
+  margin: 20px 0px;
+}
+
+.list-mytrip-wrapper .mytrip-block h2 {
+  font-size: 28px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: 'Roboto';
+}
+
+.list-mytrip-wrapper .mytrip-block h4 {
+  font-size: 16px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 6px;
+  text-transform: uppercase;
+}
+
+.list-mytrip-wrapper .mytrip-block .btn, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button {
+  margin-left: 0px;
+  color: #2eb6f5;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 30px;
 }
 
 /*********************************

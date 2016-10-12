@@ -16,7 +16,7 @@
         <script type="text/javascript" src="app/factory.js"></script>
         <script type="text/javascript" src="app/services.js"></script>
         <script type="text/javascript" src="app/directives/list-cities/list-cities.js"></script>
-        <script type="text/javascript" src="app/directives/list-places/list-places.js"></script>
+        <script type="text/javascript" src="app/directives/my-trips/my-trips.js"></script>
         <script type="text/javascript" src="javascripts/ngAutocomplete.js"></script>
         <script type="text/javascript" src="javascripts/ngDialog.js"></script>
         <script type="text/javascript" src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
@@ -31,6 +31,11 @@
                             <div class="left-nav">
                                 <img src="images/logo.png"/>
                             </div>
+                            <div class="right-nav">
+                                <ul>
+                                    <li><a class="my-trips" ng-click="viewUserTrips()">My Trip </a></li>
+                                </ul>
+                            </div>
                         </div>
                     </nav>
 
@@ -41,9 +46,9 @@
                                     <h1>Its time for a trip</h1>
                                     <h4>Make a iteneray with RoadTripo and keep travelling.</h4>
                                     <div class="form-group">
-                                        <div class="form-input">
-                                            <input type="text"  ng-model="source" ng-autocomplete="source" details="sourceDetails" placeholder="Start"/>
-                                            <input type="text"  ng-model="destination" ng-autocomplete="destination" details="destinationDetails"  placeholder="Destination"/>
+                                        <div class="form-input">                                            
+                                            <input type="text" ng-model="source" ng-autocomplete="source" details="sourceDetails" placeholder="Start"/>
+                                            <input type="text" ng-model="destination" ng-autocomplete="destination" details="destinationDetails"  placeholder="Destination"/>
                                         </div>
                                         <div class="form-button">
                                             <button type="button" ng-click="plantrip()">Start Trip</button>
@@ -61,7 +66,7 @@
                                     <h4>Explore Places</h4>
                                     <p>Discover on and off the road with the country's most classic drives.</p>
 
-                                    <div class="explore-left-block">
+                                    <div class="explore-left-block" ng-click="getTrips()">
                                         <div class="single-explore-block">
                                             <figure>
                         						<img src="images/explore-1.png" alt="img18">
@@ -141,7 +146,9 @@
                     </div>
                 </section>
 
-                <list-cities cities="cities" places="places" trip="trip" source="source" destination="destination" ng-if="listCities"></list-cities>
+                <list-cities cities="cities" places="places" trip="trip" trip-id="tripId" trip-details="tripDetails" user-id="userId" source="source" destination="destination" is-save-trip="isSaveTrip" ng-if="listCities"></list-cities>
+
+                <my-trips mytrips="mytrips" user-id="userId" ng-if="userTrips"></my-trips>
             </div>
         </div>
     </body>

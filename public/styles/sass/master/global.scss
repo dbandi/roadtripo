@@ -80,9 +80,31 @@ nav{
     padding: 35px 50px;
 
 }
+.left-nav{
+    float: left;
+}
+.right-nav{
+    float: right;
+
+    li{
+        margin-top: 5px;
+    }
+
+    .my-trips{
+        cursor: pointer;
+        padding: 8px 22px;
+        border-radius: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background-color: $brand-color;
+        color: #fff;
+    }
+}
 .nav-wrapper.left-small{
     padding: 30px 25px;
     position: absolute;
+    width: 100%;
 }
 /* ======== HOME PAGE ========= */
 .homePage{
@@ -94,7 +116,7 @@ nav{
     height: 75vh;
 }
 
-.listPlaces{
+.listPlaces, .myTrips{
     .filter-sidebar-section{
         @include layout(2, 10, 10);
         float: left;
@@ -198,9 +220,11 @@ nav{
     }
 }
 
-/* ======== LIST PLACES ========= */
+/*********************************
+            LIST PLACES
+*********************************/
 .listPlaces{
-    margin-top: 3px;
+
 }
 .list-places-wrapper{
     background-color: #ffffff;
@@ -231,97 +255,167 @@ nav{
             .individual-place-block-wrapper{
                 background-color: #fff;
                 box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
-                border: 1px solid #f3f3f3;
-            }
+                border: 1px solid #e8e8e8;
 
-            .place-image-block{
-                position: relative;
-                max-height: 22px;
-                min-height: 200px;
-                overflow: hidden;
-                span{
-                    position: absolute;
-                    right: 6px;
-                    top: 8px;
-                    @include web-font(Font-Regular, 11px,#131313, initial, 1px);
-                    background-color: rgba(255, 255, 255, 0.72);
-                    padding: 3px 8px;
-                    z-index: 10;
-                    font-weight: 500;
-                    text-transform: uppercase;
+                .add-trip{
+                    display: table;
+                    width: 100%;
+                    cursor: pointer;
                 }
 
-                .img-photo{
-                    @include img-cover();
-                    height: 100%;
-                    width: 100%;
+                .place-image-block{
+                    position: relative;
+                    max-height: 22px;
+                    min-height: 200px;
+                    overflow: hidden;
+
+                    .trip-category{
+                        position: absolute;
+                        right: 6px;
+                        top: 8px;
+                        @include web-font(Font-Regular, 11px,#131313, initial, 1px);
+                        background-color: rgba(255, 255, 255, 0.72);
+                        padding: 3px 8px;
+                        z-index: 10;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                    }
+
+                    .img-photo{
+                        @include img-cover();
+                        height: 100%;
+                        width: 100%;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+
+                .place-content-block{
+                    position: relative;
+                    z-index: 100;
+
+                    .curve{
+                        width: 100%;
+                        position: absolute;
+                        bottom: 95%;
+                    }
+
+                    .rating-icon{
+                        display: table;
+                        margin: 0 auto 25px;
+                        text-align: center;
+
+                        i{
+                            padding: 0 3px;
+                            color: $brand-color;
+                        }
+                    }
+
+                    a{
+                        font-size: 14px;
+                        letter-spacing: initial;
+                        display: block;
+                        padding: 12px 10px;
+                        background-color: #272727;
+                        color: #fff;
+                        width: 100%;
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: 400;
+                        font-family: $secondary-font;
+
+                        &:hover{
+                            background-color: $brand-color;
+                        }
+                    }
+                }
+
+                h4{
+                    padding-top: 25px;
+                    @include web-font(Font-Bold, 20px, #3a3a3a, initial, 1px);
+                    padding-left: 8px;
+                    overflow: hidden;
+                    min-height: 27px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    //font-family: $secondary-font;
+                }
+                p{
+                    padding-top: 10px;
+                    @include web-font(Font-Semi-Bold, 14px, #989898, initial, 1px);
+                    text-transform: uppercase;
+                    padding-left: 8px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    min-height: 19px;
+                    text-align: center;
+                    padding-bottom: 22px;
+                }
+
+                .add-on-hover{
                     position: absolute;
+                    margin: 0 auto;
+                    display: inline-block;
+                    top: 100%;
                     left: 0;
                     right: 0;
+                    z-index: 10;
+                    text-align: center;
+                    color: $brand-color;
+                    border: 1px solid $brand-color;
+                    background-color: rgba(9, 9, 9, 0.37);
+                    padding: 9px 15px;
+                    max-width: 130px;
+                    -webkit-transition: all 0.3s ease;
+                    -moz-transition: all 0.3s ease;
+                    -o-transition: all 0.3s ease;
+                    -ms-transition: all 0.3s ease;
+                    transition: all 0.3s ease;
                 }
 
-            }
-
-            .place-content-block{
-                position: relative;
-
-                .curve{
-                    width: 100%;
+                .addded-trip{
                     position: absolute;
-                    bottom: 95%;
+                    z-index: 1000;
+                    border: 3px solid #343638;
+                    color: #343638;
+                    border-radius: 50%;
+                    padding: 10px;
+                    right: 48px;
+                    bottom: 6px;
+                    background: #fff;
                 }
 
-                .rating-icon{
-                    display: table;
-                    margin: 0 auto 25px;
-                    text-align: center;
-
-                    i{
-                        padding: 0 3px;
-                        color: $brand-color;
+                &:hover{
+                    .img-cover{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(53, 53, 53, 0.36);
+                        z-index: 0;
                     }
-                }
 
-                a{
-                    font-size: 14px;
-                    letter-spacing: initial;
-                    display: block;
-                    padding: 12px 10px;
-                    background-color: #272727;
-                    color: #fff;
-                    width: 100%;
-                    text-align: center;
-                    text-transform: uppercase;
-                    font-weight: 400;
-                    font-family: $secondary-font;
+                    .add-on-hover{
+                        top: 40%;
+                    }
 
-                    &:hover{
-                        background-color: $brand-color;
+                    .img-photo{
+                        -webkit-filter: blur(3px);
+                        -moz-filter: blur(3px);
+                        -o-filter: blur(3px);
+                        -ms-filter: blur(3px);
+                        filter: blur(3px);
                     }
                 }
             }
 
-            h4{
-                padding-top: 25px;
-                @include web-font(Font-Bold, 20px, #3a3a3a, initial, 1px);
-                padding-left: 8px;
-                overflow: hidden;
-                min-height: 27px;
-                text-align: center;
-                text-transform: uppercase;
-                //font-family: $secondary-font;
-            }
-            p{
-                padding-top: 10px;
-                @include web-font(Font-Semi-Bold, 14px, #989898, initial, 1px);
-                text-transform: uppercase;
-                padding-left: 8px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                min-height: 19px;
-                text-align: center;
-                padding-bottom: 22px;
+            &.active{
+                .addded-trip{
+                    border: 3px solid $brand-color;
+                    color: $default-color;
+                    background-color: $brand-color;
+                }
             }
         }
     }
@@ -366,6 +460,13 @@ nav{
             padding-right: 8px;
         }
 
+        &.view-map{
+            i{
+                font-size: 26px;
+                margin-top: -5px;
+            }
+        }
+
         &:hover{
             color: $brand-color;
         }
@@ -393,7 +494,7 @@ nav{
             position: absolute;
             width: 125px;
             height: 3px;
-            background-color: #E74949;
+            background-color: $brand-color;
             top: 0px;
             margin: 0 auto;
             left: 0;
@@ -464,6 +565,58 @@ nav{
     }
 }
 
+/*********************************
+            MY TRIPS
+*********************************/
+.list-mytrip-wrapper{
+    .mytrip-block{
+        margin: 50px 0px;
+        display: table;
+        width: 100%;
+        &:nth-child(2n+1){
+            .mytrip-map{
+                @include layout(7);
+            }
+            .mytrip-content{
+                @include layout(5);
+            }
+
+        }
+        &:nth-child(2n){
+            .mytrip-map{
+                @include layout(7);
+                float: right;
+            }
+            .mytrip-content{
+                @include layout(5);
+                text-align: right;
+            }
+        }
+
+        .mytrip-content-block{
+            margin: 20px 0px;
+        }
+
+        h2{
+            @include web-font(Font-Light, 28px, $brand-text, initial, 1px);
+            font-family: 'Roboto';
+        }
+
+        h4{
+            @include web-font(Font-Bold, 16px, $brand-text, initial, 1px);
+            padding-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .btn{
+            margin-left: 0px;
+            color: $brand-color;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 30px;
+        }
+    }
+}
 
 /*********************************
             Login Modal

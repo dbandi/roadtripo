@@ -1,4 +1,4 @@
-<form name="loginForm" ng-submit="login(zacksEmail,zacksPassword)" novalidate="novalidate">
+
     <div class="login-section-wrapper">
         <div class="sign-screen">
             <div class="layout-half">
@@ -16,20 +16,20 @@
                 <div class="screen-login-section">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="" autocomplete="off">
+                            <form name="loginForm" ng-submit="login(userEmail,userPassword)" class="form-horizontal" novalidate="novalidate">
 
                                 <h4 class="login-title">Sign In</h4>
-
+                                <p>{{loginError}}</p>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" value="" autocomplete="off" placeholder="Email Address">
+                                    <input type="email" class="form-control" name="username" ng-model="userEmail" ng-minlength="1" ng-required="true" autocomplete="off" placeholder="Email Address">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" autocomplete="off" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" ng-model="userPassword" ng-minlength="1" ng-required="true" autocomplete="off" placeholder="Password">
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn sign-button">Login</button>
+                                    <button type="submit" class="btn sign-button" ng-disabled="loginForm.$invalid" >Login</button>
                                 </div>
 
                                 <div class="form-group mt-75">
@@ -45,4 +45,3 @@
             </div>
         </div>
     </div>
-</form>
