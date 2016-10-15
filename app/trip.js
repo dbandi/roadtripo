@@ -25,6 +25,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
             });
         }
         else{
+            console.log("unauthorized");
             return res.send("unauthorized");
         }
     });

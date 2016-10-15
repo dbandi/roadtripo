@@ -30,8 +30,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
     // =====================================
 	// Plantrip ===========================
 	// =====================================
-    app.get('/plantrip', function(req, res, next) {
-
+    app.get('/plantrip', function(req, res, next) {        
         request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //directions = body; // Print the google web page.

@@ -4,12 +4,15 @@
   "main": "app.js",
   "private": true,
   "scripts": {
-    "start": "node ./app"
+    "start": "node ./app",
+    "test": "mocha test"
   },
   "dependencies": {
     "backbone": ">= 1.3.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.15.1",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "connect-flash": "^0.1.1",
     "consolidate": "^0.14.1",
     "cookie-parser": "^1.4.3",
@@ -18,6 +21,7 @@
     "express": "~4.13.4",
     "express-session": "^1.14.1",
     "jade": "~1.11.0",
+    "mocha": "^3.1.2",
     "morgan": "~1.7.0",
     "ng-masonry": "^1.0.3",
     "node-bing-api": "^2.4.1",

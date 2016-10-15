@@ -29,24 +29,6 @@ module.exports = function(app, passport, path, express) {
         res.render('login.html');
     });
 
-	// process the login form
-    /*app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
-            failureFlash : true // allow flash messages
-        }),
-        function(req, res) {
-            console.log("hello");
-
-            if (req.body.remember) {
-              req.session.cookie.maxAge = 1000 * 60 * 3;
-              console.log("Success");
-            } else {
-              req.session.cookie.expires = false;
-            }
-        res.redirect('/');
-    });*/
-
     app.post('/login', function(req, res, next) {
       passport.authenticate('local-login', function(err, user, info) {
         if (err) {
@@ -56,13 +38,6 @@ module.exports = function(app, passport, path, express) {
         if (! user) {
           return res.send({ success : false, message : 'authentication failed' });
         }
-        /*req.login(user, loginErr => {
-          if (loginErr) {
-            return next(loginErr);
-          }
-          console.log(user);
-          return res.send({ success : true, message : 'authentication succeeded', user_id : user.id });
-      });*/
       req.logIn(user, function(err) {
           if (err) { return next(err); }
           return res.send({ success : true, message : 'authentication succeeded', user_id : user.id });

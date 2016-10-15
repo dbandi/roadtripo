@@ -58,6 +58,8 @@ require('./app/auth.js')(app, passport, path, express);
 require('./app/plantrip.js')(app, passport, path, express, NodeGeocoder, airbnb, Yelp, Bing, rp, request, Promise, _);
 require('./app/trip.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
 
+module.exports = app;
+
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);
