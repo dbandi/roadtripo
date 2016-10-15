@@ -312,6 +312,57 @@ nav{
                         }
                     }
 
+                    .showGasPrices{
+                        h6{
+                            text-align: center;
+                            text-transform: uppercase;
+                        }
+
+                        p{
+                            padding: 0;
+                            padding-bottom: 8px;
+                        }
+
+                        ul{
+                            display: table;
+                            width: 100%;
+                            margin-bottom: 20px;
+
+                            li{
+                                padding-top: 10px;
+                                display: table-cell;
+                                text-align: center;
+
+                                &:nth-child(1){
+                                    span{
+                                        background-color: #2ecc71;
+                                        color: $default-color;
+                                        padding: 2px 6px;
+                                        border-radius: 3px;
+                                    }
+                                }
+
+                                &:nth-child(2){
+                                    span{
+                                        background-color: #f39c12;
+                                        color: $default-color;
+                                        padding: 2px 6px;
+                                        border-radius: 3px;
+                                    }
+                                }
+
+                                &:nth-child(3){
+                                    span{
+                                        background-color: #e74c3c;
+                                        color: $default-color;
+                                        padding: 2px 6px;
+                                        border-radius: 3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     a{
                         font-size: 14px;
                         letter-spacing: initial;
@@ -569,51 +620,110 @@ nav{
             MY TRIPS
 *********************************/
 .list-mytrip-wrapper{
-    .mytrip-block{
-        margin: 50px 0px;
-        display: table;
+    .list-mytrip-block{
         width: 100%;
-        &:nth-child(2n+1){
-            .mytrip-map{
-                @include layout(7);
-            }
-            .mytrip-content{
-                @include layout(5);
-            }
+        height: 75vh;
+    }
+    .mytrip-block{
+        @include layout(4);
+        height: 100%;
 
-        }
-        &:nth-child(2n){
-            .mytrip-map{
-                @include layout(7);
-                float: right;
-            }
-            .mytrip-content{
-                @include layout(5);
-                text-align: right;
-            }
+        .mytrip-block-wrapper{
+            background-color: #f4f4f4;
+            height: 100%;
+            padding: 10px;
         }
 
-        .mytrip-content-block{
-            margin: 20px 0px;
+        .mytrip-overview{
+            position: relative;
+            z-index: 10;
+            background-color: #fff;
+            margin: 0px 0px 10px;
+            display: table;
+            width: 100%;
+            box-shadow: 3px 3px 3px #ececec;
+
+            .mytrip-images{
+                @include layout(4, 0, 0);
+                position: relative;
+                height: 120px;
+
+                .square-img{
+                    position: absolute;
+                    @include img-cover();
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .mytrip-content{
+                @include layout(8, 0, 0);
+
+                .mytrip-content-wrapper{
+                    padding: 10px;
+                }
+            }
         }
 
         h2{
-            @include web-font(Font-Light, 28px, $brand-text, initial, 1px);
+            @include web-font(Font-Light, 18px, #777777, initial, 1px);
             font-family: 'Roboto';
         }
 
         h4{
-            @include web-font(Font-Bold, 16px, $brand-text, initial, 1px);
+            @include web-font(Font-Bold, 12px, #777777, initial, 1px);
             padding-top: 6px;
             text-transform: uppercase;
         }
 
         .btn{
-            margin-left: 0px;
+            position: relative;
+            margin: 10px 10px 10px 0px;
             color: $brand-color;
-            font-weight: 600;
-            font-size: 14px;
-            padding: 10px 30px;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 4px 12px;
+            border: 1px solid $brand-color;
+            border-radius: 2px;
+            -moz-transition: ease 0.35s all;
+            -o-transition: ease 0.35s all;
+            -webkit-transition: ease 0.35s all;
+            transition: ease 0.35s all;
+            float: left;
+            max-height: 23px;
+            position: relative;
+            overflow: hidden;
+            height: 23px;
+            line-height: 14px;
+
+            &:before{
+                content: attr(data-text);
+                position: absolute;
+                top: 100px;
+            }
+
+            &:nth-of-type(2){
+                background-color: $brand-color;
+                color: $default-color;
+            }
+
+            &:hover{
+                line-height: 60px;
+                &:before{
+                    top: -19px;
+                }
+            }
+        }
+    }
+
+    .mytrip-map{
+        @include layout(8);
+        float: right;
+        overflow: hidden;
+        height: 100%;
+
+        ng-map{
+            height: 100%;
         }
     }
 }

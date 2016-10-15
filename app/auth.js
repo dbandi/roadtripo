@@ -56,12 +56,17 @@ module.exports = function(app, passport, path, express) {
         if (! user) {
           return res.send({ success : false, message : 'authentication failed' });
         }
-        req.login(user, loginErr => {
+        /*req.login(user, loginErr => {
           if (loginErr) {
             return next(loginErr);
           }
+          console.log(user);
           return res.send({ success : true, message : 'authentication succeeded', user_id : user.id });
-        });
+      });*/
+      req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return res.send({ success : true, message : 'authentication succeeded', user_id : user.id });
+      });
       })(req, res, next);
     });
 

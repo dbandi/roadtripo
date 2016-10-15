@@ -7,9 +7,13 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
         $scope.destinationCity = $scope.destination.split(',')[0];
         $scope.initPlaces = $scope.places;
 
+        $scope.showGasPrices = false;
+        $scope.showHotels = false;
+
         $scope.getYelpPlacesofCities = function(placetypes){
             $scope.listCities = true;
-
+            $scope.showGasPrices = false;
+            $scope.showHotels = false;
             //Reset PLaces
             $scope.places = [];
             var citiesLength = Object.keys($scope.cities).length;
@@ -28,7 +32,53 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
         };
 
         $scope.getFoursquarePlacesofCities = function(){
+            $scope.showGasPrices = false;
+            $scope.showHotels = false;
             $scope.places = $scope.initPlaces;
+        }
+
+        $scope.getGasStationPlacesofCities = function(){
+            $scope.places = [];
+            $scope.showGasPrices = true;
+            $scope.showHotels = false;
+
+            var citiesLength = Object.keys($scope.cities).length;
+
+            for (var i = 0; i < citiesLength; i++) {
+                $scope.listPlaces = true;
+                dataService.getGasStations('reg', $scope.cities[i].lat, $scope.cities[i].lng, 2, 'distance').then(function (response) {
+                    console.log(response.data[0]);
+                    console.log(response.data.length);
+                    for (var j = 0; j < response.data.length; j++) {
+                        var responseData = response.data[j];
+                        console.log(responseData);
+                        var placesModel = dataFactory.getGasStationAPIplacesModel(responseData);
+                        $scope.places.push(placesModel);
+                    }
+                });
+            }
+        }
+
+        $scope.getHotelPlacesofCities = function(){
+            $scope.places = [];
+            $scope.showGasPrices = false;
+            $scope.showHotels = true;
+
+            var citiesLength = Object.keys($scope.cities).length;
+
+            for (var i = 0; i < citiesLength; i++) {
+                $scope.listPlaces = true;
+                dataService.getHotels($scope.cities[i].lat, $scope.cities[i].lng, '07/03/2015', '07/06/2015', 2, 1).then(function (response) {
+                    console.log(response.data[0]);
+                    console.log(response.data.length);
+                    for (var j = 0; j < response.data.length; j++) {
+                        var responseData = response.data[j];
+                        console.log(responseData);
+                        var placesModel = dataFactory.getAirbnbAPIplacesModel(responseData);
+                        $scope.places.push(placesModel);
+                    }
+                });
+            }
         }
 
         $scope.addToTrip = function(place){

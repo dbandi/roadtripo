@@ -2198,6 +2198,49 @@ nav {
   color: #2eb6f5;
 }
 
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices h6 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices p {
+  padding: 0;
+  padding-bottom: 8px;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices ul {
+  display: table;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices ul li {
+  padding-top: 10px;
+  display: table-cell;
+  text-align: center;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices ul li:nth-child(1) span {
+  background-color: #2ecc71;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices ul li:nth-child(2) span {
+  background-color: #f39c12;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices ul li:nth-child(3) span {
+  background-color: #e74c3c;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block a {
   font-size: 14px;
   letter-spacing: initial;
@@ -2538,65 +2581,79 @@ nav {
 /*********************************
             MY TRIPS
 *********************************/
+.list-mytrip-wrapper .list-mytrip-block {
+  width: 100%;
+  height: 75vh;
+}
+
 .list-mytrip-wrapper .mytrip-block {
-  margin: 50px 0px;
+  width: -webkit-calc(33.33333%);
+  width: -moz-calc(33.33333%);
+  width: calc(33.33333%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+  height: 100%;
+}
+
+.list-mytrip-wrapper .mytrip-block .mytrip-block-wrapper {
+  background-color: #f4f4f4;
+  height: 100%;
+  padding: 10px;
+}
+
+.list-mytrip-wrapper .mytrip-block .mytrip-overview {
+  position: relative;
+  z-index: 10;
+  background-color: #fff;
+  margin: 0px 0px 10px;
   display: table;
   width: 100%;
+  box-shadow: 3px 3px 3px #ececec;
 }
 
-.list-mytrip-wrapper .mytrip-block:nth-child(2n+1) .mytrip-map {
-  width: -webkit-calc(58.33333%);
-  width: -moz-calc(58.33333%);
-  width: calc(58.33333%);
+.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-images {
+  width: -webkit-calc(33.33333%);
+  width: -moz-calc(33.33333%);
+  width: calc(33.33333%);
   float: left;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+  position: relative;
+  height: 120px;
+}
+
+.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-images .square-img {
+  position: absolute;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-content {
+  width: -webkit-calc(66.66667%);
+  width: -moz-calc(66.66667%);
+  width: calc(66.66667%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
   margin-left: 0%;
   margin-right: 0%;
 }
 
-.list-mytrip-wrapper .mytrip-block:nth-child(2n+1) .mytrip-content {
-  width: -webkit-calc(41.66667%);
-  width: -moz-calc(41.66667%);
-  width: calc(41.66667%);
-  float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 0%;
-  margin-right: 0%;
-}
-
-.list-mytrip-wrapper .mytrip-block:nth-child(2n) .mytrip-map {
-  width: -webkit-calc(58.33333%);
-  width: -moz-calc(58.33333%);
-  width: calc(58.33333%);
-  float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 0%;
-  margin-right: 0%;
-  float: right;
-}
-
-.list-mytrip-wrapper .mytrip-block:nth-child(2n) .mytrip-content {
-  width: -webkit-calc(41.66667%);
-  width: -moz-calc(41.66667%);
-  width: calc(41.66667%);
-  float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 0%;
-  margin-right: 0%;
-  text-align: right;
-}
-
-.list-mytrip-wrapper .mytrip-block .mytrip-content-block {
-  margin: 20px 0px;
+.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-content .mytrip-content-wrapper {
+  padding: 10px;
 }
 
 .list-mytrip-wrapper .mytrip-block h2 {
-  font-size: 28px;
-  color: #343638;
+  font-size: 18px;
+  color: #777777;
   line-height: initial;
   letter-spacing: 1px;
   margin-bottom: 0px;
@@ -2605,8 +2662,8 @@ nav {
 }
 
 .list-mytrip-wrapper .mytrip-block h4 {
-  font-size: 16px;
-  color: #343638;
+  font-size: 12px;
+  color: #777777;
   line-height: initial;
   letter-spacing: 1px;
   margin-bottom: 0px;
@@ -2616,11 +2673,61 @@ nav {
 }
 
 .list-mytrip-wrapper .mytrip-block .btn, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button {
-  margin-left: 0px;
+  position: relative;
+  margin: 10px 10px 10px 0px;
   color: #2eb6f5;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 10px 30px;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 4px 12px;
+  border: 1px solid #2eb6f5;
+  border-radius: 2px;
+  -moz-transition: ease 0.35s all;
+  -o-transition: ease 0.35s all;
+  -webkit-transition: ease 0.35s all;
+  transition: ease 0.35s all;
+  float: left;
+  max-height: 23px;
+  position: relative;
+  overflow: hidden;
+  height: 23px;
+  line-height: 14px;
+}
+
+.list-mytrip-wrapper .mytrip-block .btn:before, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:before, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:before, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:before, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 100px;
+}
+
+.list-mytrip-wrapper .mytrip-block .btn:nth-of-type(2), .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:nth-of-type(2), .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:nth-of-type(2), .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:nth-of-type(2), .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:nth-of-type(2) {
+  background-color: #2eb6f5;
+  color: #ffffff;
+}
+
+.list-mytrip-wrapper .mytrip-block .btn:hover, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:hover, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:hover, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:hover, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:hover {
+  line-height: 60px;
+}
+
+.list-mytrip-wrapper .mytrip-block .btn:hover:before, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:hover:before, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:hover:before, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:hover:before, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:hover:before {
+  top: -19px;
+}
+
+.list-mytrip-wrapper .mytrip-map {
+  width: -webkit-calc(66.66667%);
+  width: -moz-calc(66.66667%);
+  width: calc(66.66667%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+  float: right;
+  overflow: hidden;
+  height: 100%;
+}
+
+.list-mytrip-wrapper .mytrip-map ng-map {
+  height: 100%;
 }
 
 /*********************************

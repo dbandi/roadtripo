@@ -20,6 +20,9 @@ var bcrypt = require('bcrypt-nodejs');
 var consolidate = require('consolidate');
 var Yelp = require('yelp');
 var Bing = require('node-bing-api')({ accKey: "LPclYNGuvOM0WbzhCJ9QGoUgaRR/fIt2OyGn+k1AxIo" });
+var NodeGeocoder = require('node-geocoder');
+var airbnb = require('airapi');
+
 //var routes = require('./routes/route');
 var app = express();
 var port = process.env.PORT || 3000;
@@ -52,7 +55,7 @@ app.use(flash());
 
 // routes ======================================================================
 require('./app/auth.js')(app, passport, path, express);
-require('./app/plantrip.js')(app, passport, path, express, Yelp, Bing, rp, request, Promise, _);
+require('./app/plantrip.js')(app, passport, path, express, NodeGeocoder, airbnb, Yelp, Bing, rp, request, Promise, _);
 require('./app/trip.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
 
 // launch ======================================================================

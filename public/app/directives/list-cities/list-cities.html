@@ -6,9 +6,9 @@
         </div>
         <div class="right-nav">
             <ul>
-                <li><a href="https://www.naturalworldsafaris.com/when-to-go">When to go</a></li>
+                <!--<li><a href="https://www.naturalworldsafaris.com/when-to-go">When to go</a></li>
                 <li><a href="#">Adventure</a></li>
-                <li><a href="#">Explore</a></li>
+                <li><a href="#">Explore</a></li>-->
                 <li><a class="my-trips" ng-click="viewUserTrips()">My Trip </a></li>
             </ul>
         </div>
@@ -19,9 +19,9 @@
 
             <ul>
                 <li><a href="#" ng-click="getFoursquarePlacesofCities();">Attractions</a></li>
-                <li><a href="#" ng-click="getYelpPlacesofCities('hotelstravel');">Hotels</a></li>
+                <li><a href="#" ng-click="getHotelPlacesofCities();">Hotels</a></li>
                 <li><a href="#" ng-click="getYelpPlacesofCities('food');">Restaurant</a></li>
-                <li><a href="#" ng-click="getYelpPlacesofCities('servicestations');">Gas Station</a></li>
+                <li><a href="#" ng-click="getGasStationPlacesofCities();">Gas Station</a></li>
                 <li><a href="#" ng-click="getYelpPlacesofCities('event');">Events</a></li>
                 <li><a href="#" ng-click="getYelpPlacesofCities('shopping');">Shop</a></li>
                 <li><a href="#" ng-click="getYelpPlacesofCities('nightlife');">Drinks</a></li>
@@ -79,6 +79,29 @@
                                             <p>{{place.city}}</p>
                                             <span class="hide" id="lat">{{place.lat}}</span>
                                             <span class="hide" id="lng">{{place.lng}}</span>
+                                            <div class="showGasPrices" ng-if="showGasPrices">
+                                                <h6>Petrol</h6>
+                                                <ul>
+                                                    <li>
+                                                        <p>Reg</p>
+                                                        <span>{{place.reg_price}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <p>Mid</p>
+                                                        <span>{{place.mid_price}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <p>Pre</p>
+                                                        <span>{{place.pre_price}}</span>
+                                                    </li>
+                                                </ul>
+                                                <h6>Diesel</h6>
+                                                <ul>
+                                                    <li>
+                                                        <span>{{place.diesel_price}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>

@@ -24,6 +24,22 @@ app.service('dataService', function($http) {
           });
        };
 
+       this.getGasStations = function(fueltype, lat, lng, radius, sort_by){
+           return $http({
+               method: 'GET',
+               url: '/gasprices?fueltype='+fueltype+'&lat='+lat+'&lng='+lng+'&radius='+radius+'&sort_by='+sort_by,
+               headers: {'Content-Type': 'application/json; charset=utf-8'}
+           });
+       }
+
+       this.getHotels = function(lat, lng, check_in, check_out, guests, page){
+           return $http({
+               method: 'GET',
+               url: '/hotels?lat='+lat+'&lng='+lng+'&check_in='+check_in+'&check_out='+check_out+'&guests='+guests+'&page='+page,
+               headers: {'Content-Type': 'application/json; charset=utf-8'}
+           });
+       }
+
       this.getPhotos = function(placeName) {
           return $http({
               method: 'GET',

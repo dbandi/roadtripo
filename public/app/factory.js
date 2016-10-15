@@ -58,9 +58,48 @@ app.factory('dataFactory', function () {
         return APItripModel;
     }
 
+    function getGasStationAPIplacesModel(responseData){
+        APIplacesModel = {};
+        APIplacesModel.placeid = responseData.id;
+        APIplacesModel.placeAPI = 'GasStation';
+        APIplacesModel.placename = responseData.station;
+        APIplacesModel.address = responseData.address;
+        APIplacesModel.lat = parseFloat(responseData.lat);
+        APIplacesModel.lng = parseFloat(responseData.lng);
+        APIplacesModel.city = responseData.city;
+        APIplacesModel.rating = 5;
+        APIplacesModel.reg_price = responseData.reg_price;
+        APIplacesModel.mid_price = responseData.mid_price;
+        APIplacesModel.pre_price = responseData.pre_price;
+        APIplacesModel.diesel_price = responseData.diesel_price;
+        APIplacesModel.photo = 'images/' + responseData.station.replace(/ /g, "_") + '.jpg';
+        APIplacesModel.placetype = 'Gas Station';
+        return APIplacesModel;
+    }
+
+    function getAirbnbAPIplacesModel(responseData){
+        APIplacesModel = {};
+        APIplacesModel.placeid = responseData.listing.id;
+        APIplacesModel.placeAPI = 'Airbnb';
+        APIplacesModel.placename = responseData.listing.name;
+        APIplacesModel.address = responseData.listing.public_address;
+        APIplacesModel.lat = parseFloat(responseData.listing.lat);
+        APIplacesModel.lng = parseFloat(responseData.listing.lng);
+        APIplacesModel.city = "";
+        APIplacesModel.rating = responseData.listing.star_rating;
+        APIplacesModel.price = responseData.pricing_quote.rate.amount;
+        APIplacesModel.currency = responseData.pricing_quote.rate.currency;
+        APIplacesModel.price_type = responseData.pricing_quote.rate_type;
+        APIplacesModel.photo = responseData.listing.picture_url;
+        APIplacesModel.placetype = responseData.listing.room_type;
+        return APIplacesModel;
+    }
+
     return {
         getFoursquareAPIplacesModel : getFoursquareAPIplacesModel,
         getYelpAPIplacesModel : getYelpAPIplacesModel,
+        getGasStationAPIplacesModel : getGasStationAPIplacesModel,
+        getAirbnbAPIplacesModel : getAirbnbAPIplacesModel,
         getTrip : getTrip
     }
 });

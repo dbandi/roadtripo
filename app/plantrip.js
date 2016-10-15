@@ -1,7 +1,14 @@
 // app/plantrip.js
-module.exports = function(app, passport, path, express, Yelp, Bing, rp, request, Promise, _) {
+module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Yelp, Bing, rp, request, Promise, _) {
 
     var googleapikey = 'AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM';
+    var options = {
+        provider: 'google',
+        httpAdapter: 'https',
+        apiKey: googleapikey,
+        formatter: null
+    };
+    var geocoder = NodeGeocoder(options);
     var foursquareauth = 'MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z';
     var yelp = new Yelp({
         consumer_key: 'E8O3cJKY8nxFD_Z5lD7oZw',
@@ -161,4 +168,66 @@ module.exports = function(app, passport, path, express, Yelp, Bing, rp, request,
         });
     });
 
+    // =====================================
+	// Gas Prices ===========================
+	// =====================================
+    app.get('/gasprices', function(req, res, next) {
+
+        var fueltype = req.query.fueltype;
+        var lat = req.query.lat;
+        var lng = req.query.lng;
+        var radius = req.query.radius;
+        var sort_by = req.query.sort_by;
+
+        var gasStations = {
+            method: 'GET',
+            uri: 'http://api.mygasfeed.com/stations/radius/'+lat+'/'+lng+'/'+radius+'/'+fueltype+'/'+sort_by+'/jn8ybt18zm.json',
+            resolveWithFullResponse: true
+        };
+
+        rp(gasStations)
+            .then(function (response) {
+                if (response.statusCode == 200) {
+                    results = JSON.parse( response.body );
+                    if(results.status.code == 200){
+                        res.json(results.stations);
+                    }
+                }
+            })
+            .catch(function (err) {
+                console.log(err);
+        });
+
+    });
+
+    // =====================================
+	// Expedia ===========================
+	// =====================================
+    app.get('/hotels', function(req, res, next) {
+
+        var lat = req.query.lat;
+        var lng = req.query.lng;
+        var check_in = req.query.check_in;
+        var check_out = req.query.check_out;
+        var guests = req.query.guests;
+        var page = req.query.page;
+
+        geocoder.reverse({lat:45.767, lon:4.833})
+            .then(function(result) {
+                airbnb.search({
+                     location: result[0].city,
+                     checkin: '07/03/2015',
+                     checkout: '07/06/2015',
+                     guests: 2,
+                     page: 1,
+                     ib: true
+                    }).then(function(searchResults) {
+                      res.json(searchResults.results_json.search_results);
+                });
+            })
+            .catch(function(err) {
+                console.log(err);
+        });
+
+    });
 };
