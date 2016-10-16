@@ -78,7 +78,12 @@ nav{
 }
 .nav-wrapper{
     padding: 35px 50px;
+    z-index: 10000;
 
+    a{
+        cursor: pointer;
+        display: block;
+    }
 }
 .left-nav{
     float: left;
@@ -232,21 +237,17 @@ nav{
     z-index: 100;
     margin-top: 40px;
 
-    .masonry { /* Masonry container */
-        column-count: 4;
-        column-gap: 1em;
-    }
-
-    .item { /* Masonry bricks or child elements */
-        display: inline-block;
-        width: 100%;
+    .places-block{
+        &:nth-child(3n+1){
+            clear: both;
+        }
     }
 
     .list-places-block{
         .individual-place-block{
-            //@include layout(3);
+            @include layout(4);
             margin-bottom: 12px;
-            font-family: 'Montserrat';
+            font-family: 'Open Sans';
 
             &:nth-child(4){
                 clear: both;
@@ -255,7 +256,8 @@ nav{
             .individual-place-block-wrapper{
                 background-color: #fff;
                 box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
-                border: 1px solid #e8e8e8;
+                border: 1px solid #fbfbfb;
+                position: relative;
 
                 .add-trip{
                     display: table;
@@ -268,12 +270,15 @@ nav{
                     max-height: 22px;
                     min-height: 200px;
                     overflow: hidden;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    @include transition(0.3);
 
                     .trip-category{
                         position: absolute;
                         right: 6px;
                         top: 8px;
-                        @include web-font(Font-Regular, 11px,#131313, initial, 1px);
+                        @include web-font(Font-Regular, 11px, #131313, initial, 1px);
                         background-color: rgba(255, 255, 255, 0.72);
                         padding: 3px 8px;
                         z-index: 10;
@@ -289,26 +294,93 @@ nav{
                         left: 0;
                         right: 0;
                     }
+
+                    &.hideImage{
+                        height: 0px;
+                        min-height: 0px;
+                    }
+                }
+
+                .place-map-block{
+                    height: 200px;
+
+                    ng-map{
+                        max-height: 200px;
+                        height: 200px;
+                    }
+
+                    &.hideMap{                        
+                        height: 0 !important;
+                        opacity: 0;
+                    }
                 }
 
                 .place-content-block{
                     position: relative;
                     z-index: 100;
+                    padding: 35px 15px 10px;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
 
-                    .curve{
-                        width: 100%;
+                    .rating-block{
                         position: absolute;
-                        bottom: 95%;
-                    }
-
-                    .rating-icon{
-                        display: table;
-                        margin: 0 auto 25px;
-                        text-align: center;
+                        top: 10px;
 
                         i{
-                            padding: 0 3px;
-                            color: $brand-color;
+                            font-size: 14px;
+                            color: #e74c3c;
+                        }
+                    }
+
+                    .distance-price-block{
+                        display: table;
+                        width: 100%;
+                        padding-top: 8px;
+                        border-top: 1px solid #f0f0f0;
+
+                        .distance-price-left-block{
+                            @include layout(2.5);
+                            padding-top: 7px;
+                            @include web-font(Font-Regular, 25px, #131313, initial, 1px);
+                            text-align: center;
+                            font-family: $secondary-font;
+                            span{
+                                display: block;
+                                @include web-font(Font-Regular, 14px, #131313, initial, 1px);
+                            }
+                        }
+                        .distance-price-right-block{
+                            @include layout(9.5);
+
+                            ul{
+                                position: relative;
+                                li{
+                                    padding: 7px 16px;
+                                    position: relative;
+                                    @include web-font(Font-Regular, 14px, #131313, initial, 1px);
+                                    font-family: $secondary-font;
+                                    &:before{
+                                        content: '';
+                                        position: absolute;
+                                        width: 5px;
+                                        height: 5px;
+                                        border: 2px solid $brand-color;
+                                        border-radius: 50%;
+                                        top: 13px;
+                                        left: 0px;
+                                    }
+                                }
+
+                                &:before{
+                                    content: '';
+                                    position: absolute;
+                                    height: 25px;
+                                    width: 3px;
+                                    border-left: 2px dotted $brand-color;
+                                    left: 3px;
+                                    top: 21px;
+                                }
+                            }
                         }
                     }
 
@@ -374,7 +446,6 @@ nav{
                         text-align: center;
                         text-transform: uppercase;
                         font-weight: 400;
-                        font-family: $secondary-font;
 
                         &:hover{
                             background-color: $brand-color;
@@ -383,26 +454,36 @@ nav{
                 }
 
                 h4{
-                    padding-top: 25px;
-                    @include web-font(Font-Bold, 20px, #3a3a3a, initial, 1px);
-                    padding-left: 8px;
+                    @include web-font(Font-Semi-Bold, 20px, #525252, initial, 1px);
                     overflow: hidden;
                     min-height: 27px;
-                    text-align: center;
-                    text-transform: uppercase;
-                    //font-family: $secondary-font;
+                    font-family: $secondary-font;
                 }
                 p{
-                    padding-top: 10px;
-                    @include web-font(Font-Semi-Bold, 14px, #989898, initial, 1px);
-                    text-transform: uppercase;
-                    padding-left: 8px;
+                    padding-top: 3px;
+                    @include web-font(Font-Regular, 14px, #989898, initial, 1px);
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
-                    min-height: 19px;
-                    text-align: center;
-                    padding-bottom: 22px;
+                    min-height: 22px;
+                    padding-bottom: 8px;
+                    font-family: $secondary-font;
+                }
+
+                .place-button{
+                    a{
+                        display: block;
+                        width: 100%;
+                        background-color: #2e99f5;
+                        color: #fff;
+                        padding: 10px 0px;
+                        text-align: center;
+                        cursor: pointer;
+
+                        &:hover{
+                            background-color: $brand-color;
+                        }
+                    }
                 }
 
                 .add-on-hover{
@@ -418,7 +499,7 @@ nav{
                     border: 1px solid $brand-color;
                     background-color: rgba(9, 9, 9, 0.37);
                     padding: 9px 15px;
-                    max-width: 130px;
+                    max-width: 136px;
                     -webkit-transition: all 0.3s ease;
                     -moz-transition: all 0.3s ease;
                     -o-transition: all 0.3s ease;
@@ -429,13 +510,17 @@ nav{
                 .addded-trip{
                     position: absolute;
                     z-index: 1000;
-                    border: 3px solid #343638;
-                    color: #343638;
+                    color: #808182;
                     border-radius: 50%;
-                    padding: 10px;
+                    padding: 14px;
                     right: 48px;
-                    bottom: 6px;
+                    top: -25px;
                     background: #fff;
+                    box-shadow: 2px 2px 5px #e3e3e3;
+
+                    i{
+                        font-size: 24px;
+                    }
                 }
 
                 &:hover{
@@ -927,65 +1012,4 @@ nav{
 
 .ngdialog-overlay{
     background: rgba(255, 255, 255, 0.8);
-}
-
-/*********************************
-        Masonry Responsive
-*********************************/
-.masonry {
-    margin: 1.5em 0;
-    padding: 0;
-    -moz-column-gap: 1.5em;
-    -webkit-column-gap: 1.5em;
-    column-gap: 1.5em;
-    font-size: .85em;
-}
-
-.item {
-    display: inline-block;
-    background: #fff;
-    /*padding: 1em;*/
-    /*margin: 0 0 1.5em;*/
-    width: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-@media only screen and (min-width: 400px) {
-    .masonry {
-        -moz-column-count: 2;
-        -webkit-column-count: 2;
-        column-count: 2;
-    }
-}
-
-@media only screen and (min-width: 700px) {
-    .masonry {
-        -moz-column-count: 3;
-        -webkit-column-count: 3;
-        column-count: 3;
-    }
-}
-
-@media only screen and (min-width: 900px) {
-    .masonry {
-        -moz-column-count: 4;
-        -webkit-column-count: 4;
-        column-count: 4;
-    }
-}
-
-@media only screen and (min-width: 1100px) {
-    .masonry {
-        -moz-column-count: 5;
-        -webkit-column-count: 5;
-        column-count: 5;
-    }
-}
-
-@media only screen and (min-width: 1280px) {
-    .wrapper {
-        width: 1260px;
-    }
 }

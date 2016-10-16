@@ -30,7 +30,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
     // =====================================
 	// Plantrip ===========================
 	// =====================================
-    app.get('/plantrip', function(req, res, next) {        
+    app.get('/plantrip', function(req, res, next) {
         request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //directions = body; // Print the google web page.
@@ -73,6 +73,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
                                                 if(!(_.contains(allCities, results.results[j].address_components[k].long_name))){
                                                     allCities.push(results.results[j].address_components[k].long_name);
                                                     allCitiesLatLng[allCitiesKeyCount] = {
+                                                        address : results.results[j].address_components[k].long_name + ', ' + results.results[j].formatted_address.split(results.results[j].address_components[k].long_name)[1].replace(/[0-9]/g, ''),
                                                         city : results.results[j].address_components[k].long_name,
                                                         lat : results.results[j].geometry.location.lat,
                                                         lng : results.results[j].geometry.location.lng,
@@ -85,7 +86,24 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
                                     }
 
                                     if( temp == allCitiesLength){
-                                        res.json(allCitiesLatLng);
+                                        var tempCount = 0;
+                                        function sendCities (allCitiesDetails) {
+                                            res.json(allCitiesDetails);
+                                        }
+
+                                        Object.keys(allCitiesLatLng).forEach(function(key) {
+                                          var cityDetails = allCitiesLatLng[key];
+                                              geocoder.geocode(cityDetails.address, function(err, res) {
+                                                    tempCount++;
+                                                    allCitiesLatLng[key].lat = res[0].latitude;
+                                                    allCitiesLatLng[key].lng = res[0].longitude;
+                                                    if(Object.keys(allCitiesLatLng).length == tempCount){
+                                                        sendCities(allCitiesLatLng);
+                                                    }
+                                              });
+                                        });
+
+
                                     }
                                 }
                             })
@@ -200,7 +218,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
     });
 
     // =====================================
-	// Expedia ===========================
+	// Airbnb ==============================
 	// =====================================
     app.get('/hotels', function(req, res, next) {
 
@@ -211,7 +229,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
         var guests = req.query.guests;
         var page = req.query.page;
 
-        geocoder.reverse({lat:45.767, lon:4.833})
+        geocoder.reverse({lat:lat, lon:lng})
             .then(function(result) {
                 airbnb.search({
                      location: result[0].city,
@@ -221,7 +239,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
                      page: 1,
                      ib: true
                     }).then(function(searchResults) {
-                      res.json(searchResults.results_json.search_results);
+                        res.json(searchResults.results_json.search_results);
                 });
             })
             .catch(function(err) {

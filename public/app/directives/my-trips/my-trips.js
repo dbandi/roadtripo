@@ -1,4 +1,4 @@
-app.directive("myTrips", function(dataService, dataFactory, $timeout, ngDialog, NgMap) {
+app.directive("myTrips", function(dataService, dataFactory, $timeout, ngDialog, NgMap, $animate) {
 
     function link($scope) {
 
@@ -56,6 +56,23 @@ app.directive("myTrips", function(dataService, dataFactory, $timeout, ngDialog, 
 
             NgMap.initMap('Map');
         }
+
+        $scope.viewHomePage = function(){
+            console.log("Homepage");
+            $scope.$emit('viewHomePage');
+        }
+
+        $scope.viewUserTrips = function(){
+            if($scope.user_id != 0){
+                $scope.$emit('viewUserTrips');
+            }
+            else{
+                var saveDetails = {
+                    isSaveTrip: false
+                }
+                $scope.$emit('login', saveDetails);
+            }
+        };
 
         $scope.viewPlaces = function(){
             $scope.$emit('viewPlaces');

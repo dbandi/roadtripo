@@ -2,7 +2,7 @@
 
     <div class="nav-wrapper left-small">
         <div class="left-nav">
-            <img src="images/logo-dark.png"/>
+            <a ng-click="viewHomePage()"><img src="images/logo-dark.png"/></a>
         </div>
         <div class="right-nav">
             <ul>
@@ -61,24 +61,61 @@
         <div class="list-places-wrapper">
             <div class="full-width-container">
                 <div class="list-places-block">
-                    <div class="masonry">
+                    <div class="masonry-block">
                         <div class="places-block" ng-repeat="place in places">
                             <div class="individual-place-block item" ng-class="{'active': trip.indexOf(place) != -1}">
                                 <div class="individual-place-block-wrapper">
                                     <a ng-click="addToTrip(place)" class="add-trip">
-                                        <div class="place-image-block">
+                                        <div class="place-image-block animated SlideInUp" ng-class="{'hideImage': activeMap == place.placeid}">
                                             <span class="trip-category">{{place.placetype}}</span>
                                             <div class="img-photo" style="background-image: url({{place.photo}})"></div>
                                             <div class="img-cover"></div>
                                             <span class="add-on-hover"><i class="fa fa-check" aria-hidden="true"> </i> Add to trip</span>
-                                            <span class="addded-trip"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                        </div>
+                                        <div class="animated SlideInUp place-map-block" id="map_{{place.placeid}}" ng-class="{'hideMap': activeMap != place.placeid}">
+                                            <direction-map ng-if="activeMap == place.placeid" class="animated SlideInUp slide" map-source="mapSource" map-destination="mapDestination"></direction-map>
                                         </div>
                                         <div class="place-content-block">
-                                            <img class="curve" ng-src="images/curve-1.png"/>
+                                            <span class="addded-trip"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                            <div class="rating-block">
+                                                <span ng-if="place.rating > 0">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 1"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 1"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 1">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 2"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 2"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 2">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 3"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 3"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 3">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 4"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 4"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 4">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 5"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 5"></i>
+                                                </span>
+                                            </div>
                                             <h4>{{place.placename}}</h4>
                                             <p>{{place.city}}</p>
                                             <span class="hide" id="lat">{{place.lat}}</span>
                                             <span class="hide" id="lng">{{place.lng}}</span>
+
+                                            <div class="distance-price-block">
+                                                <div class="distance-price-left-block">
+                                                    {{place.distance}}<span>Miles</span>
+                                                </div>
+                                                <div class="distance-price-right-block">
+                                                    <ul>
+                                                        <li>{{place.city}}</li>
+                                                        <li>{{place.address}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
                                             <div class="showGasPrices" ng-if="showGasPrices">
                                                 <h6>Petrol</h6>
                                                 <ul>
@@ -104,6 +141,9 @@
                                             </div>
                                         </div>
                                     </a>
+                                    <div class="place-button">
+                                        <a ng-click="viewMap(place)">View Map</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

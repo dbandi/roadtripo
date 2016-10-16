@@ -6,12 +6,18 @@ app.factory('dataFactory', function () {
         APIplacesModel.placeid = responseData.id;
         APIplacesModel.placeAPI = 'Foursquare';
         APIplacesModel.placename = responseData.name;
-        APIplacesModel.address = responseData.location.formattedAddress.join();
+        APIplacesModel.address = responseData.location.formattedAddress.join().replace(/ *\([^)]*\) */g, "");
+        APIplacesModel.distance = (parseFloat(responseData.location.distance) * 0.000621371192).toFixed(2);
         APIplacesModel.lat = parseFloat(responseData.location.lat);
         APIplacesModel.lng = parseFloat(responseData.location.lng);
         APIplacesModel.city = responseData.location.city;
-        APIplacesModel.rating = responseData.rating;
-        APIplacesModel.photo = responseData.photos.groups[0].items[0].prefix + '365x365' + responseData.photos.groups[0].items[0].suffix;
+        APIplacesModel.state = responseData.location.state;
+        var rating = parseFloat(responseData.rating);
+        if(rating > 5){
+            rating = rating/2;
+        }
+        APIplacesModel.rating = rating;
+        APIplacesModel.photo = responseData.photos.groups[0].items[0].prefix + '420x300' + responseData.photos.groups[0].items[0].suffix;
         APIplacesModel.placetype = responseData.categories[0].shortName;
         return APIplacesModel;
     }
@@ -21,17 +27,22 @@ app.factory('dataFactory', function () {
         APIplacesModel.placeid = responseData.id;
         APIplacesModel.placeAPI = 'Yelp';
         APIplacesModel.placename = responseData.name;
-        APIplacesModel.address = responseData.id;
+        APIplacesModel.address = responseData.location.display_address.join();
+        APIplacesModel.distance = (parseFloat(responseData.distance) * 0.000621371192).toFixed(2);
         APIplacesModel.lat = parseFloat(responseData.location.coordinate.latitude);
         APIplacesModel.lng = parseFloat(responseData.location.coordinate.longitude);
         APIplacesModel.city = responseData.location.city;
-
+        APIplacesModel.state = responseData.location.state;
         var largePhoto = responseData.image_url.split('/');
         largePhoto.pop();
         largePhoto = largePhoto.join('/');
         largePhoto = largePhoto + '/l.jpg';
 
-        APIplacesModel.rating = responseData.rating;
+        var rating = parseFloat(responseData.rating);
+        if(rating > 5){
+            rating = rating/2;
+        }
+        APIplacesModel.rating = rating;
         APIplacesModel.photo = largePhoto;
         APIplacesModel.placetype = responseData.categories[responseData.categories.length - 1][0];
         return APIplacesModel;
@@ -64,9 +75,11 @@ app.factory('dataFactory', function () {
         APIplacesModel.placeAPI = 'GasStation';
         APIplacesModel.placename = responseData.station;
         APIplacesModel.address = responseData.address;
+        APIplacesModel.distance = 35;
         APIplacesModel.lat = parseFloat(responseData.lat);
         APIplacesModel.lng = parseFloat(responseData.lng);
         APIplacesModel.city = responseData.city;
+        APIplacesModel.state = responseData.state;
         APIplacesModel.rating = 5;
         APIplacesModel.reg_price = responseData.reg_price;
         APIplacesModel.mid_price = responseData.mid_price;
@@ -83,10 +96,16 @@ app.factory('dataFactory', function () {
         APIplacesModel.placeAPI = 'Airbnb';
         APIplacesModel.placename = responseData.listing.name;
         APIplacesModel.address = responseData.listing.public_address;
+        APIplacesModel.distance = 35;
         APIplacesModel.lat = parseFloat(responseData.listing.lat);
         APIplacesModel.lng = parseFloat(responseData.listing.lng);
         APIplacesModel.city = "";
-        APIplacesModel.rating = responseData.listing.star_rating;
+        APIplacesModel.state = "";
+        var rating = parseFloat(responseData.listing.star_rating);
+        if(rating > 5){
+            rating = rating/2;
+        }
+        APIplacesModel.rating = rating;
         APIplacesModel.price = responseData.pricing_quote.rate.amount;
         APIplacesModel.currency = responseData.pricing_quote.rate.currency;
         APIplacesModel.price_type = responseData.pricing_quote.rate_type;

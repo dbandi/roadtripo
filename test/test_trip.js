@@ -19,21 +19,19 @@ var user1 = request.agent();
     .send({ username: 'user@gmail.com', password: 'user' })
     .end(function(err, res) {
         // user1 will manage its own cookies
-        // res.redirects contains an Array of redirects          
+        // res.redirects contains an Array of redirects
     });
 
-  /*
-  * Test the /GET route
-  */
+    // =====================================
+    // Test Get Trips ======================
+    // =====================================
   describe('/GET gettrips', () => {
       it('it should GET all the gettrips', (done) => {
         chai.request(app)
             .get('/gettrips')
             .end((err, res) => {
-                //console.log(res);
                 res.should.have.status(200);
                 res.body.should.be.a('object');
-                //res.body.length.should.be.eql(0);
               done();
             });
       });

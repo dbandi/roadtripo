@@ -1,9 +1,9 @@
-var app = angular.module('roadtripo',['ngAutocomplete','ngMap', 'ngDialog']);
+var app = angular.module('roadtripo',['ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate']);
 
-app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 'NgMap', 'ngDialog', function($scope, $http, dataService, dataFactory, NgMap, ngDialog) {
+app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 'NgMap', 'ngDialog', '$animate', function($scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate) {
 
     NgMap.getMap({id:'contactmap'}).then(function(map) {
-      map.setZoom(4);      
+      map.setZoom(4);
     });
 
     $scope.cities = [];
@@ -30,7 +30,6 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
     $scope.mytrips = [];
 
     dataService.getUserId().then(function (response) {
-        console.log(response.data);
         $scope.userId = response.data;
     });
 
@@ -52,6 +51,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
                 dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
                     for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
                         var responseData = response.data.response.groups[0].items[j].venue;
+                        console.log(responseData);
                         var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);
                         $scope.places.push(placesModel);
                     }
@@ -68,6 +68,12 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
             $scope.listCities = false;
             $scope.userTrips = true;
         });
+    });
+
+    $scope.$on('viewHomePage', function(ev, data) {
+        $scope.homePage = true;
+        $scope.listCities = false;
+        $scope.userTrips = false;
     });
 
     $scope.$on('viewPlaces', function(ev, data) {
@@ -88,7 +94,6 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
     });
 
     $scope.viewUserTrips = function(){
-        console.log($scope.userId);
         if($scope.userId != 0 && $scope.userId != "unauthorized"){
             $scope.$emit('viewUserTrips');
         }
@@ -108,12 +113,9 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
             username : $scope.userEmail,
             password : $scope.userPassword
         }
-        console.log($scope.isSaveTrip);
         dataService.login(userDetails).then(function (response) {
-            console.log(response);
             if(response.data.success){
                 $scope.userId = response.data.user_id;
-                console.log($scope.userId);
                 ngDialog.close();
 
                 if($scope.isSaveTrip == true){
