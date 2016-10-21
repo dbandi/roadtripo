@@ -56,14 +56,17 @@ module.exports = function(passport) {
                 } else {
                     // if there is no user with that username
                     // create the user
+                    console.log(req.body);
                     var newUserMysql = {
+                        uname: req.body.uname,
                         username: username,
+                        userphone: req.body.userphone,
                         password: bcrypt.hashSync(password, null, null)  // use the generateHash function in our user model
                     };
 
-                    var insertQuery = "INSERT INTO users ( username, password ) values (?,?)";
-
-                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password],function(err, rows) {
+                    var insertQuery = "INSERT INTO users ( uname, username, password, userphone ) values (?,?,?,?)";
+                    console.log(insertQuery);
+                    connection.query(insertQuery,[newUserMysql.uname, newUserMysql.username, newUserMysql.password, newUserMysql.userphone],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
                         return done(null, newUserMysql);

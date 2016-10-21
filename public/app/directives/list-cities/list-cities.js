@@ -1,4 +1,4 @@
-app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialog, $animate) {
+app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialog, $animate, NgMap) {
 
     function link($scope) {
 
@@ -50,6 +50,7 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
             for (var i = 0; i < citiesLength; i++) {
                 $scope.listPlaces = true;
                 dataService.getGasStations('reg', $scope.cities[i].lat, $scope.cities[i].lng, 2, 'distance').then(function (response) {
+                    console.log(response);
                     for (var j = 0; j < response.data.length; j++) {
                         var responseData = response.data[j];
                         var placesModel = dataFactory.getGasStationAPIplacesModel(responseData);
@@ -79,10 +80,11 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
         }
 
         $scope.viewMap = function(place){
+            console.log(place);
             $scope.mapSource = place.city + ',' + place.state;
             $scope.mapDestination = place.address;
             $scope.activeMap = place.placeid;
-            NgMap.initMap('Map');
+            //NgMap.initMap('Map');
         }
 
         $scope.addToTrip = function(place){
@@ -134,6 +136,11 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
             }
 
         };
+
+        $scope.signupForm = function(){
+            console.log("Signup");
+            $scope.$emit('signup');
+        }
 
         $scope.viewHomePage = function(){
             $scope.$emit('viewHomePage');

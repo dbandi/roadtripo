@@ -75,7 +75,7 @@ app.factory('dataFactory', function () {
         APIplacesModel.placeAPI = 'GasStation';
         APIplacesModel.placename = responseData.station;
         APIplacesModel.address = responseData.address;
-        APIplacesModel.distance = 35;
+        APIplacesModel.distance = responseData.distance.split(' ')[0];
         APIplacesModel.lat = parseFloat(responseData.lat);
         APIplacesModel.lng = parseFloat(responseData.lng);
         APIplacesModel.city = responseData.city;
@@ -99,7 +99,7 @@ app.factory('dataFactory', function () {
         APIplacesModel.distance = 35;
         APIplacesModel.lat = parseFloat(responseData.listing.lat);
         APIplacesModel.lng = parseFloat(responseData.listing.lng);
-        APIplacesModel.city = "";
+        APIplacesModel.city = responseData.listing.public_address;
         APIplacesModel.state = "";
         var rating = parseFloat(responseData.listing.star_rating);
         if(rating > 5){

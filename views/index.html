@@ -19,6 +19,7 @@
         <script type="text/javascript" src="app/services.js"></script>
         <script type="text/javascript" src="app/directives/list-cities/list-cities.js"></script>
         <script type="text/javascript" src="app/directives/my-trips/my-trips.js"></script>
+        <script type="text/javascript" src="app/directives/trip-details/trip-details.js"></script>
         <script type="text/javascript" src="app/directives/list-cities/direction-map/direction-map.js"></script>
         <script type="text/javascript" src="javascripts/ngAutocomplete.js"></script>
         <script type="text/javascript" src="javascripts/ngDialog.js"></script>
@@ -152,6 +153,8 @@
                 <list-cities cities="cities" places="places" trip="trip" trip-id="tripId" trip-details="tripDetails" user-id="userId" source="source" destination="destination" is-save-trip="isSaveTrip" ng-if="listCities"></list-cities>
 
                 <my-trips mytrips="mytrips" user-id="userId" ng-if="userTrips"></my-trips>
+
+                <trip-details trip-route="tripRoute" ng-if="viewDetails"></trip-details>
             </div>
         </div>
     </body>

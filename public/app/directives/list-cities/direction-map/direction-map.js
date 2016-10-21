@@ -6,9 +6,7 @@ app.directive("directionMap", function(dataService, dataFactory, $timeout, ngDia
             polylineOptions: {
             strokeColor: 'blue'
           }
-        }
-
-        NgMap.initMap('Map');
+        }        
     }
 
     return {

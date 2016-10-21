@@ -7,6 +7,7 @@
                     <h2>roadtripo</h2>
                     <div class="screen-title-section">
                         <h1>Welcome to the <br>Roadtripo.</h1>
+                        <button type="button" ng-click="signupForm()" class="btn signup-button">Sign Up</button>
                     </div>
                     <p>Its time for a Trip.</p>
                     <p>Make a iteneray with RoadTripo and share it with friends.</p>
@@ -17,9 +18,11 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <form name="loginForm" ng-submit="login(userEmail,userPassword)" class="form-horizontal" novalidate="novalidate">
+                                <h4 class="login-title">
+                                    Sign In
+                                    <p>{{loginError}}</p>
+                                </h4>
 
-                                <h4 class="login-title">Sign In</h4>
-                                <p>{{loginError}}</p>
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="username" ng-model="userEmail" ng-minlength="1" ng-required="true" autocomplete="off" placeholder="Email Address">
                                 </div>
@@ -36,8 +39,6 @@
                                     <button class="social-signin facebook">Log in with Facebook</button>
                                     <button class="social-signin google">Log in with Google</button>
                                 </div>
-
-
                             </form>
                         </div>
                     </div>

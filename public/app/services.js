@@ -75,6 +75,15 @@ app.service('dataService', function($http) {
           });
       }
 
+      this.signup = function(userDetails) {
+          return $http({
+              method: 'POST',
+              url: '/signup',
+              data: userDetails,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
       this.getUserId = function() {
           return $http({
               method: 'GET',
@@ -87,6 +96,14 @@ app.service('dataService', function($http) {
           return $http({
               method: 'GET',
               url: '/gettrips',
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.getTripRoute = function(tripId){
+          return $http({
+              method: 'GET',
+              url: '/gettriproute?trip_id='+tripId,
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }

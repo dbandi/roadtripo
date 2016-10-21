@@ -38,22 +38,14 @@
             <h6>{{sourceCity}}</h6>
             <h1>{{destinationCity}}</h1>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <a href="#" class="btn">View Map</a>
         </div>
 
         <div id="map" class="map-places-wrapper">
-            <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]">
+            <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]"
+                styles="[{'featureType':'water','elementType':'geometry','stylers':[{'color':'#e9e9e9'},{'lightness':17}]},{'featureType':'landscape','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':20}]},{'featureType':'road.highway','elementType':'geometry.fill','stylers':[{'color':'#ffffff'},{'lightness':17}]},{'featureType':'road.highway','elementType':'geometry.stroke','stylers':[{'color':'#ffffff'},{'lightness':29},{'weight':0.2}]},{'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':18}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':16}]},{'featureType':'poi','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':21}]},{'featureType':'poi.park','elementType':'geometry','stylers':[{'color':'#dedede'},{'lightness':21}]},{'elementType':'labels.text.stroke','stylers':[{'visibility':'on'},{'color':'#ffffff'},{'lightness':16}]},{'elementType':'labels.text.fill','stylers':[{'saturation':36},{'color':'#333333'},{'lightness':40}]},{'elementType':'labels.icon','stylers':[{'visibility':'off'}]},{'featureType':'transit','elementType':'geometry','stylers':[{'color':'#f2f2f2'},{'lightness':19}]},{'featureType':'administrative','elementType':'geometry.fill','stylers':[{'color':'#fefefe'},{'lightness':20}]},{'featureType':'administrative','elementType':'geometry.stroke','stylers':[{'color':'#fefefe'},{'lightness':17},{'weight':1.2}]}]"
+            >
                 <div class="maps-block" ng-repeat="place in places">
                     <marker center="{{place.lat}},{{place.lng}}" position="[{{place.lat}}, {{place.lng}}]" title="marker" animation="Animation.DROP" icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"></marker>
-                    <!--<marker position="[40.71, -74.21]" title="hello"></marker>
-                    <marker position="[40.72, -74.20]" title="marker" animation="Animation.DROP"></marker>
-                    <marker position="[40.73, -74.19]" title="drag me" draggable="true"></marker>
-                    <marker position="[40.74, -74.18]" title="how" animation="Animation.BOUNCE"></marker>
-                    <marker position="[40.75, -74.17]" title="are"></marker>
-                    <marker position="[40.76, -74.16]" title="you"
-                      icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"></marker>
-                    <marker position="[40.77, -74.15]" title="from"></marker>
-                    <marker position="[40.78, -74.14]" title="allen"></marker>-->
                 </div>
             </ng-map>
         </div>
@@ -117,7 +109,6 @@
                                             </div>
 
                                             <div class="showGasPrices" ng-if="showGasPrices">
-                                                <h6>Petrol</h6>
                                                 <ul>
                                                     <li>
                                                         <p>Reg</p>
@@ -131,10 +122,8 @@
                                                         <p>Pre</p>
                                                         <span>{{place.pre_price}}</span>
                                                     </li>
-                                                </ul>
-                                                <h6>Diesel</h6>
-                                                <ul>
                                                     <li>
+                                                        <p>Diesel</p>
                                                         <span>{{place.diesel_price}}</span>
                                                     </li>
                                                 </ul>

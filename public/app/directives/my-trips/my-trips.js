@@ -21,44 +21,7 @@ app.directive("myTrips", function(dataService, dataFactory, $timeout, ngDialog, 
             $scope.alltrips.push(eachTrip);
         }
 
-        $scope.mapOrigin = $scope.mytrips[0].trip_start;
-        $scope.mapDestination = $scope.mytrips[0].trip_end;
-        var trip_waypoints = JSON.parse($scope.mytrips[0].trip_details);
-        for (var j = 0; j < trip_waypoints.length; j++) {
-            var waypoint_location = {
-                lat : trip_waypoints[j].lat,
-                lng : trip_waypoints[j].lng
-            }
-
-            $scope.mapWayPoints.push({
-                location : waypoint_location,
-                stopover : true
-            });
-        }
-
-        $scope.getRoute = function(RouteNo){
-            $scope.mapWayPoints = [];
-
-            $scope.mapOrigin = $scope.mytrips[RouteNo].trip_start;
-            $scope.mapDestination = $scope.mytrips[RouteNo].trip_end;
-            var trip_waypoints = JSON.parse($scope.mytrips[RouteNo].trip_details);
-            for (var j = 0; j < trip_waypoints.length; j++) {
-                var waypoint_location = {
-                    lat : trip_waypoints[j].lat,
-                    lng : trip_waypoints[j].lng
-                }
-
-                $scope.mapWayPoints.push({
-                    location : waypoint_location,
-                    stopover : true
-                });
-            }
-
-            NgMap.initMap('Map');
-        }
-
         $scope.viewHomePage = function(){
-            console.log("Homepage");
             $scope.$emit('viewHomePage');
         }
 
@@ -74,12 +37,12 @@ app.directive("myTrips", function(dataService, dataFactory, $timeout, ngDialog, 
             }
         };
 
-        $scope.viewPlaces = function(){
-            $scope.$emit('viewPlaces');
-        }
-
         $scope.viewTrip = function(){
             $scope.$emit('viewTrip');
+        }
+
+        $scope.viewDetails = function(tripId){
+            $scope.$emit('viewDetails', tripId);
         }
     }
 

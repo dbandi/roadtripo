@@ -374,7 +374,7 @@ a {
   font-style: normal;
 }
 
-.i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .listPlaces .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .list-mytrip-wrapper .mytrip-block h2, .login-section-wrapper .screen-logo-section p, .login-section-wrapper .login-title {
+.i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .listPlaces .main-container-section .main-container-header p, .tripDetails .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .list-tripDetail-wrapper .tripDetail-block h2, .login-section-wrapper .screen-logo-section p, .login-section-wrapper .login-title {
   font-family: "Ubuntu";
   font-weight: 300;
   font-style: normal;
@@ -392,7 +392,7 @@ a {
   font-style: normal;
 }
 
-body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p {
+body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-container-section .main-container-header h6, .tripDetails .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p {
   font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
@@ -410,7 +410,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .listPlaces .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1 {
+.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .listPlaces .main-container-section .main-container-header h1, .tripDetails .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1, .list-tripDetail-wrapper .tripDetail-block h4 {
   font-family: "Ubuntu";
   font-weight: 500;
   font-style: normal;
@@ -446,7 +446,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.filter-nav ul li a, .list-mytrip-wrapper .mytrip-block h4 {
+.filter-nav ul li a {
   font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
@@ -509,63 +509,34 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   opacity: 0;
   border: 10px solid #00a6cd;
   background: transparent;
-  -webkit-border-radius: 60px;
-  -moz-border-radius: 60px;
-  border-radius: 60px;
-  -webkit-animation: flash 2s ease-out;
-  -moz-animation: flash 2s ease-out;
-  animation: flash 2s ease-out;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+  /*-webkit-border-radius: 60px;
+		-moz-border-radius: 60px;
+		border-radius: 60px;
+		-webkit-animation: flash 2s ease-out;
+		-moz-animation: flash 2s ease-out;
+		animation: flash 2s ease-out;
+    -webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;*/
 }
 
-@-moz-keyframes pulse {
-  0% {
-    -moz-transform: scale(0);
-    opacity: 0.0;
+/*
+  @-moz-keyframes pulse {
+	 0% {-moz-transform: scale(0);opacity: 0.0;}
+	 25% {-moz-transform: scale(0);opacity: 0.1;}
+	 50% {-moz-transform: scale(0.1);opacity: 0.3;}
+	 75% {-moz-transform: scale(0.5);opacity: 0.5;}
+	 100% {-moz-transform: scale(1);opacity: 0.0;}
   }
-  25% {
-    -moz-transform: scale(0);
-    opacity: 0.1;
-  }
-  50% {
-    -moz-transform: scale(0.1);
-    opacity: 0.3;
-  }
-  75% {
-    -moz-transform: scale(0.5);
-    opacity: 0.5;
-  }
-  100% {
-    -moz-transform: scale(1);
-    opacity: 0.0;
-  }
-}
 
-@-webkit-keyframes "flash" {
-  0% {
-    -webkit-transform: scale(0);
-    opacity: 0.0;
-  }
-  25% {
-    -webkit-transform: scale(0);
-    opacity: 0.1;
-  }
-  50% {
-    -webkit-transform: scale(0.1);
-    opacity: 0.3;
-  }
-  75% {
-    -webkit-transform: scale(0.5);
-    opacity: 0.5;
-  }
-  100% {
-    -webkit-transform: scale(1);
-    opacity: 0.0;
-  }
-}
-
+  @-webkit-keyframes "flash" {
+	 0% {-webkit-transform: scale(0);opacity: 0.0;}
+	 25% {-webkit-transform: scale(0);opacity: 0.1;}
+	 50% {-webkit-transform: scale(0.1);opacity: 0.3;}
+	 75% {-webkit-transform: scale(0.5);opacity: 0.5;}
+	 100% {-webkit-transform: scale(1);opacity: 0.0;}
+	}
+*/
 .label-start {
   margin-top: 35px;
 }
@@ -995,7 +966,7 @@ nav {
   height: 75vh;
 }
 
-.listPlaces .filter-sidebar-section, .myTrips .filter-sidebar-section {
+.listPlaces .filter-sidebar-section, .tripDetails .filter-sidebar-section, .myTrips .filter-sidebar-section {
   width: -webkit-calc(16.66667%);
   width: -moz-calc(16.66667%);
   width: calc(16.66667%);
@@ -1009,7 +980,7 @@ nav {
   position: fixed;
 }
 
-.listPlaces .main-container-section, .myTrips .main-container-section {
+.listPlaces .main-container-section, .tripDetails .main-container-section, .myTrips .main-container-section {
   width: -webkit-calc(66.66667%);
   width: -moz-calc(66.66667%);
   width: calc(66.66667%);
@@ -1020,12 +991,12 @@ nav {
   margin-right: 0%;
 }
 
-.listPlaces .main-container-section .main-container-header, .myTrips .main-container-section .main-container-header {
+.listPlaces .main-container-section .main-container-header, .tripDetails .main-container-section .main-container-header, .myTrips .main-container-section .main-container-header {
   margin-top: 60px;
   text-align: center;
 }
 
-.listPlaces .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6 {
+.listPlaces .main-container-section .main-container-header h6, .tripDetails .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6 {
   font-size: 136px;
   color: #f6f6f6;
   line-height: 80px;
@@ -1036,7 +1007,7 @@ nav {
   text-transform: uppercase;
 }
 
-.listPlaces .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1 {
+.listPlaces .main-container-section .main-container-header h1, .tripDetails .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1 {
   font-size: 76px;
   color: #010101;
   line-height: 34px;
@@ -1047,7 +1018,7 @@ nav {
   text-transform: uppercase;
 }
 
-.listPlaces .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p {
+.listPlaces .main-container-section .main-container-header p, .tripDetails .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p {
   font-size: 16px;
   color: #777777;
   line-height: initial;
@@ -1058,30 +1029,30 @@ nav {
   margin-bottom: 40px;
 }
 
-.listPlaces .main-container-section .main-container-header a, .myTrips .main-container-section .main-container-header a {
+.listPlaces .main-container-section .main-container-header a, .tripDetails .main-container-section .main-container-header a, .myTrips .main-container-section .main-container-header a {
   color: #777777;
 }
 
-.listPlaces .full-screen-section, .myTrips .full-screen-section {
+.listPlaces .full-screen-section, .tripDetails .full-screen-section, .myTrips .full-screen-section {
   height: auto;
 }
 
-.listPlaces .full-screen-wrapper, .myTrips .full-screen-wrapper {
+.listPlaces .full-screen-wrapper, .tripDetails .full-screen-wrapper, .myTrips .full-screen-wrapper {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
 
-.listPlaces .btn, .listPlaces .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .listPlaces a, .listPlaces .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .listPlaces button, .myTrips .btn, .myTrips .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .myTrips a, .myTrips .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .myTrips button {
+.listPlaces .btn, .listPlaces .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .listPlaces a, .listPlaces .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .listPlaces button, .tripDetails .btn, .tripDetails .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .tripDetails a, .tripDetails .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .tripDetails button, .myTrips .btn, .myTrips .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .myTrips a, .myTrips .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .myTrips button {
   background-color: transparent;
   border: 2px solid #2eb6f5;
   padding: 10px 40px;
   margin: 15px;
 }
 
-.listPlaces #map, .myTrips #map {
-  height: 0 !important;
-  opacity: 0;
+.listPlaces #map, .tripDetails #map, .myTrips #map {
+  /*height: 0 !important;
+        opacity: 0;*/
 }
 
 .full-screen-block {
@@ -1188,7 +1159,7 @@ nav {
 
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper {
   background-color: #fff;
-  box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
+  box-shadow: 0px 0px 10px rgba(204, 204, 204, 0.1);
   border: 1px solid #fbfbfb;
   position: relative;
 }
@@ -1197,6 +1168,17 @@ nav {
   display: table;
   width: 100%;
   cursor: pointer;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .img-cover {
+  background-image: url("../../../images/road.png");
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
 }
 
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block {
@@ -1239,6 +1221,7 @@ nav {
   position: absolute;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block.hideImage {
@@ -1363,6 +1346,11 @@ nav {
   top: 21px;
 }
 
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 5px;
+}
+
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices h6 {
   text-align: center;
   text-transform: uppercase;
@@ -1404,6 +1392,12 @@ nav {
   color: #ffffff;
   padding: 2px 6px;
   border-radius: 3px;
+}
+
+.list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .showGasPrices ul li:nth-child(4) span {
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #343638;
 }
 
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block a {
@@ -1756,14 +1750,17 @@ nav {
 }
 
 /*********************************
-            MY TRIPS
+            My Trip
 *********************************/
-.list-mytrip-wrapper .list-mytrip-block {
+/*********************************
+            Trip Details
+*********************************/
+.list-tripDetail-wrapper .list-tripDetail-block {
   width: 100%;
   height: 75vh;
 }
 
-.list-mytrip-wrapper .mytrip-block {
+.list-tripDetail-wrapper .tripDetail-block {
   width: -webkit-calc(33.33333%);
   width: -moz-calc(33.33333%);
   width: calc(33.33333%);
@@ -1775,13 +1772,13 @@ nav {
   height: 100%;
 }
 
-.list-mytrip-wrapper .mytrip-block .mytrip-block-wrapper {
+.list-tripDetail-wrapper .tripDetail-block .tripDetail-block-wrapper {
   background-color: #f4f4f4;
   height: 100%;
   padding: 10px;
 }
 
-.list-mytrip-wrapper .mytrip-block .mytrip-overview {
+.list-tripDetail-wrapper .tripDetail-block .tripDetail-overview {
   position: relative;
   z-index: 10;
   background-color: #fff;
@@ -1791,7 +1788,7 @@ nav {
   box-shadow: 3px 3px 3px #ececec;
 }
 
-.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-images {
+.list-tripDetail-wrapper .tripDetail-block .tripDetail-overview .tripDetail-images {
   width: -webkit-calc(33.33333%);
   width: -moz-calc(33.33333%);
   width: calc(33.33333%);
@@ -1804,7 +1801,7 @@ nav {
   height: 120px;
 }
 
-.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-images .square-img {
+.list-tripDetail-wrapper .tripDetail-block .tripDetail-overview .tripDetail-images .square-img {
   position: absolute;
   background-size: cover;
   background-position: 50% 50%;
@@ -1813,7 +1810,7 @@ nav {
   height: 100%;
 }
 
-.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-content {
+.list-tripDetail-wrapper .tripDetail-block .tripDetail-overview .tripDetail-content {
   width: -webkit-calc(66.66667%);
   width: -moz-calc(66.66667%);
   width: calc(66.66667%);
@@ -1824,11 +1821,11 @@ nav {
   margin-right: 0%;
 }
 
-.list-mytrip-wrapper .mytrip-block .mytrip-overview .mytrip-content .mytrip-content-wrapper {
+.list-tripDetail-wrapper .tripDetail-block .tripDetail-overview .tripDetail-content .tripDetail-content-wrapper {
   padding: 10px;
 }
 
-.list-mytrip-wrapper .mytrip-block h2 {
+.list-tripDetail-wrapper .tripDetail-block h2 {
   font-size: 18px;
   color: #777777;
   line-height: initial;
@@ -1838,7 +1835,7 @@ nav {
   font-family: 'Roboto';
 }
 
-.list-mytrip-wrapper .mytrip-block h4 {
+.list-tripDetail-wrapper .tripDetail-block h4 {
   font-size: 12px;
   color: #777777;
   line-height: initial;
@@ -1846,10 +1843,9 @@ nav {
   margin-bottom: 0px;
   margin-top: 0px;
   padding-top: 6px;
-  text-transform: uppercase;
 }
 
-.list-mytrip-wrapper .mytrip-block .btn, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button {
+.list-tripDetail-wrapper .tripDetail-block .btn, .list-tripDetail-wrapper .tripDetail-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-tripDetail-wrapper .tripDetail-block a, .list-tripDetail-wrapper .tripDetail-block .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .list-tripDetail-wrapper .tripDetail-block button {
   position: relative;
   margin: 10px 10px 10px 0px;
   color: #2eb6f5;
@@ -1870,26 +1866,26 @@ nav {
   line-height: 14px;
 }
 
-.list-mytrip-wrapper .mytrip-block .btn:before, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:before, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:before, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:before, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:before {
+.list-tripDetail-wrapper .tripDetail-block .btn:before, .list-tripDetail-wrapper .tripDetail-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:before, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-tripDetail-wrapper .tripDetail-block a:before, .list-tripDetail-wrapper .tripDetail-block .full-screen-block .form-group .form-button button:before, .full-screen-block .form-group .form-button .list-tripDetail-wrapper .tripDetail-block button:before {
   content: attr(data-text);
   position: absolute;
   top: 100px;
 }
 
-.list-mytrip-wrapper .mytrip-block .btn:nth-of-type(2), .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:nth-of-type(2), .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:nth-of-type(2), .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:nth-of-type(2), .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:nth-of-type(2) {
+.list-tripDetail-wrapper .tripDetail-block .btn:nth-of-type(2), .list-tripDetail-wrapper .tripDetail-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:nth-of-type(2), .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-tripDetail-wrapper .tripDetail-block a:nth-of-type(2), .list-tripDetail-wrapper .tripDetail-block .full-screen-block .form-group .form-button button:nth-of-type(2), .full-screen-block .form-group .form-button .list-tripDetail-wrapper .tripDetail-block button:nth-of-type(2) {
   background-color: #2eb6f5;
   color: #ffffff;
 }
 
-.list-mytrip-wrapper .mytrip-block .btn:hover, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:hover, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:hover, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:hover, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:hover {
+.list-tripDetail-wrapper .tripDetail-block .btn:hover, .list-tripDetail-wrapper .tripDetail-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:hover, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-tripDetail-wrapper .tripDetail-block a:hover, .list-tripDetail-wrapper .tripDetail-block .full-screen-block .form-group .form-button button:hover, .full-screen-block .form-group .form-button .list-tripDetail-wrapper .tripDetail-block button:hover {
   line-height: 60px;
 }
 
-.list-mytrip-wrapper .mytrip-block .btn:hover:before, .list-mytrip-wrapper .mytrip-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:hover:before, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-mytrip-wrapper .mytrip-block a:hover:before, .list-mytrip-wrapper .mytrip-block .full-screen-block .form-group .form-button button:hover:before, .full-screen-block .form-group .form-button .list-mytrip-wrapper .mytrip-block button:hover:before {
+.list-tripDetail-wrapper .tripDetail-block .btn:hover:before, .list-tripDetail-wrapper .tripDetail-block .i-navigation-section .i-nav-wrapper > ul > li:last-child a:hover:before, .i-navigation-section .i-nav-wrapper > ul > li:last-child .list-tripDetail-wrapper .tripDetail-block a:hover:before, .list-tripDetail-wrapper .tripDetail-block .full-screen-block .form-group .form-button button:hover:before, .full-screen-block .form-group .form-button .list-tripDetail-wrapper .tripDetail-block button:hover:before {
   top: -19px;
 }
 
-.list-mytrip-wrapper .mytrip-map {
+.list-tripDetail-wrapper .tripDetail-map {
   width: -webkit-calc(66.66667%);
   width: -moz-calc(66.66667%);
   width: calc(66.66667%);
@@ -1903,7 +1899,7 @@ nav {
   height: 100%;
 }
 
-.list-mytrip-wrapper .mytrip-map ng-map {
+.list-tripDetail-wrapper .tripDetail-map ng-map {
   height: 100%;
 }
 
@@ -1964,6 +1960,10 @@ nav {
   padding: 180px 15px;
 }
 
+.login-section-wrapper .screen-title-section.sign-up-section {
+  padding: 240px 15px;
+}
+
 .login-section-wrapper .screen-title-section h1 {
   text-align: right;
   padding-left: 20%;
@@ -2010,6 +2010,14 @@ nav {
   font-family: 'Roboto', sans-serif;
 }
 
+.login-section-wrapper .login-title p {
+  font-size: 12px;
+  padding-top: 10px;
+  text-transform: uppercase;
+  color: #e74949;
+  min-height: 24px;
+}
+
 .login-section-wrapper .sign-screen .form-group .col-md-12 {
   padding: 0px;
 }
@@ -2040,11 +2048,31 @@ nav {
   border-bottom-left-radius: 0px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+  border-left-color: #292c3d;
   padding: 10px 50px;
 }
 
 .login-section-wrapper .sign-button:hover, .login-section-wrapper .sign-button:active, .login-section-wrapper .sign-button:focus {
   color: #E74949;
+}
+
+.login-section-wrapper .signup-button {
+  background: transparent;
+  color: #292c3d;
+  border: 1px solid #292c3d;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-right-color: #e74949;
+  padding: 10px 50px;
+  float: right;
+  margin-top: 42px;
+  margin-right: -25px;
+}
+
+.login-section-wrapper .signup-button:hover, .login-section-wrapper .signup-button:active, .login-section-wrapper .signup-button:focus {
+  color: #292c3d;
 }
 
 .login-section-wrapper .form-group {

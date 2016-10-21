@@ -121,7 +121,7 @@ nav{
     height: 75vh;
 }
 
-.listPlaces, .myTrips{
+.listPlaces, .tripDetails, .myTrips{
     .filter-sidebar-section{
         @include layout(2, 10, 10);
         float: left;
@@ -175,8 +175,8 @@ nav{
     }
 
     #map{
-        height: 0 !important;
-        opacity: 0;
+        /*height: 0 !important;
+        opacity: 0;*/
     }
 }
 
@@ -255,7 +255,7 @@ nav{
 
             .individual-place-block-wrapper{
                 background-color: #fff;
-                box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.1);
+                box-shadow: 0px 0px 10px rgba(204, 204, 204, 0.1);
                 border: 1px solid #fbfbfb;
                 position: relative;
 
@@ -263,6 +263,15 @@ nav{
                     display: table;
                     width: 100%;
                     cursor: pointer;
+                }
+
+                .img-cover{
+                    background-image: url('../../../images/road.png');
+                    @include img-cover();
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    z-index: 0;
                 }
 
                 .place-image-block{
@@ -293,6 +302,7 @@ nav{
                         position: absolute;
                         left: 0;
                         right: 0;
+                        z-index: 10;
                     }
 
                     &.hideImage{
@@ -309,7 +319,7 @@ nav{
                         height: 200px;
                     }
 
-                    &.hideMap{                        
+                    &.hideMap{
                         height: 0 !important;
                         opacity: 0;
                     }
@@ -385,6 +395,8 @@ nav{
                     }
 
                     .showGasPrices{
+                        border-top: 1px solid #f0f0f0;
+                        padding-top: 5px;
                         h6{
                             text-align: center;
                             text-transform: uppercase;
@@ -429,6 +441,14 @@ nav{
                                         color: $default-color;
                                         padding: 2px 6px;
                                         border-radius: 3px;
+                                    }
+                                }
+
+                                &:nth-child(4){
+                                    span{
+                                        padding: 2px 6px;
+                                        border-radius: 3px;
+                                        border: 1px solid #343638;
                                     }
                                 }
                             }
@@ -702,24 +722,28 @@ nav{
 }
 
 /*********************************
-            MY TRIPS
+            My Trip
 *********************************/
-.list-mytrip-wrapper{
-    .list-mytrip-block{
+
+/*********************************
+            Trip Details
+*********************************/
+.list-tripDetail-wrapper{
+    .list-tripDetail-block{
         width: 100%;
         height: 75vh;
     }
-    .mytrip-block{
+    .tripDetail-block{
         @include layout(4);
         height: 100%;
 
-        .mytrip-block-wrapper{
+        .tripDetail-block-wrapper{
             background-color: #f4f4f4;
             height: 100%;
             padding: 10px;
         }
 
-        .mytrip-overview{
+        .tripDetail-overview{
             position: relative;
             z-index: 10;
             background-color: #fff;
@@ -728,7 +752,7 @@ nav{
             width: 100%;
             box-shadow: 3px 3px 3px #ececec;
 
-            .mytrip-images{
+            .tripDetail-images{
                 @include layout(4, 0, 0);
                 position: relative;
                 height: 120px;
@@ -741,10 +765,10 @@ nav{
                 }
             }
 
-            .mytrip-content{
+            .tripDetail-content{
                 @include layout(8, 0, 0);
 
-                .mytrip-content-wrapper{
+                .tripDetail-content-wrapper{
                     padding: 10px;
                 }
             }
@@ -756,9 +780,8 @@ nav{
         }
 
         h4{
-            @include web-font(Font-Bold, 12px, #777777, initial, 1px);
+            @include web-font(Font-Medium, 12px, #777777, initial, 1px);
             padding-top: 6px;
-            text-transform: uppercase;
         }
 
         .btn{
@@ -801,7 +824,7 @@ nav{
         }
     }
 
-    .mytrip-map{
+    .tripDetail-map{
         @include layout(8);
         float: right;
         overflow: hidden;
@@ -809,6 +832,10 @@ nav{
 
         ng-map{
             height: 100%;
+        }
+
+        .info-window{
+
         }
     }
 }
@@ -861,6 +888,10 @@ nav{
     }
     .screen-title-section{
       padding: 180px 15px;
+
+      &.sign-up-section{
+          padding: 240px 15px;
+      }
     }
 
     .screen-title-section h1{
@@ -893,6 +924,14 @@ nav{
         padding-left: 15px;
         @include web-font(Font-Light, 32px, $default-color, initial, 1px);
         font-family: 'Roboto', sans-serif;
+
+        p{
+            font-size: 12px;
+            padding-top: 10px;
+            text-transform: uppercase;
+            color: #e74949;
+            min-height: 24px;
+        }
     }
 
     .sign-screen .form-group .col-md-12{
@@ -922,10 +961,28 @@ nav{
         border-bottom-left-radius: 0px;
         border-top-right-radius: 30px;
         border-bottom-right-radius: 30px;
+        border-left-color: #292c3d;
         padding: 10px 50px;
     }
     .sign-button:hover, .sign-button:active, .sign-button:focus{
       color: #E74949;
+    }
+    .signup-button {
+        background: transparent;
+        color: #292c3d;
+        border: 1px solid #292c3d;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-right-color: #e74949;
+        padding: 10px 50px;
+        float: right;
+        margin-top: 42px;
+        margin-right: -25px;
+    }
+    .signup-button:hover, .signup-button:active, .signup-button:focus{
+      color: #292c3d;
     }
     .form-group {
         margin-bottom: 25px;

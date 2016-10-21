@@ -30,11 +30,23 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         }
     });
 
+    app.get('/gettriproute', function(req, res, next) {
+        var trip_id = req.query.trip_id;
+        console.log(trip_id);
+        console.log(req.query);
+        connection.query('SELECT * FROM trip WHERE trip_id = ?', [trip_id], function(err, result) {
+            if (!err){
+                return res.send(result);
+            }
+            else{
+                return res.sendStatus(400);
+            }
+
+        });
+    });
+
     app.post('/savetrip', function(req, res, next) {
-        if (typeof req.user !== 'undefined') {
-            console.log(req.body.trip_name);
-            console.log(req.body.trip_start);
-            console.log(req.body.trip_end);
+        if (typeof req.user !== 'undefined') {            
             var trip = {
                 user_id: req.user.id,
                 trip_name: req.body.trip_name,

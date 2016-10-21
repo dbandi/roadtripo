@@ -1,0 +1,53 @@
+
+    <div class="login-section-wrapper">
+        <div class="sign-screen">
+            <div class="layout-half">
+                <div class="screen-logo-section">
+
+                    <h2>roadtripo</h2>
+                    <div class="screen-title-section sign-up-section">
+                        <h1>Welcome to the <br>Roadtripo.</h1>
+                    </div>
+                    <p>Its time for a Trip.</p>
+                    <p>Make a iteneray with RoadTripo and share it with friends.</p>
+                </div>
+            </div>
+            <div class="layout-half">
+                <div class="screen-login-section">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form name="signupForm" ng-submit="signup(userName, userEmail, userPassword, userPhone)" class="form-horizontal" novalidate="novalidate">
+                                <h4 class="login-title">Sign Up</h4>
+                                <p>{{loginError}}</p>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="uname" ng-model="userName" ng-minlength="1" ng-required="true" placeholder="Full Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="username" ng-model="userEmail" ng-minlength="1" ng-required="true" placeholder="Email Address">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" ng-model="userPassword" ng-minlength="1" ng-required="true" placeholder="Password">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="userphone" ng-model="userPhone" placeholder="Phone">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn sign-button" >Sign Up</button>
+                                </div>
+
+                                <div class="form-group mt-75">
+                                    <button class="social-signin facebook">Sign Up with Facebook</button>
+                                    <button class="social-signin google">Sign Up with Google</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

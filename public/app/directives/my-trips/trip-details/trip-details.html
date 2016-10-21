@@ -1,0 +1,68 @@
+<section class="tripDetails">
+    <div class="nav-wrapper left-small">
+        <div class="left-nav">
+            <a ng-click="viewHomePage()"><img src="images/logo-dark.png"/></a>
+        </div>
+        <div class="right-nav">
+            <ul>
+                <li><a class="trip-details" ng-click="viewUserTrips()">My Trip </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="filter-sidebar-section">
+        <div class="filter-nav">
+            <ul>
+
+            </ul>
+            <!--<a class="save-trip" ng-click="viewPlaces()"><i class="fa fa-compass" aria-hidden="true"> </i> View Places </a>-->
+        </div>
+    </div>
+
+    <div class="main-container-section">
+        <div class="main-container-header">
+            <h6>Customize</h6>
+            <h1>My Trips</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+
+        <div class="list-tripDetail-wrapper">
+            <div class="full-width-container">
+                <div class="list-tripDetail-block">
+                    <div class="tripDetail-block">
+                        <div class="tripDetail-block-wrapper">
+                            <div class="tripDetail-overview" ng-repeat="trips in alltrips">
+                                <div class="tripDetail-images">
+                                    <div class="square-img" ng-repeat="pitstop in trips.trip_details" style="background-image:url({{pitstop.photo}});">
+                                    </div>
+                                </div>
+                                <div class="tripDetail-content">
+                                    <div class="tripDetail-content-wrapper">
+                                        <h2>{{trips.trip_name}}</h2>
+                                        <h4>Pitstops : {{trips.trip_pitstopcount}}</h4>
+                                        <a ng-click="getRoute($index)" data-text="Route" class="btn">Route</a>
+                                        <a ng-click="getRoute($index)" data-text="Details" class="btn">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tripDetail-map">
+                        <ng-map id="Map" zoom="14" default-style="false"
+                        styles="[{'featureType':'water','elementType':'geometry','stylers':[{'color':'#e9e9e9'},{'lightness':17}]},{'featureType':'landscape','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':20}]},{'featureType':'road.highway','elementType':'geometry.fill','stylers':[{'color':'#ffffff'},{'lightness':17}]},{'featureType':'road.highway','elementType':'geometry.stroke','stylers':[{'color':'#ffffff'},{'lightness':29},{'weight':0.2}]},{'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':18}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':16}]},{'featureType':'poi','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':21}]},{'featureType':'poi.park','elementType':'geometry','stylers':[{'color':'#dedede'},{'lightness':21}]},{'elementType':'labels.text.stroke','stylers':[{'visibility':'on'},{'color':'#ffffff'},{'lightness':16}]},{'elementType':'labels.text.fill','stylers':[{'saturation':36},{'color':'#333333'},{'lightness':40}]},{'elementType':'labels.icon','stylers':[{'visibility':'off'}]},{'featureType':'transit','elementType':'geometry','stylers':[{'color':'#f2f2f2'},{'lightness':19}]},{'featureType':'administrative','elementType':'geometry.fill','stylers':[{'color':'#fefefe'},{'lightness':20}]},{'featureType':'administrative','elementType':'geometry.stroke','stylers':[{'color':'#fefefe'},{'lightness':17},{'weight':1.2}]}]"
+                        >
+                            <directions
+                              draggable="true"
+                              panel="directions-panel"
+                              travel-mode="DRIVING"
+                              waypoints="{{mapWayPoints}}"
+                              origin="{{mapOrigin}}"
+                              destination="{{mapDestination}}">
+                            </directions>
+                        </ng-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
