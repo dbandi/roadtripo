@@ -3,36 +3,50 @@ process.env.NODE_ENV = 'test';
 
 //Require the dev-dependencies
 var passport = require('passport');
+var util = require('util');
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var app = require('../app');
 var request = require('superagent');
 var should = chai.should();
+var BasicStrategy = require('passport-http').BasicStrategy
+var AnonymousStrategy = require('passport-anonymous').Strategy;
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
+var bodyParser = require('body-parser');
 
 chai.use(chaiHttp);
 chai.use(require('chai-passport-strategy'));
 
 var user1 = request.agent();
-
-    user1
-    .post('http://localhost:3000/login')
-    .send({ username: 'user@gmail.com', password: 'user' })
-    .end(function(err, res) {
-        // user1 will manage its own cookies
-        // res.redirects contains an Array of redirects
-    });
-
     // =====================================
     // Test Get Trips ======================
     // =====================================
-  describe('/GET gettrips', () => {
-      it('it should GET all the gettrips', (done) => {
-        chai.request(app)
-            .get('/gettrips')
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('object');
-              done();
-            });
-      });
-  });
+
+  describe('Trip', function () {
+      before(function(done) {
+          user1
+          .post('http://localhost:3000/login')
+          .send({ username: 'admin@gmail.com', password: 'admin' })
+          .end(function(err, res) {
+              // user1 will manage its own cookies
+              // res.redirects contains an Array of redirects
+              app.use(cookieParser());
+              app.use(passport.initialize());
+              app.use(passport.session());
+              return done();
+          }).done();
+        });
+    });
+
+    describe('/GET gettrips', () => {
+        it('it should GET all the gettrips', (done) => {
+          chai.request(app)
+              .get('/gettrips')
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('object');
+                return done();
+              });
+        });
+    });

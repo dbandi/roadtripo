@@ -107,4 +107,12 @@ app.service('dataService', function($http) {
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }
+
+      this.deleteTrip = function(tripId){
+          return $http({
+              method: 'GET',
+              url: '/deleteTrip?trip_id='+tripId,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
 });

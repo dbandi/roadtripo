@@ -96,7 +96,7 @@ app.controller('myController',['$scope', '$http', 'dataService', 'dataFactory', 
         $scope.tripId = data;
 
         dataService.getTripRoute($scope.tripId).then(function (response) {
-            $scope.tripRoute = response.data[0];            
+            $scope.tripRoute = response.data[0];
             $scope.viewDetails = true;
         });
     });

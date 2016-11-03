@@ -115,6 +115,7 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
                     }
                     else{
                         $scope.tripId = parseInt(response.data);
+                        $scope.$emit('viewUserTrips');
                     }
                 });
             }

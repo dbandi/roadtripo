@@ -1,5 +1,5 @@
 // app/routes.js
-module.exports = function(app, passport, path, express) {
+module.exports = function(app, passport, path, express, cookieParser, cookieSession, bodyParser, FacebookStrategy, GooglePlusStrategy, TwitterStrategy) {
 
     // =====================================
 	// HOME PAGE ===========================
@@ -7,6 +7,51 @@ module.exports = function(app, passport, path, express) {
     app.get('/', function(req, res, next) {
         res.render('index.html');
     });
+
+    // =====================================
+	// Facebook ===========================
+	// =====================================
+    app.get('/auth/facebook', passport.authenticate('facebook'));
+
+    app.get('/auth/facebook/callback',
+         passport.authenticate('facebook', {
+            failureRedirect: '/login' }),
+            function(req, res) {                
+                app.use(cookieParser());
+                app.use(passport.initialize());
+                app.use(passport.session());
+                res.redirect('/');
+    });
+
+    // =====================================
+	// Google ===========================
+	// =====================================
+    app.get('/auth/google',
+          passport.authenticate('google', { failureRedirect: '/login' }),
+          function(req, res) {
+            res.redirect('/');
+    });
+
+    app.get('/auth/google/return',
+      passport.authenticate('google', { failureRedirect: '/login' }),
+      function(req, res) {
+          res.redirect('/');
+    });
+
+    // =====================================
+	// Twitter ===========================
+	// =====================================
+    app.get('/auth/twitter',
+      passport.authenticate('twitter'));
+
+    app.get('/auth/twitter/callback',
+      passport.authenticate('twitter', { failureRedirect: '/login' }),
+      function(req, res) {
+          app.use(cookieParser());
+          app.use(passport.initialize());
+          app.use(passport.session());
+        res.redirect('/');
+      });
 
     // =====================================
 	// CHECK USER LOGGED IN ===========================

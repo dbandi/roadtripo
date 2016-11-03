@@ -87,7 +87,7 @@ chai.use(require('chai-passport-strategy'));
   // Test Gas Station API ================
   // =====================================
 
- /* describe('/GET gasprices?fueltype=reg&lat=41.8781&lng=-87.6298&radius=2&sort_by=distance', () => {
+  /*describe('/GET gasprices?fueltype=reg&lat=41.8781&lng=-87.6298&radius=2&sort_by=distance', () => {
       it('it should GET gas prices around Chicago', (done) => {
         chai.request(app)
             .get('/gasprices?fueltype=reg&lat=41.8781&lng=-87.6298&radius=2&sort_by=distance')
@@ -118,7 +118,7 @@ chai.use(require('chai-passport-strategy'));
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('array');
-                var total_response = res.body;                
+                var total_response = res.body;
                 for (var i = 0; i < Object.keys(total_response).length; i++) {
                     total_response[i].listing.should.have.property([ 'id' ]);
                     total_response[i].listing.should.have.property([ 'bedrooms' ]);

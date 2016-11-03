@@ -2,6 +2,9 @@
 
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
+var GooglePlusStrategy = require('passport-google-plus');
 
 // load up the user model
 var mysql = require('mysql');
@@ -107,4 +110,100 @@ module.exports = function(passport) {
             });
         })
     );
+
+    // =====================================
+	// Facebook ===========================
+	// =====================================
+    passport.use(new FacebookStrategy({
+        clientID: '1576754455964708',
+        clientSecret: 'e105dad8a885bffc1e7d48f4064aeb2a',
+        callbackURL: "/auth/facebook/callback"
+      },
+      function(accessToken, refreshToken, profile, done) {
+
+          connection.query("SELECT * FROM users WHERE username = ?",[profile.id], function(err, rows) {
+              if (err)
+                  return done(err);
+              if (rows.length) {
+                   return done(null, rows[0]);
+               } else {
+
+                   var newUserMysql = {
+                       uname: profile.displayName,
+                       username: profile.id,
+                       userphone: "",
+                       provider: profile.provider,
+                       password: bcrypt.hashSync(profile.provider, null, null)  // use the generateHash function in our user model
+                   };
+
+                   var insertQuery = "INSERT INTO users ( uname, username, password, userphone, provider ) values (?,?,?,?,?)";
+
+                   connection.query(insertQuery,[newUserMysql.uname, newUserMysql.username, newUserMysql.password, newUserMysql.userphone, newUserMysql.provider],function(err, rows) {
+                       newUserMysql.id = rows.insertId;
+
+                       return done(null, newUserMysql);
+                   });
+               }
+           });
+          //return done();
+      })
+    );
+
+    // =====================================
+	// Google ===========================
+	// =====================================
+    passport.use(new GooglePlusStrategy({
+        returnURL: 'http://localhost:3000/auth/google/return',
+        realm: 'http://localhost:3000/'
+      },
+      function(identifier, profile, done) {
+        // asynchronous verification, for effect...
+        process.nextTick(function () {
+
+          // To keep the example simple, the user's Google profile is returned to
+          // represent the logged-in user.  In a typical application, you would want
+          // to associate the Google account with a user record in your database,
+          // and return that user instead.
+          profile.identifier = identifier;
+          return done(null, profile);
+        });
+      }
+    ));
+
+    // =====================================
+	// Twitter ===========================
+	// =====================================
+    passport.use(new TwitterStrategy({
+        consumerKey: 'XhxWHEPc9WgCmcu5kvG9OXsyB' ,
+        consumerSecret: 'AEv5VfGbyIxMGgtADqcMoTLIItOnWQCckuoQ6WlP6yDBvv9HAF',
+        callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+      },
+      function(token, tokenSecret, profile, done) {
+          connection.query("SELECT * FROM users WHERE username = ?",[profile.id], function(err, rows) {
+              if (err)
+                  return done(err);
+              if (rows.length) {
+                   return done(null, rows[0]);
+               } else {
+
+                   var newUserMysql = {
+                       uname: profile.displayName,
+                       username: profile.id,
+                       userphone: "",
+                       provider: profile.provider,
+                       password: bcrypt.hashSync(profile.provider, null, null)  // use the generateHash function in our user model
+                   };
+
+                   var insertQuery = "INSERT INTO users ( uname, username, password, userphone, provider ) values (?,?,?,?,?)";
+
+                   connection.query(insertQuery,[newUserMysql.uname, newUserMysql.username, newUserMysql.password, newUserMysql.userphone, newUserMysql.provider],function(err, rows) {
+                       newUserMysql.id = rows.insertId;
+
+                       return done(null, newUserMysql);
+                   });
+               }
+           });
+      }
+    ));
+
 };

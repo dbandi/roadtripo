@@ -9,9 +9,15 @@ app.directive("tripDetails", function(dataService, dataFactory, $timeout, ngDial
         $scope.mapPitstopName = "Chicago";
         $scope.mapPitstopAddress = "Naperville";
 
-        $scope.tripRouteDetails = JSON.parse($scope.tripRoute.trip_details);        
+        $scope.tripRouteDetails = JSON.parse($scope.tripRoute.trip_details);
         $scope.mapOrigin = $scope.tripRoute.trip_start;
         $scope.mapDestination = $scope.tripRoute.trip_end;
+
+        $scope.tripOrigin = s = $scope.mapOrigin.substring(0, $scope.mapOrigin.indexOf(','));
+        $scope.tripDestination = s = $scope.mapDestination.substring(0, $scope.mapDestination.indexOf(','));
+
+        $scope.isEdit = false;
+
         var trip_waypoints = JSON.parse($scope.tripRoute.trip_details);
         for (var j = 0; j < trip_waypoints.length; j++) {
             var waypoint_location = {
@@ -69,12 +75,53 @@ app.directive("tripDetails", function(dataService, dataFactory, $timeout, ngDial
         $scope.viewTrip = function(){
             $scope.$emit('viewTrip');
         }
+
+        $scope.deleteTrip = function(tripRoute){
+            ngDialog.open({ template: 'app/modals/delete.html', className: 'ngdialog-theme-default', scope: $scope });
+        };
+
+        $scope.confirmDeleteTrip = function(){
+            dataService.deleteTrip($scope.tripRoute.trip_id).then(function (response) {
+                dataService.getTrips().then(function(response){
+                    $scope.mytrips = response.data;
+                    ngDialog.close();
+                    $scope.$emit('viewUserTrips');
+                });
+            });
+        }
+
+        $scope.removePitstop = function(pitstopIndex){
+            $scope.tripRouteDetails = $scope.tripRouteDetails.slice(pitstopIndex + 1);
+        };
+
+        $scope.editTrip = function(tripRoute){
+            $scope.isEdit = true;
+        };
+
+        $scope.saveTrip = function(tripId){
+            //console.log($scope.tripRouteDetails);
+            console.log($scope.mytrips);
+
+            //console.log(tripId);
+            //console.log($scope.tripRoute.trip_id);
+
+            angular.forEach($scope.mytrips, function(value, key) {
+              if(value.trip_id == tripId){
+                  $scope.mytrips[key].trip_details = JSON.stringify($scope.tripRouteDetails);
+                  console.log($scope.mytrips[key].trip_details);
+              }
+            });
+
+            console.log($scope.mytrips);
+            $scope.isEdit = false;
+        };
     }
 
     return {
         restrict: 'E',
         scope: {
-            tripRoute: '='
+            tripRoute: '=',
+            mytrips: '='
         },
         templateUrl: "app/directives/trip-details/trip-details.html",
         link: link

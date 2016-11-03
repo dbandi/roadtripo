@@ -410,7 +410,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .listPlaces .main-container-section .main-container-header h1, .tripDetails .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1, .list-tripDetail-wrapper .tripDetail-block h4 {
+.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .listPlaces .main-container-section .main-container-header h1, .tripDetails .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1, .delete-screen p, .list-tripDetail-wrapper .tripDetail-block h4 {
   font-family: "Ubuntu";
   font-weight: 500;
   font-style: normal;
@@ -446,7 +446,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .listPlaces .main-containe
   font-style: normal;
 }
 
-.filter-nav ul li a {
+.filter-nav ul li a, .delete-screen h4 {
   font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
@@ -1171,7 +1171,7 @@ nav {
 }
 
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .img-cover {
-  background-image: url("../../../images/road.png");
+  background-image: url("../../../images/preloader.gif");
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -1752,6 +1752,73 @@ nav {
 /*********************************
             My Trip
 *********************************/
+.edit-tripDetail-wrapper a.btn, .edit-tripDetail-wrapper .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .edit-tripDetail-wrapper a {
+  background-color: #2eb6f5;
+  padding: 7px 16px;
+  margin-right: 0px;
+  border-radius: 5px;
+}
+
+.edit-tripDetail-wrapper a.btn.delete-btn, .edit-tripDetail-wrapper .i-navigation-section .i-nav-wrapper > ul > li:last-child a.delete-btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child .edit-tripDetail-wrapper a.delete-btn {
+  background-color: #e74c3c;
+  border: none;
+}
+
+.edit-tripDetail-wrapper a.btn.save-btn, .edit-tripDetail-wrapper .i-navigation-section .i-nav-wrapper > ul > li:last-child a.save-btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child .edit-tripDetail-wrapper a.save-btn {
+  background-color: #2ecc71;
+  border: none;
+}
+
+.delete-screen {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 750px;
+  height: auto;
+  display: table;
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  padding: 100px 30px;
+}
+
+.delete-screen h4 {
+  font-size: 46px;
+  color: #010101;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  padding-top: 6px;
+  margin-bottom: 30px;
+}
+
+.delete-screen p {
+  font-size: 18px;
+  color: #010101;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  padding-top: 6px;
+  text-transform: uppercase;
+}
+
+.delete-screen .btn, .delete-screen .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .i-navigation-section .i-nav-wrapper > ul > li:last-child .delete-screen a, .delete-screen .full-screen-block .form-group .form-button button, .full-screen-block .form-group .form-button .delete-screen button {
+  background-color: #2eb6f5;
+  padding: 7px 16px;
+  margin-right: 0px;
+  border-radius: 5px;
+  background-color: #e74c3c;
+  border: none;
+  margin: 40px auto 15px;
+  display: table;
+}
+
 /*********************************
             Trip Details
 *********************************/
@@ -2131,6 +2198,44 @@ nav {
 }
 
 .login-section-wrapper button.social-signin.google {
+  background: #DD4B39;
+}
+
+.login-section-wrapper a.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+  padding: 10px 22px;
+  margin-right: 5px;
+}
+
+.login-section-wrapper a.social-signin:hover,
+.login-section-wrapper a.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+.login-section-wrapper a.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+.login-section-wrapper a.social-signin.facebook {
+  background: #32508E;
+}
+
+.login-section-wrapper a.social-signin.twitter {
+  background: #55ACEE;
+}
+
+.login-section-wrapper a.social-signin.google {
   background: #DD4B39;
 }
 

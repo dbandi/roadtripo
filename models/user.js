@@ -18,7 +18,8 @@ var findOrCreate = function(profile){
     return null;
 }
 
-
 module.exports = {
     findOrCreate: findOrCreate
 }
+
+console.log("User");

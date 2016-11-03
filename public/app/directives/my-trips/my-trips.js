@@ -3,7 +3,7 @@ app.directive("myTrips", function(dataService, dataFactory, $timeout, ngDialog, 
     function link($scope) {
 
         $scope.alltrips = [];
-
+        console.log($scope.mytrips);
         $scope.mapWayPoints = [];
          /* {location: {lat:45.32384807250689, lng: -78.079833984375}, stopover: true},
           {location: {lat:45.55916341529184, lng: -76.17919921875}, stopover: true},*/

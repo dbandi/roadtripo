@@ -8,12 +8,14 @@ var Promise = require("bluebird");
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
+var GooglePlusStrategy = require('passport-google-plus');
 var mysql = require('mysql');
 var mysqlModel = require('mysql-model');
 var bcrypt = require('bcrypt-nodejs');
@@ -54,7 +56,7 @@ app.use(passport.session());
 app.use(flash());
 
 // routes ======================================================================
-require('./app/auth.js')(app, passport, path, express);
+require('./app/auth.js')(app, passport, path, express, cookieParser, cookieSession, bodyParser, FacebookStrategy, GooglePlusStrategy, TwitterStrategy);
 require('./app/plantrip.js')(app, passport, path, express, NodeGeocoder, airbnb, Yelp, Bing, rp, request, Promise, _);
 require('./app/trip.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
 

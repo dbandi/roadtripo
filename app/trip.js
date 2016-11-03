@@ -46,7 +46,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     });
 
     app.post('/savetrip', function(req, res, next) {
-        if (typeof req.user !== 'undefined') {            
+        if (typeof req.user !== 'undefined') {
             var trip = {
                 user_id: req.user.id,
                 trip_name: req.body.trip_name,
@@ -95,5 +95,22 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         else{
             return res.send("unauthorized");
         }
+    });
+
+    app.get('/deleteTrip', function(req, res, next) {
+        /*if (typeof req.user !== 'undefined') {*/
+            var trip_id = req.query.trip_id;
+            connection.query('DELETE FROM trip WHERE trip_id = ?', [trip_id], function (err, result) {
+                if (!err){
+                    return res.sendStatus(200);
+                }
+                else{
+                    return res.sendStatus(400);
+                }
+            });
+        /*}
+        else{
+            return res.send("unauthorized");
+        }*/
     });
 };
