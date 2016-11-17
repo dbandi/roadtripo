@@ -1,0 +1,15 @@
+<nav>
+    <div class="nav-wrapper">
+        <div class="left-nav" ng-click="goHome()">
+            <img src="images/logo.png"/>
+        </div>
+        <div class="right-nav">
+            <ul>
+                <li><a class="my-trips" ng-click="myTrips();"> {{accountStatus}} </a></li>
+                <li><a class="my-trips" href="logout" ng-if="accountStatus == 'My Trips'"> <i class="fa fa-sign-out" aria-hidden="true"> </i> </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div ui-view></div>

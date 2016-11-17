@@ -1,0 +1,54 @@
+<section class="myTrips">
+
+    <div class="full-screen-section explore">
+        <div class="full-screen-wrapper">
+            <div class="container">
+                <div class="full-screen-block explore">
+                    <h1>My Trips</h1>
+                    <h4>Customize</h4>
+                    <p ng-if="alltrips.length < 1">Sorry! No Trips found.</p>
+                    <p ng-if="alltrips.length > 0">&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container-section">
+        <div class="list-places-wrapper">
+            <div class="full-width-container">
+                <div class="list-places-block my-trips-block">
+                    <div class="masonry-block">
+                        <div class="places-block" ng-repeat="trips in alltrips track by $index">
+                            <div class="individual-place-block item">
+                                <div class="individual-place-block-wrapper">
+                                    <!--<div class="place-image-block animated SlideInUp">
+                                        <div class="img-photo" ng-repeat="pitstop in trips.trip_details track by $index" style="background-image:url({{pitstop.photo}});"></div>
+                                        <div class="img-cover"></div>
+                                    </div>-->
+                                    <div class="place-content-block">
+                                        <h4>{{trips.trip_end}}</h4>
+                                        <p>{{trips.trip_start}}</p>
+                                        <a class="add-trip-btn" ui-sref="trip.route({ routeID: trips.trip_id})">View Trip</a>
+                                        <div class="distance-price-block">
+                                            <div class="distance-price-left-block">
+                                                {{trips.trip_details.length}}<span>Places</span>
+                                            </div>
+                                            <div class="distance-img-right-block">
+                                                <ul>
+                                                    <li ng-repeat="pitstop in trips.trip_details track by $index" >
+                                                        <div class="trip-images" style="background-image:url({{pitstop.photo}});"></div>
+                                                        <h4>{{pitstop.placename}}</h4>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -71,7 +71,7 @@ input{
 
 /* ======== NAV : GLOBAL ========= */
 nav{
-    position: absolute;
+    position: fixed;
     display: block;
     width: 100%;
     z-index: 1000;
@@ -87,12 +87,18 @@ nav{
 }
 .left-nav{
     float: left;
+
+    img{
+        cursor: pointer;
+    }
 }
 .right-nav{
     float: right;
 
     li{
         margin-top: 5px;
+        margin-left: 5px;
+        float: left;
     }
 
     .my-trips{
@@ -119,30 +125,44 @@ nav{
     background-image: url('../../../images/bg.jpg');
     @include img-cover();
     height: 75vh;
+
+    &.explore{
+        background-image: url('../../../images/bg-explore.jpg');
+        background-position: 50% 100%;
+    }
 }
 
-.listPlaces, .tripDetails, .myTrips{
+.listPlaces, .tripDetails, .myTrips, .tripRoute{
+    display: table;
+    width: 100%;
+    background-color: #f4f4f4;
+    border: 15px solid $default-color;
+    min-height: 100vh;
+
     .filter-sidebar-section{
-        @include layout(2, 10, 10);
-        float: left;
-        height: 100vh;
-        position: fixed;
+        margin-top: 20px;
+
+        .filter-nav{
+
+        }
     }
 
     .main-container-section{
-        @include layout(10, 10, 10, 2, 0);
+        position: relative;
+        z-index: 10;
+        @include layout(12, 10, 10, 2, 2);
 
         .main-container-header{
             margin-top: 60px;
             text-align: center;
             h6{
-                @include web-font(Font-Regular, 136px, #f6f6f6, 80px, initial);
+                @include web-font(Font-Light, 136px, #f6f6f6, 80px, initial);
                 font-family: 'Roboto', sans-serif;
                 text-transform: uppercase;
             }
 
             h1{
-                @include web-font(Font-Medium, 76px, #010101, 34px, initial);
+                @include web-font(Font-Light, 76px, #010101, 34px, initial);
                 font-family: 'Roboto', sans-serif;
                 text-transform: uppercase;
             }
@@ -185,11 +205,25 @@ nav{
     @include padding(225px, 0, 180px);
     h1{
         @include web-font(Font-Light, 46px, $default-color, 34px, initial);
+        margin-bottom: 15px;
     }
     h4{
         @include web-font(Font-Light, 22px, $default-color, initial, initial);
-        margin-top: 15px;
     }
+
+    &.explore{
+        h4{
+            font-size: 30px;
+        }
+
+        span{
+            color: $default-color;
+            text-transform: uppercase;
+            display: block;
+            padding-bottom: 5px;
+        }
+    }
+
     .form-group{
         display: table;
         margin: 0 auto;
@@ -232,7 +266,6 @@ nav{
 
 }
 .list-places-wrapper{
-    background-color: #ffffff;
     position: relative;
     z-index: 100;
     margin-top: 40px;
@@ -243,11 +276,37 @@ nav{
         }
     }
 
+    .my-trips-block{
+        .places-block{
+            &:nth-child(3n+1){
+                clear: none;
+            }
+            &:nth-child(2n+1){
+                clear: both;
+            }
+        }
+    }
+
+    .trip-places-block{
+        &.places-block{
+            &:nth-child(3n+1){
+                clear: none;
+            }
+            &:nth-child(2n+1){
+                clear: both;
+            }
+        }
+    }
+
     .list-places-block{
         .individual-place-block{
-            @include layout(4);
-            margin-bottom: 12px;
-            font-family: 'Open Sans';
+            @include layout(4, 20, 20);
+            margin-bottom: 30px;
+            font-family: 'Montserrat';
+
+            &.trip-route{
+                @include layout(6, 20, 20);
+            }
 
             &:nth-child(4){
                 clear: both;
@@ -255,9 +314,13 @@ nav{
 
             .individual-place-block-wrapper{
                 background-color: #fff;
-                box-shadow: 0px 0px 10px rgba(204, 204, 204, 0.1);
                 border: 1px solid #fbfbfb;
+                box-shadow: 2px 2px 2px rgba(0,0,0,0.05);
                 position: relative;
+
+                &:hover{
+                    box-shadow: 0px 0px 10px rgba(204, 204, 204, 0.1);
+                }
 
                 .add-trip{
                     display: table;
@@ -279,8 +342,6 @@ nav{
                     max-height: 22px;
                     min-height: 200px;
                     overflow: hidden;
-                    border-top-left-radius: 5px;
-                    border-top-right-radius: 5px;
                     @include transition(0.3);
 
                     .trip-category{
@@ -328,9 +389,7 @@ nav{
                 .place-content-block{
                     position: relative;
                     z-index: 100;
-                    padding: 35px 15px 10px;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
+                    padding: 30px 15px 10px;
 
                     .rating-block{
                         position: absolute;
@@ -342,21 +401,37 @@ nav{
                         }
                     }
 
+                    .like-block{
+                        float: right;
+                        position: absolute;
+                        right: 15px;
+                        top: 10px;
+
+                        i{
+                            font-size: 15px;
+                        }
+                        span{
+                            @include web-font(Font-Regular, 15px, #131313, initial, 1px);
+                            font-family: 'Montserrat';
+                        }
+                    }
+
                     .distance-price-block{
                         display: table;
                         width: 100%;
                         padding-top: 8px;
+                        padding-bottom: 8px;
                         border-top: 1px solid #f0f0f0;
 
                         .distance-price-left-block{
                             @include layout(2.5);
                             padding-top: 7px;
-                            @include web-font(Font-Regular, 25px, #131313, initial, 1px);
+                            @include web-font(Font-Regular, 24px, #131313, initial, 1px);
                             text-align: center;
                             font-family: $secondary-font;
                             span{
                                 display: block;
-                                @include web-font(Font-Regular, 14px, #131313, initial, 1px);
+                                @include web-font(Font-Regular, 12px, #131313, initial, 1px);
                             }
                         }
                         .distance-price-right-block{
@@ -365,10 +440,9 @@ nav{
                             ul{
                                 position: relative;
                                 li{
-                                    padding: 7px 16px;
+                                    padding: 5px 16px;
                                     position: relative;
-                                    @include web-font(Font-Regular, 14px, #131313, initial, 1px);
-                                    font-family: $secondary-font;
+                                    @include web-font(Font-Regular, 13px, #6f6f6f, initial, initial);
                                     &:before{
                                         content: '';
                                         position: absolute;
@@ -376,7 +450,7 @@ nav{
                                         height: 5px;
                                         border: 2px solid $brand-color;
                                         border-radius: 50%;
-                                        top: 13px;
+                                        top: 9px;
                                         left: 0px;
                                     }
                                 }
@@ -384,11 +458,44 @@ nav{
                                 &:before{
                                     content: '';
                                     position: absolute;
-                                    height: 25px;
+                                    height: 15px;
                                     width: 3px;
-                                    border-left: 2px dotted $brand-color;
+                                    border-left: 2px dotted #2eb6f5;
                                     left: 3px;
-                                    top: 21px;
+                                    top: 19px;
+                                }
+                            }
+                        }
+
+                        .distance-img-right-block{
+                            @include layout(9.5);
+
+                            ul{
+                                display: block;
+                                max-height: 175px;
+                                overflow: hidden;
+                            }
+
+                            li{
+                                display: table;
+                                float: left;
+                                margin: 10px;
+                                position: relative;
+
+                                .trip-images{
+                                    width: 160px;
+                                    height: 160px;
+                                    @include img-cover();
+                                }
+
+                                h4{
+                                    position: absolute;
+                                    bottom: 0px;
+                                    background: rgba(0, 0, 0, 0.53);
+                                    color: #fff;
+                                    padding: 8px;
+                                    font-size: 12px;
+                                    width: 100%;
                                 }
                             }
                         }
@@ -473,20 +580,35 @@ nav{
                     }
                 }
 
+                .place-title-block{
+                    padding: 18px 15px 10px;
+                }
+
                 h4{
-                    @include web-font(Font-Semi-Bold, 20px, #525252, initial, 1px);
+                    @include web-font(Font-Regular, 18px, #525252, initial, 1px);
                     overflow: hidden;
                     min-height: 27px;
                     font-family: $secondary-font;
+                    max-width: 250px;
                 }
                 p{
-                    padding-top: 3px;
                     @include web-font(Font-Regular, 14px, #989898, initial, 1px);
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
                     min-height: 22px;
                     padding-bottom: 8px;
+                    font-family: $secondary-font;
+                }
+
+                .add-trip-btn{
+                    font-family: 'Montserrat';
+                    font-size: 11px;
+                    border: 1px solid $brand-color;
+                    padding: 8px 15px;
+                    top: 13px;
+                    right: 13px;
+                    position: absolute;
                     font-family: $secondary-font;
                 }
 
@@ -537,6 +659,7 @@ nav{
                     top: -25px;
                     background: #fff;
                     box-shadow: 2px 2px 5px #e3e3e3;
+                    display: none;
 
                     i{
                         font-size: 24px;
@@ -555,14 +678,6 @@ nav{
                     .add-on-hover{
                         top: 40%;
                     }
-
-                    .img-photo{
-                        -webkit-filter: blur(3px);
-                        -moz-filter: blur(3px);
-                        -o-filter: blur(3px);
-                        -ms-filter: blur(3px);
-                        filter: blur(3px);
-                    }
                 }
             }
 
@@ -571,6 +686,43 @@ nav{
                     border: 3px solid $brand-color;
                     color: $default-color;
                     background-color: $brand-color;
+                }
+
+                .add-trip-btn{
+                    color: $default-color;
+                    background-color: $brand-color;
+                }
+            }
+        }
+
+        &.my-trips-block{
+            .individual-place-block{
+                @include layout(6, 20, 20);
+                margin-bottom: 30px;
+                font-family: 'Montserrat';
+            }
+
+            .place-content-block{
+                padding: 10px !important;
+            }
+
+            .add-trip-btn{
+                cursor: pointer;
+                color: $default-color;
+                background-color: $brand-color !important;
+                position: absolute !important;
+                display: table !important;
+                width: auto !important;
+                padding: 8px 15px 8px !important;
+                top: 15px !important;
+            }
+
+            .distance-price-left-block{
+                font-size: 34px !important;
+                padding-top: 50px !important;
+
+                span{
+                    font-size: 18px !important;
                 }
             }
         }
@@ -581,50 +733,59 @@ nav{
     padding: 10px 0px;
     padding-left: 25px;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+
     ul{
         display: table;
         width: 100%;
         margin: 0 auto;
 
         li{
-            @include padding(8px, 0);
+            float: left;
             a{
-                @include web-font(Font-Bold, 18px, #808182, initial, 1px);
-                text-transform: uppercase;
+                @include web-font(Font-Regular, 16px, #808182, initial, 1px);
+                display: inline-block;
+                padding: 8px 15px;
 
                 &:hover{
                     color: $brand-text;
                 }
             }
+
+            &.filter-btn{
+                float: right;
+            }
         }
     }
 
     a.save-trip{
-        font-size: 18px;
+        font-size: 13px;
         text-transform: uppercase;
         font-weight: 600;
-        margin-top: 36px;
-        display: block;
+        display: table;
+        float: left;
         cursor: pointer;
+        padding: 10px 15px 8px;
+        background-color: #2eb6f5;
+        border-radius: 3px;
+        color: $default-color;
+        margin-left: 15px;
 
         i{
             float: left;
-            font-size: 30px;
-            margin-top: -6px;
+            font-size: 18px;
+            margin-top: -3px;
             padding-right: 8px;
         }
 
         &.view-map{
             i{
-                font-size: 26px;
-                margin-top: -5px;
+                font-size: 18px;
+                margin-top: -2px;
             }
         }
 
         &:hover{
-            color: $brand-color;
+            color: $default-color;
         }
     }
 }
@@ -898,7 +1059,194 @@ nav{
 }
 
 /*********************************
-            Login Modal
+    Route Path
+*********************************/
+.tripRoute{
+    position: relative;
+
+    .tripRoute-bg{
+        position: fixed;
+        background-image: url('http://tympanus.net/Development/TooltipStylesInspiration/img/map.jpg');
+        @include img-cover();
+        display: table;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+        border: 15px solid #fff;
+    }
+}
+.trip-route-block{
+    @include layout(5, 0, 0);
+    margin-top: 50px;
+
+    a.save-trip{
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        display: table;
+        float: left;
+        cursor: pointer;
+        padding: 10px 15px 8px;
+        background-color: #2eb6f5;
+        border-radius: 3px;
+        color: $default-color;
+        letter-spacing: 1px;
+        float: right;
+        margin-right: 20px;
+        margin-bottom: 15px;
+
+        i{
+            float: left;
+            font-size: 18px;
+            margin-top: -3px;
+            padding-right: 8px;
+        }
+
+        &.view-map{
+            i{
+                font-size: 18px;
+                margin-top: -2px;
+            }
+        }
+
+        &:hover{
+            color: $default-color;
+        }
+    }
+}
+
+.trip-map-block{
+    @include layout(7, 0, 0);
+    position: fixed;
+    right: 0;
+
+    ng-map{
+        height: 100vh;
+    }
+}
+
+.map-abs{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.trip-route{
+    position: relative;
+    max-width: 1200px;
+    display: table;
+    width: 100%;
+    z-index: 100;
+    margin-bottom: 15px;
+
+    .trip-route-content{
+        height: 100%;
+        /*overflow: hidden;*/
+        position: relative;
+        z-index: 10;
+
+        img{
+            max-width: 400px;
+            @include center-block();
+            float: left;
+            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.32);
+            border: 2px solid #fff;
+        }
+
+        h4{
+            @include web-font(Font-Bold, 50px, $default-color, initial, 1px);
+            padding-top: 200px;
+        }
+
+        p{
+            @include web-font(Font-Medium, 36px, $default-color, initial, 1px);
+        }
+
+        .trip-route-feature{
+            margin-top: 50px;
+
+            .route-feature-section{
+                margin-top: 30px;
+
+                p{
+                    @include web-font(Font-Bold, 18px, $default-color, initial, 1px);
+                    text-transform: uppercase;
+                    -webkit-animation-duration: 1s;
+                    -webkit-animation-delay: 0.2s;
+                    -moz-animation-duration: 1s;
+                    -moz-animation-delay: 0.2s;
+                    -ms-animation-duration: 1s;
+                    -ms-animation-delay: 0.2s;
+
+                    &.later{
+                        -webkit-animation-delay: 0.6s;
+                        -moz-animation-delay: 0.6s;
+                        -ms-animation-delay: 0.6s;
+                    }
+                }
+
+                span{
+                    @include web-font(Font-Regular, 22px, #777777, initial, 1px);
+                    display: block;
+                    padding-top: 5px;
+
+                    -webkit-animation-duration: 1s;
+                    -webkit-animation-delay: 0.4s;
+                    -moz-animation-duration: 1s;
+                    -moz-animation-delay: 0.4s;
+                    -ms-animation-duration: 1s;
+                    -ms-animation-delay: 0.4s;
+
+                    &.later{
+                        -webkit-animation-delay: 0.8s;
+                        -moz-animation-delay: 0.8s;
+                        -ms-animation-delay: 0.8s;
+                    }
+                }
+            }
+        }
+    }
+
+    &:nth-child(2n+1){
+        .trip-route-content{
+            img{
+                float: right;
+            }
+        }
+    }
+    &:nth-child(2n){
+        .trip-route-content{
+            h4{
+                text-align: right;
+            }
+            p{
+                text-align: right;
+            }
+
+            .route-feature-section{
+                p{
+                    text-align: right;
+                }
+                span{
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+.trip-route-svg{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+/*********************************
+        Login Modal
 *********************************/
 
 .login-section-wrapper{
@@ -1164,4 +1512,8 @@ nav{
 
 .ngdialog-overlay{
     background: rgba(255, 255, 255, 0.8);
+}
+
+.isInView{
+    display: none;
 }

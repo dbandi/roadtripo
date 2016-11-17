@@ -98,13 +98,7 @@ app.directive("tripDetails", function(dataService, dataFactory, $timeout, ngDial
             $scope.isEdit = true;
         };
 
-        $scope.saveTrip = function(tripId){
-            //console.log($scope.tripRouteDetails);
-            console.log($scope.mytrips);
-
-            //console.log(tripId);
-            //console.log($scope.tripRoute.trip_id);
-
+        $scope.updateTrip = function(tripId){
             angular.forEach($scope.mytrips, function(value, key) {
               if(value.trip_id == tripId){
                   $scope.mytrips[key].trip_details = JSON.stringify($scope.tripRouteDetails);
@@ -112,7 +106,9 @@ app.directive("tripDetails", function(dataService, dataFactory, $timeout, ngDial
               }
             });
 
-            console.log($scope.mytrips);
+            dataService.updateTrip(tripId, $scope.mytrips).then(function (response) {
+                console.log(response.data);
+            });
             $scope.isEdit = false;
         };
     }

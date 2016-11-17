@@ -13,7 +13,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         if (typeof req.user !== 'undefined') {
             // If User Logged In
             var user_id = req.user.id;
-
+            console.log(user_id);
             connection.query('SELECT * FROM trip WHERE user_id = ?', [user_id], function(err, result) {
                 if (!err){
                     return res.send(result);
@@ -32,8 +32,6 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
 
     app.get('/gettriproute', function(req, res, next) {
         var trip_id = req.query.trip_id;
-        console.log(trip_id);
-        console.log(req.query);
         connection.query('SELECT * FROM trip WHERE trip_id = ?', [trip_id], function(err, result) {
             if (!err){
                 return res.send(result);
@@ -73,13 +71,14 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     app.post('/updatetrip', function(req, res, next) {
         if (typeof req.user !== 'undefined') {
             var trip_id = req.body.trip_id;
-            console.log(trip_id);
+            console.log("Trip Details");
+            console.log(req.body.trip_details);
             var trip = {
                 user_id: req.user.id,
-                trip_name: req.body.trip_name,
-                trip_start: req.body.trip_start,
-                trip_end: req.body.trip_end,
-                trip_details: JSON.stringify (req.body.trip_details)
+                trip_name: req.body.trip_details.trip_name,
+                trip_start: req.body.trip_details.trip_start,
+                trip_end: req.body.trip_details.trip_end,
+                trip_details: req.body.trip_details.trip_details
             };
 
             connection.query('UPDATE trip SET user_id = ?, trip_name = ?, trip_start = ?, trip_end = ?, trip_details = ? WHERE trip_id = ?', [trip.user_id, trip.trip_name, trip.trip_start, trip.trip_end, trip.trip_details, trip_id], function(err, results) {

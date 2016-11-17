@@ -33,10 +33,18 @@ app.factory('dataFactory', function () {
         APIplacesModel.lng = parseFloat(responseData.location.coordinate.longitude);
         APIplacesModel.city = responseData.location.city;
         APIplacesModel.state = responseData.location.state;
-        var largePhoto = responseData.image_url.split('/');
-        largePhoto.pop();
-        largePhoto = largePhoto.join('/');
-        largePhoto = largePhoto + '/l.jpg';
+
+        var largePhoto = "";
+        if (typeof responseData.image_url != "undefined") {
+            largePhoto = responseData.image_url.split('/');
+            largePhoto.pop();
+            largePhoto = largePhoto.join('/');
+            largePhoto = largePhoto + '/l.jpg';
+        }
+        else{
+            largePhoto = "";
+        }
+
 
         var rating = parseFloat(responseData.rating);
         if(rating > 5){

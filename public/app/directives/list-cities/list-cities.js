@@ -18,6 +18,7 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
             $scope.listCities = true;
             $scope.showGasPrices = false;
             $scope.showHotels = false;
+
             //Reset PLaces
             $scope.places = [];
             var citiesLength = Object.keys($scope.cities).length;
@@ -28,7 +29,7 @@ app.directive("listCities", function(dataService, dataFactory, $timeout, ngDialo
                     for (var j = 0; j < response.data.businesses.length; j++) {
                         var responseData = response.data.businesses[j];
                         var placesModel = dataFactory.getYelpAPIplacesModel(responseData);
-                        $scope.places.push(placesModel);
+                        $scope.places.push(placesModel);                        
                     }
                 });
             }

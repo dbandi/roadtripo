@@ -1,0 +1,107 @@
+<section class="homePage">
+    <div class="full-screen-section">
+        <div class="full-screen-wrapper">
+            <div class="container">
+                <div class="full-screen-block">
+                    <h1>Its time for a trip</h1>
+                    <h4>Make a iteneray with RoadTripo and keep travelling.</h4>
+                    <div class="form-group">
+                        <div class="form-input">
+                            <input type="text" ng-model="source" ng-autocomplete="source" details="sourceDetails" placeholder="Start"/>
+                            <input type="text" ng-model="destination" ng-autocomplete="destination" details="destinationDetails"  placeholder="Destination"/>
+                        </div>
+                        <div class="form-button">
+                            <button type="button" ng-click="plantrip()">Start Trip</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explore-places-section">
+        <div class="explore-places-wrapper">
+            <div class="container">
+                <div class="explore-places-block">
+                    <h4>Explore Places</h4>
+                    <p>Discover on and off the road with the country's most classic drives.</p>
+
+                    <div class="explore-left-block" ng-click="getTrips(1)">
+                        <div class="single-explore-block">
+                            <figure>
+                                <img src="images/explore-1.png" alt="img18">
+                                <figcaption>
+                                    <h2>Lake Havasu</h2>
+                                    <p>From Pheonix</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="explore-right-block">
+                        <div class="explore-top-right-block">
+                            <div class="single-explore-block" ng-click="getTrips(2)">
+                                <figure>
+                                    <img src="images/explore-2.png" alt="img18">
+                                    <figcaption>
+                                        <h2>Monument Valley</h2>
+                                        <p>From Los Angeles</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="single-explore-block" ng-click="getTrips(3)">
+                                <figure>
+                                    <img src="images/explore-3.png" alt="img18">
+                                    <figcaption>
+                                        <h2>Rocky Mountain</h2>
+                                        <p>From Denver</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="explore-bottom-right-block">
+                            <div class="single-explore-block">
+                                <figure>
+                                    <img src="images/explore-4.png" alt="img18">
+                                    <figcaption>
+                                        <h2>Anchorage</h2>
+                                        <p>From Seatle</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="explore-full-block">
+                        <div class="single-explore-block">
+                            <figure>
+                                <img src="images/explore-7.png" alt="img18">
+                                <figcaption>
+                                    <h2>Strong <span>Apollo</span></h2>
+                                    <p>Apollo's last game of pool was so strange.</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="single-explore-block">
+                            <figure>
+                                <img src="images/explore-5.png" alt="img18">
+                                <figcaption>
+                                    <h2>Lake Louise</h2>
+                                    <p>From Calgary</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="single-explore-block">
+                            <figure>
+                                <img src="images/explore-6.png" alt="img18">
+                                <figcaption>
+                                    <h2>Lake Louise</h2>
+                                    <p>From Calgary</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

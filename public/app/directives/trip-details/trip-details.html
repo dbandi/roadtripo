@@ -28,8 +28,8 @@
 
         <div class="edit-tripDetail-wrapper">
             <div class="edit-tripDetail-block">
-                <a ng-hide="isEdit" ng-click="editTrip(tripRoute);" class="btn">Edit Trip</a>
-                <a ng-show="isEdit" ng-click="saveTrip(tripRoute.trip_id);" class="btn save-btn">Save Trip</a>
+                <a ng-hide="isEdit" ng-click="editTrip(tripRoute);" class="btn">Customize Trip</a>
+                <a ng-show="isEdit" ng-click="updateTrip(tripRoute.trip_id);" class="btn save-btn">Save Trip</a>
                 <a ng-click="deleteTrip(tripRoute);" class="btn delete-btn">Delete Trip</a>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="list-tripDetail-block">
                     <div class="tripDetail-block">
                         <div class="tripDetail-block-wrapper">
-                            <div class="tripDetail-overview" ng-repeat="pitstop in tripRouteDetails">
+                            <div class="tripDetail-overview" ng-repeat="pitstop in tripRouteDetails track by $index">
                                 <div class="tripDetail-images">
                                     <div class="square-img" style="background-image:url({{pitstop.photo}});">
                                     </div>

@@ -1,0 +1,18 @@
+<div class="trip-route-content">
+    <img class="animated fadeInUpBig" ng-src="{{pitStop.photo}}" />
+
+    <h4>{{pitStop.placename}}</h4>
+    <p>{{pitStop.city}}</p>
+
+    <div class="trip-route-feature">
+        <div class="route-feature-section">
+            <p class="animated slideInLeft">Location</p>
+            <span class="animated slideInLeft">{{pitStop.address}}</span>
+        </div>
+
+        <div class="route-feature-section">
+            <p class="animated slideInLeft later">Distance from {{pitStop.city}}</p>
+            <span class="animated slideInLeft later">{{pitStop.distance}} Miles</span>
+        </div>
+    </div>
+</div>

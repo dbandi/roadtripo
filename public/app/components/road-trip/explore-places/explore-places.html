@@ -1,0 +1,137 @@
+<section class="listPlaces">
+
+    <div class="full-screen-section explore">
+        <div class="full-screen-wrapper">
+            <div class="container">
+                <div class="full-screen-block explore">
+                    <h1>{{destinationCity}}</h1>
+                    <h4>{{sourceCity}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container-section">
+        <!--<div id="map" class="map-places-wrapper">
+            <ng-map zoom="9" center="[{{places[0].lat}}, {{places[0].lng}}]"
+                styles="[{'featureType':'water','elementType':'geometry','stylers':[{'color':'#e9e9e9'},{'lightness':17}]},{'featureType':'landscape','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':20}]},{'featureType':'road.highway','elementType':'geometry.fill','stylers':[{'color':'#ffffff'},{'lightness':17}]},{'featureType':'road.highway','elementType':'geometry.stroke','stylers':[{'color':'#ffffff'},{'lightness':29},{'weight':0.2}]},{'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':18}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':16}]},{'featureType':'poi','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':21}]},{'featureType':'poi.park','elementType':'geometry','stylers':[{'color':'#dedede'},{'lightness':21}]},{'elementType':'labels.text.stroke','stylers':[{'visibility':'on'},{'color':'#ffffff'},{'lightness':16}]},{'elementType':'labels.text.fill','stylers':[{'saturation':36},{'color':'#333333'},{'lightness':40}]},{'elementType':'labels.icon','stylers':[{'visibility':'off'}]},{'featureType':'transit','elementType':'geometry','stylers':[{'color':'#f2f2f2'},{'lightness':19}]},{'featureType':'administrative','elementType':'geometry.fill','stylers':[{'color':'#fefefe'},{'lightness':20}]},{'featureType':'administrative','elementType':'geometry.stroke','stylers':[{'color':'#fefefe'},{'lightness':17},{'weight':1.2}]}]">
+                <div class="maps-block" ng-repeat="place in places">
+                    <marker center="{{place.lat}},{{place.lng}}" position="[{{place.lat}}, {{place.lng}}]" title="marker" animation="Animation.DROP" icon="https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Flag.png"></marker>
+                </div>
+            </ng-map>
+        </div>-->
+
+        <div class="filter-sidebar-section">
+            <div class="filter-nav">
+                <ul>
+                    <li><a href="#" ng-click="getFoursquarePlacesofCities();">Attractions</a></li>
+                    <li><a href="#" ng-click="getHotelPlacesofCities();">Hotels</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('food');">Restaurant</a></li>
+                    <li><a href="#" ng-click="getGasStationPlacesofCities();">Gas Station</a></li>
+                    <li><a href="#" ng-click="getYelpPlacesofCities('event');">Events</a></li>
+                    <!--<li><a href="#" ng-click="getYelpPlacesofCities('shopping');">Shop</a></li>-->
+                    <li><a href="#" ng-click="getYelpPlacesofCities('nightlife');">Drinks</a></li>
+                    <!--<li><a href="#" ng-click="getYelpPlacesofCities('arts');">Entertainment</a></li>-->
+                    <li><a href="#" ng-click="getYelpPlacesofCities('active');">Outdoor</a></li>
+                    <li class="filter-btn"><a class="save-trip view-map" ng-click="viewMap()"><i class="fa fa-compass" aria-hidden="true"> </i> View Map </a></li>
+                    <li class="filter-btn"><a class="save-trip" ng-click="saveTrip()"><i class="fa fa-plus-circle" aria-hidden="true"> </i> Save Trip </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="list-places-wrapper">
+            <div class="full-width-container">
+                <div class="list-places-block">
+                    <div class="masonry-block">
+                        <div class="places-block" ng-repeat="place in places">
+                            <div class="individual-place-block item" ng-class="{'active': plantrip.indexOf(place) != -1}">
+                                <div class="individual-place-block-wrapper">
+                                    <div class="add-trip">
+                                        <div class="place-title-block">
+                                            <h4>{{place.placename}}</h4>
+                                            <a class="add-trip-btn" ng-click="addToTrip(place)">Add Place</a>
+                                        </div>
+                                        <div class="place-image-block animated SlideInUp" ng-class="{'hideImage': activeMap == place.placeid}">
+                                            <span class="trip-category">{{place.placetype}}</span>
+                                            <div class="img-photo" style="background-image: url({{place.photo}})"></div>
+                                            <div class="img-cover"></div>
+                                        </div>
+                                        <div class="animated SlideInUp place-map-block" id="map_{{place.placeid}}" ng-class="{'hideMap': activeMap != place.placeid}">
+                                            <direction-map ng-if="activeMap == place.placeid" class="animated SlideInUp slide" map-source="mapSource" map-destination="mapDestination"></direction-map>
+                                        </div>
+                                        <div class="place-content-block">
+                                            <span class="addded-trip"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                            <div class="rating-block">
+                                                <span ng-if="place.rating > 0">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 1"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 1"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 1">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 2"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 2"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 2">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 3"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 3"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 3">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 4"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 4"></i>
+                                                </span>
+                                                <span ng-if="place.rating > 4">
+                                                    <i class="fa fa-star" aria-hidden="true" ng-if="place.rating >= 5"></i>
+                                                    <i class="fa fa-star-half-o" aria-hidden="true"  ng-if="place.rating < 5"></i>
+                                                </span>
+                                            </div>
+
+                                            <div class="like-block">
+                                                <i class="fa fa-heart-o" aria-hidden="true"> <span>34</span> </i>
+                                            </div>
+
+                                            <p>{{place.city}}</p>
+                                            <span class="hide" id="lat">{{place.lat}}</span>
+                                            <span class="hide" id="lng">{{place.lng}}</span>
+
+                                            <div class="distance-price-block">
+                                                <div class="distance-price-left-block">
+                                                    {{place.distance}}<span>Miles</span>
+                                                </div>
+                                                <div class="distance-price-right-block">
+                                                    <ul>
+                                                        <li>{{place.city}}</li>
+                                                        <li>{{place.address}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="showGasPrices" ng-if="showGasPrices">
+                                                <ul>
+                                                    <li>
+                                                        <p>Reg</p>
+                                                        <span>{{place.reg_price}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <p>Mid</p>
+                                                        <span>{{place.mid_price}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <p>Pre</p>
+                                                        <span>{{place.pre_price}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <p>Diesel</p>
+                                                        <span>{{place.diesel_price}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -30,11 +30,11 @@
             <div class="full-width-container">
                 <div class="list-places-block">
                     <div class="masonry-block">
-                        <div class="places-block" ng-repeat="trips in alltrips">
+                        <div class="places-block" ng-repeat="trips in alltrips track by $index">
                             <div class="individual-place-block item">
                                 <div class="individual-place-block-wrapper">
                                     <div class="place-image-block animated SlideInUp">
-                                        <div class="img-photo" ng-repeat="pitstop in trips.trip_details" style="background-image:url({{pitstop.photo}});"></div>
+                                        <div class="img-photo" ng-repeat="pitstop in trips.trip_details track by $index" style="background-image:url({{pitstop.photo}});"></div>
                                         <div class="img-cover"></div>
                                     </div>
                                     <div class="place-content-block">

@@ -16,7 +16,7 @@ module.exports = function(app, passport, path, express, cookieParser, cookieSess
     app.get('/auth/facebook/callback',
          passport.authenticate('facebook', {
             failureRedirect: '/login' }),
-            function(req, res) {                
+            function(req, res) {
                 app.use(cookieParser());
                 app.use(passport.initialize());
                 app.use(passport.session());

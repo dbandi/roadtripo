@@ -57,7 +57,11 @@ app.service('dataService', function($http) {
           });
       }
 
-      this.updateTrip = function(trip) {
+      this.updateTrip = function(tripId, tripDetails) {
+          trip = {
+              trip_id : tripId,
+              trip_details : tripDetails
+          };
           return $http({
               method: 'POST',
               url: '/updatetrip',
