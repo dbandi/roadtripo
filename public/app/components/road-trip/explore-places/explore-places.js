@@ -1,18 +1,54 @@
-app.controller('exploreController', function($scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
+app.controller('exploreController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
 
     console.log($scope.roadtrip.tripStart);
     console.log($scope.roadtrip.tripEnd);
-    console.log($scope.tripId);
+    console.log($rootScope.tripId);
+
+    if(typeof $scope.roadtrip.tripStart == "undefined"){
+        $state.go('trip.start');
+    }
+
+    var source = $scope.roadtrip.tripStart.replace(/ /g, '+');
+    var destination = $scope.roadtrip.tripEnd.replace(/ /g, '+');
 
     $scope.sourceCity = $scope.roadtrip.tripStart.split(',')[0];
     $scope.destinationCity = $scope.roadtrip.tripEnd.split(',')[0];
 
     //Storing the default Result from Foursquare
     $scope.initPlaces = $scope.roadtrip.places;
+    if($rootScope.tripId != 0){
+        $scope.places = $scope.roadtrip.places;
+    }
+    else{
+        $rootScope.plantrip = [];
+    }
 
     //Display parts in UI
     $scope.showGasPrices = false;
     $scope.showHotels = false;
+
+    //Default Foursquare
+    dataService.getCities(source, destination).then(function (response) {
+        $scope.cities = response.data;
+        $scope.places = [];
+
+        var citiesLength = Object.keys($scope.cities).length;
+        for (var i = 0; i < citiesLength; i++) {
+            var placetypes = 'Popular+with+Visitors';
+
+            dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
+                for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
+                    var responseData = response.data.response.groups[0].items[j].venue;
+                    var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);
+                    $scope.places.push(placesModel);
+                    $scope.roadtrip.places = $scope.places;
+                    $scope.roadtrip.cities = $scope.cities;
+                }
+
+                $state.go('trip.explore');
+            });
+        }
+    });
 
     $scope.getYelpPlacesofCities = function(placetypes){
         $scope.places = [];
@@ -80,20 +116,21 @@ app.controller('exploreController', function($scope, $http, dataService, dataFac
     }
 
     $scope.addToTrip = function(place){
-        var id = $scope.plantrip.length + 1;
-        var found = $scope.plantrip.some(function (el) {
+        console.log($rootScope.plantrip);
+        var id = $rootScope.plantrip.length + 1;
+        var found = $rootScope.plantrip.some(function (el) {
             return el.placeid === place.placeid;
         });
 
         if (!found) {
-            $scope.plantrip.push(place);
+            $rootScope.plantrip.push(place);
         }
     };
 
     $scope.saveTrip = function(){
-        $scope.roadtrip.plantripDetails = dataFactory.getTrip($scope.roadtrip.tripStart, $scope.roadtrip.tripEnd, $scope.plantrip, $scope.tripId);
-        console.log($scope.tripId);
-        if($scope.tripId == 0){
+        $scope.roadtrip.plantripDetails = dataFactory.getTrip($scope.roadtrip.tripStart, $scope.roadtrip.tripEnd, $rootScope.plantrip, $rootScope.tripId);
+        console.log($rootScope.tripId);
+        if($rootScope.tripId == 0){
             dataService.saveTrip($scope.roadtrip.plantripDetails).then(function (response) {
                 if(response.data == "unauthorized"){
                     localStorageService.set('plantripDetails', $scope.roadtrip.plantripDetails);
@@ -101,25 +138,14 @@ app.controller('exploreController', function($scope, $http, dataService, dataFac
                     $scope.$emit('login');
                 }
                 else{
-                    $scope.tripId = parseInt(response.data);
+                    $rootScope.tripId = parseInt(response.data);
                     $scope.$emit('viewUserTrips');
                 }
             });
         }
         else{
-            dataService.updateTrip(tripDetails).then(function (response) {
-                if(response.data == "unauthorized"){
-                    // sending true if to be saved trip after login
-                    var saveDetails = {
-                        isSaveTrip: true,
-                        tripDetails: tripDetails,
-                        trip: $scope.plantrip
-                    }
-                    $scope.$emit('login', saveDetails);
-                }
-                else{
-                    $scope.tripId = parseInt(response.data);
-                }
+            dataService.updateTrip($rootScope.tripId, $scope.roadtrip.plantripDetails).then(function (response) {
+                $scope.$emit('viewUserTrips');
             });
         }
 

@@ -1,4 +1,4 @@
-app.controller('mytripsController', function($scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
+app.controller('mytripsController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
 
     $scope.alltrips = [];
 

@@ -1,15 +1,16 @@
-app.controller('startController', function($scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
+app.controller('startController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
 
-    $scope.plantrip = function(){
+    $scope.planTrip = function(){
 
         $scope.roadtrip.tripStart = $scope.source;
         $scope.roadtrip.tripEnd = $scope.destination;
 
-        var source = $scope.source.replace(/ /g, '+');
-        var destination = $scope.destination.replace(/ /g, '+');
+        /*var source = $scope.source.replace(/ /g, '+');
+        var destination = $scope.destination.replace(/ /g, '+');*/
 
-        dataService.getCities(source, destination).then(function (response) {
+        /*dataService.getCities(source, destination).then(function (response) {
             $scope.cities = response.data;
+            $scope.places = [];
 
             var citiesLength = Object.keys($scope.cities).length;
             for (var i = 0; i < citiesLength; i++) {
@@ -23,10 +24,24 @@ app.controller('startController', function($scope, $http, dataService, dataFacto
                         $scope.roadtrip.places = $scope.places;
                         $scope.roadtrip.cities = $scope.cities;
                     }
+
+                    $state.go('trip.explore');
                 });
             }
-        });
-
+        });*/
         $state.go('trip.explore');
+    };
+
+    $scope.mouseover = function(roatripIndex){
+        console.log(roatripIndex);
+        $scope.hoverActive = [];
+        for (var i = 0; i < 3; i++) {
+            if( (i+1) == roatripIndex){
+                $scope.hoverActive.push('active');
+            }
+            else{
+                $scope.hoverActive.push('notactive');
+            }
+        }
     };
 });

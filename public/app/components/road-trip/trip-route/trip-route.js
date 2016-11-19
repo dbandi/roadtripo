@@ -1,4 +1,4 @@
-app.controller('tripRouteController', function($scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, $stateParams, localStorageService) {
+app.controller('tripRouteController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, $stateParams, localStorageService) {
     var tripId = $stateParams.routeID;
 
     $scope.mapWayPoints = [];
@@ -10,6 +10,9 @@ app.controller('tripRouteController', function($scope, $http, dataService, dataF
 
         $scope.mapOrigin = response.data[0].trip_start;
         $scope.mapDestination = response.data[0].trip_end;
+
+        $scope.roadtrip.tripStart = response.data[0].trip_start;
+        $scope.roadtrip.tripEnd =  response.data[0].trip_end;
 
         for (var i = 0; i < $scope.tripRoute.length; i++) {
             var waypoint_location = {
@@ -24,8 +27,8 @@ app.controller('tripRouteController', function($scope, $http, dataService, dataF
         }
     });
 
-    $scope.editTrip = function(tripRoute){
-        $scope.tripId = tripId;
+    $scope.editTrip = function(){
+        $rootScope.tripId = tripId;
         $scope.isEdit = true;
     };
 
@@ -51,10 +54,11 @@ app.controller('tripRouteController', function($scope, $http, dataService, dataF
     $scope.updateTrip = function(){
         dataService.getTrips().then(function(response){
             $scope.mytrips = response.data;
-
+            console.log($scope.mytrips);
             angular.forEach($scope.mytrips, function(value, key) {
                 if(value.trip_id == tripId){
-                    $scope.mytrips[key].trip_details = JSON.stringify($scope.tripRoute);
+                    console.log($scope.mytrips[key].trip_details);
+                    $scope.mytrips[key].trip_details = $scope.tripRoute;
                     dataService.updateTrip(tripId, $scope.mytrips[key]).then(function (response) {
                         console.log(response.data);
                     });
@@ -66,37 +70,34 @@ app.controller('tripRouteController', function($scope, $http, dataService, dataF
     };
 
     $scope.addPlaces = function(){
-        dataService.getTripRoute(tripId).then(function (response) {
 
-            $scope.tripId = tripId;
-            $scope.roadtrip.tripStart = response.data[0].trip_start;
-            $scope.roadtrip.tripEnd =  response.data[0].trip_end;
+        var source = $scope.roadtrip.tripStart.replace(/ /g, '+');
+        var destination = $scope.roadtrip.tripEnd.replace(/ /g, '+');
+        $rootScope.tripId = tripId;
+        $rootScope.plantrip = $scope.tripRoute;
 
-            var source = $scope.roadtrip.tripStart.replace(/ /g, '+');
-            var destination = $scope.roadtrip.tripEnd.replace(/ /g, '+');
+        /*dataService.getCities(source, destination).then(function (response) {
+            $scope.cities = response.data;
+            $scope.places = [];
 
-            dataService.getCities(source, destination).then(function (response) {
-                $scope.cities = response.data;
+            var citiesLength = Object.keys($scope.cities).length;
+            for (var i = 0; i < citiesLength; i++) {
+                var placetypes = 'Popular+with+Visitors';
 
-                var citiesLength = Object.keys($scope.cities).length;
-                for (var i = 0; i < citiesLength; i++) {
-                    var placetypes = 'Popular+with+Visitors';
+                dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
+                    for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
+                        var responseData = response.data.response.groups[0].items[j].venue;
+                        var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);
+                        $scope.places.push(placesModel);
+                        $scope.roadtrip.places = $scope.places;
+                        $scope.roadtrip.cities = $scope.cities;
+                    }
 
-                    dataService.getPlaces(placetypes, $scope.cities[i].lat, $scope.cities[i].lng).then(function (response) {
-                        for (var j = 0; j < response.data.response.groups[0].items.length; j++) {
-                            var responseData = response.data.response.groups[0].items[j].venue;
-                            var placesModel = dataFactory.getFoursquareAPIplacesModel(responseData);
-                            $scope.places.push(placesModel);
-                            $scope.roadtrip.places = $scope.places;
-                            $scope.roadtrip.cities = $scope.cities;
-                        }
-                    });
-                }
-            });
-
-            $state.go('trip.explore');
-        });
-
+                    $state.go('trip.explore');
+                });
+            }
+        });*/
+        $state.go('trip.explore');
     };
 
 });

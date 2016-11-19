@@ -72,13 +72,14 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         if (typeof req.user !== 'undefined') {
             var trip_id = req.body.trip_id;
             console.log("Trip Details");
-            console.log(req.body.trip_details);
+            console.log(trip_id);
+            console.log(req.body);
             var trip = {
                 user_id: req.user.id,
                 trip_name: req.body.trip_details.trip_name,
                 trip_start: req.body.trip_details.trip_start,
                 trip_end: req.body.trip_details.trip_end,
-                trip_details: req.body.trip_details.trip_details
+                trip_details: JSON.stringify (req.body.trip_details.trip_details)
             };
 
             connection.query('UPDATE trip SET user_id = ?, trip_name = ?, trip_start = ?, trip_end = ?, trip_details = ? WHERE trip_id = ?', [trip.user_id, trip.trip_name, trip.trip_start, trip.trip_end, trip.trip_details, trip_id], function(err, results) {
@@ -111,5 +112,18 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         else{
             return res.send("unauthorized");
         }*/
+    });
+
+    app.get('/searchtrip', function(req, res, next) {
+        var search = req.query.search;
+        connection.query('SELECT * FROM trip WHERE trip_name LIKE ?', '%' + search + '%', function(err, result) {
+            if (!err){
+                return res.send(result);
+            }
+            else{
+                return res.sendStatus(400);
+            }
+
+        });
     });
 };

@@ -1,4 +1,4 @@
-app.controller('roadtripoController', function($scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, $stateParams, localStorageService) {
+app.controller('roadtripoController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, $stateParams, localStorageService) {
 
     $scope.places = [];
     $scope.cities = [];
@@ -7,8 +7,8 @@ app.controller('roadtripoController', function($scope, $http, dataService, dataF
 
     $scope.accountStatus = "Login";
 
-    $scope.plantrip = [];
-    $scope.tripId = 0;
+    $rootScope.plantrip = [];
+    $rootScope.tripId = 0;
     $scope.tripPlanId = 0;
 
     $scope.source = "";
@@ -19,9 +19,13 @@ app.controller('roadtripoController', function($scope, $http, dataService, dataF
             $scope.userId = response.data;
             $scope.accountStatus = "My Trips";
 
-            if(localStorageService.get('plantripDetails') && localStorageService.get('plantripDetails') == "mytrips"){
+            console.log(localStorageService.get('plantripDetails'));
+            console.log(localStorageService.get('pageRedirect'));
+
+            if(localStorageService.get('plantripDetails') && localStorageService.get('pageRedirect') == "mytrips"){
                 $scope.roadtrip.plantripDetails = localStorageService.get('plantripDetails');
                 dataService.saveTrip($scope.roadtrip.plantripDetails).then(function (response) {
+
                     localStorageService.remove('plantripDetails');
                     localStorageService.remove('pageRedirect');
                     $state.go('trip.mytrips');
@@ -81,12 +85,13 @@ app.controller('roadtripoController', function($scope, $http, dataService, dataF
             if(response.data.success){
                 $scope.userId = response.data.user_id;
                 ngDialog.close();
+                $scope.accountStatus = "My Trips";
 
                 if($scope.isSaveTrip == true){
                     dataService.saveTrip($scope.tripDetails).then(function (response) {
                         // Successfully Saved Trip
                         if(response.status == 200){
-                            $scope.tripId = parseInt(response.data);
+                            $rootScope.tripId = parseInt(response.data);
                         }
                     });
                 }
@@ -115,7 +120,7 @@ app.controller('roadtripoController', function($scope, $http, dataService, dataF
             if(response.data.success){
                 $scope.userId = response.data.user_id;
                 ngDialog.close();
-                $state.go('trip.start');
+                $state.go('trip.start', {}, {reload: true});
             }
             else{
                 $scope.signUpError = "Sorry! You could not sign up.";

@@ -790,9 +790,13 @@ nav{
     }
 }
 
+.explore-places-section{
+    margin-bottom: 70px;
+}
+
 .explore-places-block{
     margin-top: 50px;
-
+    margin-bottom: 50px;
     h4{
         @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
         text-align: center;
@@ -877,6 +881,202 @@ nav{
 
             &:after{
                 display: none;
+            }
+        }
+    }
+}
+
+/*********************************
+        Explore Roadtrip
+*********************************/
+.explore-roadtrip-section{
+    margin-bottom: 70px;
+
+    .explore-roadtrip-header{
+        h4{
+            @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
+            text-align: center;
+            margin-bottom: 15px
+        }
+
+        p{
+            @include web-font(Font-Regular, 18px, $brand-text, initial, 1px);
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 15px;
+            position: relative;
+
+            &:after{
+                content: '';
+                position: absolute;
+                width: 125px;
+                height: 3px;
+                background-color: $brand-color;
+                top: 0px;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    .explore-roadtrip-block{
+        display: table;
+        width: 100%;
+
+        .single-roadtrip-block{
+            @include layout(4, 0, 0);
+            height: 70vh;
+            -webkit-transition: width 0.4s; /* Safari */
+            transition: width 0.4s;
+            position: relative;
+            cursor: pointer;
+
+            &.active{
+                @include layout(6, 0, 0);
+            }
+            &.notactive{
+                @include layout(3, 0, 0);
+            }
+
+            .bg-img{
+                @include img-cover();
+                height: 100%;
+                &.explore_arizona{
+                    background-image: url('../../../images/explore_Arizona.jpg');
+                }
+
+                &.explore_montana{
+                    background-image: url('../../../images/explore_Montana.jpg');
+                }
+
+                &.explore_cali{
+                    background-image: url('../../../images/explore_Pacific_Coast_Highway.jpg');
+                }
+            }
+
+            .explore-roatrip-content{
+                position: absolute;
+                @include center-block();
+                position: absolute;
+                margin: 0 auto;
+                width: 100%;
+
+                h4{
+                    @include web-font(Font-Bold, 36px, $default-color, initial, 1px);
+                    text-align: center;
+                    padding: 20px 40px;
+                    border: 4px solid $default-color;
+                    display: table;
+                    margin: 0 auto;
+                    position: relative;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    &:before{
+                        content: attr(data-letters);
+                        position: absolute;
+                        z-index: 2;
+                        color: #424242;
+                        background-color: $default-color;
+                        width: 0%;
+                        -webkit-transition: width 0.4s 0s;
+                        transition: width 0.4s 0s;
+                        top: 0;
+                        left: 0;
+                        overflow: hidden;
+                        padding: 20px 0px;
+                    }
+                }
+            }
+
+            &:hover{
+                h4{
+                    &:before{
+                        width: 100%;
+                        padding: 20px 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*********************************
+            My Trip
+*********************************/
+.explore-footer-section{
+    background-image: url('../../../images/footer.jpg');
+    background-position: 100 100;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+
+    .explore-footer-block{
+        .explore-map-block{
+
+        }
+
+        .explore-share-block{
+            margin-top: 150px;
+            h4{
+                @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
+                text-align: center;
+                margin-bottom: 15px
+            }
+
+            p{
+                @include web-font(Font-Regular, 18px, $brand-text, initial, 1px);
+                text-align: center;
+                margin-bottom: 60px;
+                padding-top: 15px;
+                position: relative;
+
+                &:after{
+                    content: '';
+                    position: absolute;
+                    width: 125px;
+                    height: 3px;
+                    background-color: $brand-color;
+                    top: 0px;
+                    margin: 0 auto;
+                    left: 0;
+                    right: 0;
+                }
+            }
+
+            a{
+                display: table;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .footer-block{
+        position: absolute;
+        bottom: 15px;
+        padding: 0px 15px;
+        width: 100%;
+
+        .footer-logo{
+            @include layout(3);
+        }
+
+        .footer-links{
+            @include layout(9);
+
+            ul{
+                display: table;
+                width: 100%;
+                float: right;
+                li{
+                    float: right;
+                    padding: 0px 20px;
+                    a{
+                        @include web-font(Font-Semi-Bold, 18px, $default-color, initial, 1px);
+                    }
+                }
             }
         }
     }

@@ -392,7 +392,7 @@ a {
   font-style: normal;
 }
 
-body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .like-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .filter-nav ul li a, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p, .trip-route .trip-route-content .trip-route-feature .route-feature-section span {
+body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .like-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .filter-nav ul li a, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p, .explore-roadtrip-section .explore-roadtrip-header h4, .explore-roadtrip-section .explore-roadtrip-header p, .explore-footer-section .explore-footer-block .explore-share-block h4, .explore-footer-section .explore-footer-block .explore-share-block p, .trip-route .trip-route-content .trip-route-feature .route-feature-section span {
   font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
@@ -428,7 +428,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   font-style: normal;
 }
 
-.explore-places-block figcaption h2 {
+.explore-places-block figcaption h2, .explore-footer-section .footer-block .footer-links ul li a {
   font-family: "Ubuntu";
   font-weight: 600;
   font-style: normal;
@@ -446,7 +446,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   font-style: normal;
 }
 
-.delete-screen h4, .trip-route .trip-route-content h4, .trip-route .trip-route-content .trip-route-feature .route-feature-section p {
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4, .delete-screen h4, .trip-route .trip-route-content h4, .trip-route .trip-route-content .trip-route-feature .route-feature-section p {
   font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
@@ -1748,8 +1748,13 @@ nav {
   color: #ffffff;
 }
 
+.explore-places-section {
+  margin-bottom: 70px;
+}
+
 .explore-places-block {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .explore-places-block h4 {
@@ -1913,6 +1918,268 @@ nav {
 
 .explore-places-block figcaption p:after {
   display: none;
+}
+
+/*********************************
+        Explore Roadtrip
+*********************************/
+.explore-roadtrip-section {
+  margin-bottom: 70px;
+}
+
+.explore-roadtrip-section .explore-roadtrip-header h4 {
+  font-size: 36px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.explore-roadtrip-section .explore-roadtrip-header p {
+  font-size: 18px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.explore-roadtrip-section .explore-roadtrip-header p:after {
+  content: '';
+  position: absolute;
+  width: 125px;
+  height: 3px;
+  background-color: #2eb6f5;
+  top: 0px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block {
+  display: table;
+  width: 100%;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block {
+  width: -webkit-calc(33.33333%);
+  width: -moz-calc(33.33333%);
+  width: calc(33.33333%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+  height: 70vh;
+  -webkit-transition: width 0.4s;
+  /* Safari */
+  transition: width 0.4s;
+  position: relative;
+  cursor: pointer;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block.active {
+  width: -webkit-calc(50%);
+  width: -moz-calc(50%);
+  width: calc(50%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block.notactive {
+  width: -webkit-calc(25%);
+  width: -moz-calc(25%);
+  width: calc(25%);
+  float: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .bg-img {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .bg-img.explore_arizona {
+  background-image: url("../../../images/explore_Arizona.jpg");
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .bg-img.explore_montana {
+  background-image: url("../../../images/explore_Montana.jpg");
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .bg-img.explore_cali {
+  background-image: url("../../../images/explore_Pacific_Coast_Highway.jpg");
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content {
+  position: absolute;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: table;
+  margin: 0 auto;
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4 {
+  font-size: 36px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  padding: 20px 40px;
+  border: 4px solid #ffffff;
+  display: table;
+  margin: 0 auto;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4:before {
+  content: attr(data-letters);
+  position: absolute;
+  z-index: 2;
+  color: #424242;
+  background-color: #ffffff;
+  width: 0%;
+  -webkit-transition: width 0.4s 0s;
+  transition: width 0.4s 0s;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 20px 0px;
+}
+
+.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block:hover h4:before {
+  width: 100%;
+  padding: 20px 0px;
+}
+
+/*********************************
+            My Trip
+*********************************/
+.explore-footer-section {
+  background-image: url("../../../images/footer.jpg");
+  background-position: 100 100;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+.explore-footer-section .explore-footer-block .explore-share-block {
+  margin-top: 150px;
+}
+
+.explore-footer-section .explore-footer-block .explore-share-block h4 {
+  font-size: 36px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.explore-footer-section .explore-footer-block .explore-share-block p {
+  font-size: 18px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.explore-footer-section .explore-footer-block .explore-share-block p:after {
+  content: '';
+  position: absolute;
+  width: 125px;
+  height: 3px;
+  background-color: #2eb6f5;
+  top: 0px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.explore-footer-section .explore-footer-block .explore-share-block a {
+  display: table;
+  margin: 0 auto;
+}
+
+.explore-footer-section .footer-block {
+  position: absolute;
+  bottom: 15px;
+  padding: 0px 15px;
+  width: 100%;
+}
+
+.explore-footer-section .footer-block .footer-logo {
+  width: -webkit-calc(25%);
+  width: -moz-calc(25%);
+  width: calc(25%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-footer-section .footer-block .footer-links {
+  width: -webkit-calc(75%);
+  width: -moz-calc(75%);
+  width: calc(75%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.explore-footer-section .footer-block .footer-links ul {
+  display: table;
+  width: 100%;
+  float: right;
+}
+
+.explore-footer-section .footer-block .footer-links ul li {
+  float: right;
+  padding: 0px 20px;
+}
+
+.explore-footer-section .footer-block .footer-links ul li a {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 /*********************************

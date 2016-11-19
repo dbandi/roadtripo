@@ -11,7 +11,7 @@
                             <input type="text" ng-model="destination" ng-autocomplete="destination" details="destinationDetails"  placeholder="Destination"/>
                         </div>
                         <div class="form-button">
-                            <button type="button" ng-click="plantrip()">Start Trip</button>
+                            <button type="button" ng-click="planTrip()">Start Trip</button>
                         </div>
                     </div>
                 </div>
@@ -104,4 +104,68 @@
             </div>
         </div>
     </div>
+
+    <div class="explore-roadtrip-section">
+        <div class="explore-roadtrip-wrapper">
+            <div class="container">
+                <div class="explore-roadtrip-header">
+                    <h4>Recommended Places</h4>
+                    <p>Discover on and off the road with the country's most classic drives.</p>
+                </div>
+                <div class="explore-roadtrip-block">
+                    <div class="single-roadtrip-block" ng-mouseover="mouseover(1)" ng-class="hoverActive[0]">
+                        <div class="explore_montana bg-img"></div>
+                        <div class="explore-roatrip-content">
+                            <h4 data-letters="Montana">Montana</h4>
+                        </div>
+                    </div>
+                    <div class="single-roadtrip-block" ng-mouseover="mouseover(2)" ng-class="hoverActive[1]">
+                        <div class="explore_arizona bg-img"></div>
+                        <div class="explore-roatrip-content">
+                            <h4 data-letters="Arizona">Arizona</h4>
+                        </div>
+                    </div>
+                    <div class="single-roadtrip-block" ng-mouseover="mouseover(3)" ng-class="hoverActive[2]">
+                        <div class="explore_cali bg-img"></div>
+                        <div class="explore-roatrip-content">
+                            <h4 data-letters="California">California</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explore-footer-section">
+        <div class="explore-footer-wrapper">
+            <div class="container-fluid">
+                <div class="explore-footer-block">
+                    <div class="explore-map-block">
+                    </div>
+
+                    <div class="explore-share-block">
+                        <h4>Planning a USA Road Trip</h4>
+                        <p>Check out the entertaining stories, beautiful images, and useful travel tips for you from around the world! </p>
+                        <a href="https://expertvagabond.com/" class="btn">Explore</a>
+                    </div>
+                </div>
+
+                <div class="footer-block">
+                    <div class="footer-logo">
+                        <img src="images/logo.png"/>
+                    </div>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Trips</a></li>
+                            <li><a href="#">Explore</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
