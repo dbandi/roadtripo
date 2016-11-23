@@ -541,6 +541,45 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   margin-top: 35px;
 }
 
+.loading-wrapper {
+  display: table;
+  margin: 60px auto;
+}
+
+.loading {
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.red {
+  background: #DB454F;
+  animation: loading 1s infinite;
+  box-shadow: 10 10 10px;
+  color: #DB454F;
+}
+
+.yellow {
+  background: #FABC42;
+  animation: loading 1s infinite;
+  animation-delay: .1s;
+}
+
+.blue {
+  background: #45B9B2;
+  animation: loading 1s infinite;
+  animation-delay: .2s;
+}
+
+@keyframes loading {
+  50% {
+    transform: translateY(-100%);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  }
+}
+
 /*********************************
     Brand Font Style
 *********************************/
@@ -890,6 +929,18 @@ input {
   width: 1200px;
 }
 
+@media (max-width: 1200px) {
+  .wide-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container, .container-fluid {
+    width: 100%;
+  }
+}
+
 .no-bg {
   background-color: transparent;
 }
@@ -917,6 +968,12 @@ nav {
 .nav-wrapper {
   padding: 35px 50px;
   z-index: 10000;
+}
+
+@media (max-width: 640px) {
+  .nav-wrapper {
+    padding: 25px;
+  }
 }
 
 .nav-wrapper a {
@@ -964,12 +1021,30 @@ nav {
   border: 15px solid #fff;
 }
 
+@media (max-width: 992px) {
+  .homePage {
+    border-width: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .homePage {
+    border-width: 6px;
+  }
+}
+
 .full-screen-section {
   background-image: url("../../../images/bg.jpg");
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   height: 75vh;
+}
+
+@media (max-width: 992px) {
+  .full-screen-section {
+    height: 100vh;
+  }
 }
 
 .full-screen-section.explore {
@@ -1000,6 +1075,19 @@ nav {
   padding-right: 10px;
   margin-left: 16.66667%;
   margin-right: 16.66667%;
+}
+
+@media (max-width: 1280px) {
+  .listPlaces .main-container-section, .tripDetails .main-container-section, .myTrips .main-container-section, .tripRoute .main-container-section {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
 }
 
 .listPlaces .main-container-section .main-container-header, .tripDetails .main-container-section .main-container-header, .myTrips .main-container-section .main-container-header, .tripRoute .main-container-section .main-container-header {
@@ -1074,6 +1162,15 @@ nav {
   padding-right: 0;
 }
 
+@media (max-width: 640px) {
+  .full-screen-block {
+    padding-top: 125px;
+    padding-left: 0;
+    padding-bottom: 100px;
+    padding-right: 0;
+  }
+}
+
 .full-screen-block h1 {
   font-size: 46px;
   color: #ffffff;
@@ -1082,6 +1179,18 @@ nav {
   margin-bottom: 0px;
   margin-top: 0px;
   margin-bottom: 15px;
+}
+
+@media (max-width: 640px) {
+  .full-screen-block h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-screen-block h1 {
+    font-size: 28px;
+  }
 }
 
 .full-screen-block h4 {
@@ -1093,8 +1202,32 @@ nav {
   margin-top: 0px;
 }
 
+@media (max-width: 640px) {
+  .full-screen-block h4 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-screen-block h4 {
+    font-size: 16px;
+  }
+}
+
 .full-screen-block.explore h4 {
   font-size: 30px;
+}
+
+@media (max-width: 640px) {
+  .full-screen-block.explore h4 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-screen-block.explore h4 {
+    font-size: 18px;
+  }
 }
 
 .full-screen-block.explore span {
@@ -1114,6 +1247,13 @@ nav {
   display: table-cell;
 }
 
+@media (max-width: 992px) {
+  .full-screen-block .form-group .form-input {
+    display: block;
+    padding: 0px 10px;
+  }
+}
+
 .full-screen-block .form-group .form-input input {
   padding: 25px 40px;
   border: none;
@@ -1127,6 +1267,13 @@ nav {
   min-width: 350px;
 }
 
+@media (max-width: 640px) {
+  .full-screen-block .form-group .form-input input {
+    font-size: 12px;
+    padding: 18px 20px;
+  }
+}
+
 .full-screen-block .form-group .form-input input:first-child {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -1137,8 +1284,30 @@ nav {
   border-left: 1px solid #ccc;
 }
 
+@media (max-width: 992px) {
+  .full-screen-block .form-group .form-input input {
+    width: 100%;
+    border-radius: 5px !important;
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    margin-left: 0px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .full-screen-block .form-group .form-input input {
+    min-width: 250px;
+  }
+}
+
 .full-screen-block .form-group .form-button {
   display: table-cell;
+}
+
+@media (max-width: 992px) {
+  .full-screen-block .form-group .form-button {
+    display: block;
+  }
 }
 
 .full-screen-block .form-group .form-button button {
@@ -1146,6 +1315,13 @@ nav {
   margin-left: 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+}
+
+@media (max-width: 992px) {
+  .full-screen-block .form-group .form-button button {
+    padding: 15px 30px;
+    border-radius: 5px;
+  }
 }
 
 /*********************************
@@ -1188,6 +1364,9 @@ nav {
   margin-right: 0%;
   margin-bottom: 30px;
   font-family: 'Montserrat';
+  /*&:nth-child(4){
+                clear: both;
+            }*/
 }
 
 .list-places-wrapper .list-places-block .individual-place-block.trip-route {
@@ -1201,8 +1380,30 @@ nav {
   margin-right: 0%;
 }
 
-.list-places-wrapper .list-places-block .individual-place-block:nth-child(4) {
-  clear: both;
+@media (max-width: 992px) {
+  .list-places-wrapper .list-places-block .individual-place-block {
+    width: -webkit-calc(50%);
+    width: -moz-calc(50%);
+    width: calc(50%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 640px) {
+  .list-places-wrapper .list-places-block .individual-place-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
 }
 
 .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper {
@@ -1816,6 +2017,32 @@ nav {
   margin-bottom: 10px;
 }
 
+@media (max-width: 992px) {
+  .explore-places-block .explore-left-block .single-explore-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 992px) {
+  .explore-places-block .explore-left-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .explore-places-block .explore-right-block {
   width: -webkit-calc(50%);
   width: -moz-calc(50%);
@@ -1827,6 +2054,19 @@ nav {
   margin-right: 0%;
 }
 
+@media (max-width: 992px) {
+  .explore-places-block .explore-right-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .explore-places-block .explore-right-block .explore-top-right-block .single-explore-block {
   width: -webkit-calc(50%);
   width: -moz-calc(50%);
@@ -1836,6 +2076,25 @@ nav {
   padding-right: 10px;
   margin-left: 0%;
   margin-right: 0%;
+}
+
+@media (max-width: 768px) {
+  .explore-places-block .explore-right-block .explore-top-right-block .single-explore-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .explore-places-block .explore-right-block .explore-top-right-block .single-explore-block img {
+    width: 100%;
+  }
+  .explore-places-block .explore-right-block .explore-top-right-block .single-explore-block:first-child {
+    margin-bottom: 10px;
+  }
 }
 
 .explore-places-block .explore-right-block .explore-bottom-right-block {
@@ -1861,6 +2120,19 @@ nav {
   margin-right: 0%;
 }
 
+@media (max-width: 768px) {
+  .explore-places-block .explore-right-block .explore-bottom-right-block .single-explore-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .explore-places-block .explore-full-block {
   width: -webkit-calc(100%);
   width: -moz-calc(100%);
@@ -1882,6 +2154,20 @@ nav {
   padding-right: 10px;
   margin-left: 0%;
   margin-right: 0%;
+}
+
+@media (max-width: 768px) {
+  .explore-places-block .explore-full-block .single-explore-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 10px;
+  }
 }
 
 .explore-places-block .single-explore-block {
@@ -1985,6 +2271,20 @@ nav {
   cursor: pointer;
 }
 
+@media (max-width: 992px) {
+  .explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+    height: 300px;
+  }
+}
+
 .explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block.active {
   width: -webkit-calc(50%);
   width: -moz-calc(50%);
@@ -2084,12 +2384,18 @@ nav {
   background-image: url("../../../images/footer.jpg");
   background-position: 100 100;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
   position: relative;
 }
 
 .explore-footer-section .explore-footer-block .explore-share-block {
-  margin-top: 150px;
+  margin-top: 40px;
+}
+
+@media (max-width: 1280px) {
+  .explore-footer-section .explore-footer-block .explore-share-block {
+    margin-top: 40px;
+  }
 }
 
 .explore-footer-section .explore-footer-block .explore-share-block h4 {

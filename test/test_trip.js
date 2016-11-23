@@ -50,3 +50,36 @@ var user1 = request.agent();
               });
         });
     });
+
+    describe('/GET searchtrip', () => {
+        it('it should GET all Phoenix trips', (done) => {
+          chai.request(app)
+              .get('/searchtrip?search=Phoenix')
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body[0].should.have.property('trip_id');
+                  res.body[0].should.have.property('trip_name');
+                  res.body[0].trip_id.should.be.a.Number;
+                  res.body[0].trip_name.should.be.a.String;
+                return done();
+              });
+        });
+    });
+
+    describe('/GET gettriproute', () => {
+        it('it should the trip Route where id is 1', (done) => {
+          chai.request(app)
+              .get('/gettriproute?trip_id=1')
+              .end((err, res) => {                  
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body[0].should.have.property('trip_id');
+                  res.body[0].should.have.property('trip_name');
+                  res.body[0].trip_id.should.be.a.Number;
+                  res.body[0].trip_name.should.be.a.String;
+                  res.body[0].trip_id.should.equal(1);
+                return done();
+              });
+        });
+    });

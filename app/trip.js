@@ -13,7 +13,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         if (typeof req.user !== 'undefined') {
             // If User Logged In
             var user_id = req.user.id;
-            console.log(user_id);
+
             connection.query('SELECT * FROM trip WHERE user_id = ?', [user_id], function(err, result) {
                 if (!err){
                     return res.send(result);
@@ -71,9 +71,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     app.post('/updatetrip', function(req, res, next) {
         if (typeof req.user !== 'undefined') {
             var trip_id = req.body.trip_id;
-            console.log("Trip Details");
-            console.log(trip_id);
-            console.log(req.body);
+
             var trip = {
                 user_id: req.user.id,
                 trip_name: req.body.trip_details.trip_name,

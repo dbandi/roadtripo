@@ -1,9 +1,12 @@
-app.controller('startController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
+app.controller('startController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService, $cacheFactory) {
 
     $scope.planTrip = function(){
 
         $scope.roadtrip.tripStart = $scope.source;
         $scope.roadtrip.tripEnd = $scope.destination;
+
+        console.log($scope.roadtrip.tripStart);
+        console.log($scope.roadtrip.tripEnd);
 
         /*var source = $scope.source.replace(/ /g, '+');
         var destination = $scope.destination.replace(/ /g, '+');*/

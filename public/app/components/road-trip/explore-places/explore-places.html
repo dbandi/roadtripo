@@ -33,7 +33,7 @@
                     <li><a href="#" ng-click="getYelpPlacesofCities('nightlife');">Drinks</a></li>
                     <!--<li><a href="#" ng-click="getYelpPlacesofCities('arts');">Entertainment</a></li>-->
                     <li><a href="#" ng-click="getYelpPlacesofCities('active');">Outdoor</a></li>
-                    <li class="filter-btn"><a class="save-trip view-map" ng-click="viewMap()"><i class="fa fa-compass" aria-hidden="true"> </i> View Map </a></li>
+                    <!--<li class="filter-btn"><a class="save-trip view-map" ng-click="viewMap()"><i class="fa fa-compass" aria-hidden="true"> </i> View Map </a></li>-->
                     <li class="filter-btn"><a class="save-trip" ng-click="saveTrip()"><i class="fa fa-plus-circle" aria-hidden="true"> </i> Save Trip </a></li>
                 </ul>
             </div>
@@ -42,8 +42,16 @@
         <div class="list-places-wrapper">
             <div class="full-width-container">
                 <div class="list-places-block">
+                    <div class="loading-block" ng-show="places.length == 0">
+                        <!--<img src="images/van.gif"/>-->
+                        <div class="loading-wrapper">
+                            <div class="loading red"></div>
+                            <div class="loading yellow"></div>
+                            <div class="loading blue"></div>
+                        </div>
+                    </div>
                     <div class="masonry-block">
-                        <div class="places-block" ng-repeat="place in places">
+                        <div class="places-block" ng-repeat="place in places" ng-show="places.length > 0">
                             <div class="individual-place-block item" ng-class="{'active': plantrip.indexOf(place) != -1}">
                                 <div class="individual-place-block-wrapper">
                                     <div class="add-trip">

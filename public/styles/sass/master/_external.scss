@@ -57,3 +57,42 @@
     .label-start{
         margin-top: 35px;
     }
+
+    .loading-wrapper{
+        display: table;
+        margin: 60px auto;
+    }
+
+    .loading {
+      float: left;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .red {
+      background: #DB454F;
+      animation: loading 1s infinite;
+      box-shadow: 10 10 10px;
+      color: #DB454F;
+    }
+
+    .yellow {
+      background: #FABC42;
+      animation: loading 1s infinite;
+      animation-delay: .1s;
+    }
+
+    .blue {
+      background: #45B9B2;
+      animation: loading 1s infinite;
+      animation-delay: .2s;
+    }
+
+    @keyframes loading {
+      50% {
+        transform: translateY(-100%);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+      }
+    }

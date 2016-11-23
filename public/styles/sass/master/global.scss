@@ -52,7 +52,18 @@ input{
 
 .wide-container{
     width: 1200px;
+
+    @include media-queries-max(1200px){
+        width: 100%;
+    }
 }
+
+.container{
+    @include media-queries-max(1280px){
+        width: 100%;
+    }
+}
+
 .no-bg{
     background-color: transparent;
 }
@@ -79,6 +90,10 @@ nav{
 .nav-wrapper{
     padding: 35px 50px;
     z-index: 10000;
+
+    @include media-queries-max(640px){
+        padding: 25px;
+    }
 
     a{
         cursor: pointer;
@@ -120,11 +135,23 @@ nav{
 /* ======== HOME PAGE ========= */
 .homePage{
     border: 15px solid #fff;
+
+    @include media-queries-max(992px){
+        border-width: 10px;
+    }
+
+    @include media-queries-max(640px){
+        border-width: 6px;
+    }
 }
 .full-screen-section{
     background-image: url('../../../images/bg.jpg');
     @include img-cover();
     height: 75vh;
+
+    @include media-queries-max(992px){
+        height: 100vh;
+    }
 
     &.explore{
         background-image: url('../../../images/bg-explore.jpg');
@@ -151,6 +178,10 @@ nav{
         position: relative;
         z-index: 10;
         @include layout(12, 10, 10, 2, 2);
+
+        @include media-queries-max(1280px){
+            @include layout(12, 10, 10, 0, 0);
+        }
 
         .main-container-header{
             margin-top: 60px;
@@ -203,17 +234,46 @@ nav{
 .full-screen-block{
     text-align: center;
     @include padding(225px, 0, 180px);
+
+    @include media-queries-max(640px){
+        @include padding(125px, 0, 100px);
+    }
+
     h1{
         @include web-font(Font-Light, 46px, $default-color, 34px, initial);
         margin-bottom: 15px;
+
+        @include media-queries-max(640px){
+            font-size: 36px;
+        }
+
+        @include media-queries-max(480px){
+            font-size: 28px;
+        }
     }
     h4{
         @include web-font(Font-Light, 22px, $default-color, initial, initial);
+
+        @include media-queries-max(640px){
+            font-size: 18px;
+        }
+
+        @include media-queries-max(480px){
+            font-size: 16px;
+        }
     }
 
     &.explore{
         h4{
             font-size: 30px;
+
+            @include media-queries-max(640px){
+                font-size: 22px;
+            }
+
+            @include media-queries-max(480px){
+                font-size: 18px;
+            }
         }
 
         span{
@@ -230,12 +290,23 @@ nav{
         padding-top: 100px;
         .form-input{
             display: table-cell;
+
+            @include media-queries-max(992px){
+                display: block;
+                padding: 0px 10px
+            }
             input{
                 padding: 25px 40px;
                 border: none;
                 text-transform: uppercase;
                 @include web-font(Font-Light, 15px, $brand-text, initial, initial);
                 min-width: 350px;
+
+                @include media-queries-max(640px){
+                    font-size: 12px;
+                    padding: 18px 20px;
+                }
+
                 &:first-child{
                     border-top-left-radius: 10px;
                     border-bottom-left-radius: 10px;
@@ -244,16 +315,37 @@ nav{
                     margin-left: -5px;
                     border-left: 1px solid #ccc;
                 }
+
+                @include media-queries-max(992px){
+                    width: 100%;
+                    border-radius: 5px !important;
+                    padding: 15px 30px;
+                    margin-bottom: 10px;
+                    margin-left: 0px !important;
+                }
+
+                @include media-queries-max(640px){
+                    min-width: 250px;
+                }
             }
         }
         .form-button{
             display: table-cell;
+
+            @include media-queries-max(992px){
+                display: block;
+            }
             button{
                 @extend .btn;
                 padding: 24px 40px 26px;
                 margin-left: 0px;
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
+
+                @include media-queries-max(992px){
+                    padding: 15px 30px;
+                    border-radius: 5px;
+                }
             }
         }
     }
@@ -304,12 +396,20 @@ nav{
             margin-bottom: 30px;
             font-family: 'Montserrat';
 
+            /*&:nth-child(4){
+                clear: both;
+            }*/
+
             &.trip-route{
                 @include layout(6, 20, 20);
             }
 
-            &:nth-child(4){
-                clear: both;
+            @include media-queries-max(992px){
+                @include layout(6, 10, 10);
+            }
+
+            @include media-queries-max(640px){
+                @include layout(12, 0, 0);
             }
 
             .individual-place-block-wrapper{
@@ -828,15 +928,38 @@ nav{
         .single-explore-block{
             @include layout(12, 10, 10);
             margin-bottom: 10px;
+
+            @include media-queries-max(992px){
+                @include layout(12, 0, 0);
+            }
+        }
+
+        @include media-queries-max(992px){
+            @include layout(12, 0, 0);
         }
     }
 
     .explore-right-block{
         @include layout(6, 0, 0);
 
+        @include media-queries-max(992px){
+            @include layout(12, 0, 0);
+        }
+
         .explore-top-right-block{
             .single-explore-block{
                 @include layout(6, 10, 10);
+
+                @include media-queries-max(768px){
+                    @include layout(12, 0, 0);
+
+                    img{
+                        width: 100%;
+                    }
+                    &:first-child{
+                        margin-bottom: 10px;
+                    }
+                }
             }
         }
 
@@ -845,6 +968,10 @@ nav{
             @include layout(12, 0, 0);
             .single-explore-block{
                 @include layout(12, 10, 10);
+
+                @include media-queries-max(768px){
+                    @include layout(12, 0, 0);
+                }
             }
         }
 
@@ -856,6 +983,11 @@ nav{
 
         .single-explore-block{
             @include layout(4, 10, 10);
+
+            @include media-queries-max(768px){
+                @include layout(12, 0, 0);
+                margin-top: 10px;
+            }
         }
     }
 
@@ -931,6 +1063,11 @@ nav{
             transition: width 0.4s;
             position: relative;
             cursor: pointer;
+
+            @include media-queries-max(992px){
+                @include layout(12, 0, 0);
+                height: 300px;
+            }
 
             &.active{
                 @include layout(6, 0, 0);
@@ -1010,7 +1147,7 @@ nav{
     background-image: url('../../../images/footer.jpg');
     background-position: 100 100;
     background-size: cover;
-    height: 100vh;
+    height: 90vh;
     position: relative;
 
     .explore-footer-block{
@@ -1019,7 +1156,12 @@ nav{
         }
 
         .explore-share-block{
-            margin-top: 150px;
+            margin-top: 40px;
+
+            @include media-queries-max(1280px){
+                margin-top: 40px;
+            }
+
             h4{
                 @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
                 text-align: center;

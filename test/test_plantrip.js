@@ -16,10 +16,10 @@ chai.use(require('chai-passport-strategy'));
 // Test Plantrip : Google Route ========
 // =====================================
 
-  describe('/GET plantrip?source=Chicago&destination=Moline', () => {
+  describe('/GET plantrip?source=Chicago&destination=Naperville', () => {
       it('it should GET latitude longitude between Source and Destination', (done) => {
         chai.request(app)
-            .get('/plantrip?source=Chicago&destination=Moline')
+            .get('/plantrip?source=Chicago&destination=Naperville')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
