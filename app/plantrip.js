@@ -31,10 +31,13 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
 	// Plantrip ===========================
 	// =====================================
     app.get('/plantrip', function(req, res, next) {
+        allCitiesLatLng = [];
+        allCitiesKeyCount = 0;
+        
         request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //directions = body; // Print the google web page.
-
+                console.log(directions);
                 directions = JSON.parse( response.body );
                 if(directions.status == "OK"){
 

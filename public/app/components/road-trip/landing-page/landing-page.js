@@ -5,7 +5,10 @@ app.controller('startController', function($rootScope, $scope, $http, dataServic
         $scope.roadtrip.tripStart = $scope.source;
         $scope.roadtrip.tripEnd = $scope.destination;
         $scope.roadtrip.places = [];
-        
+
+        console.log($scope.source);
+        console.log($scope.destination);
+
         $state.go('trip.explore');
     };
 

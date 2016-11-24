@@ -4,6 +4,9 @@ app.controller('exploreController', function($rootScope, $scope, $http, dataServ
         $state.go('trip.start');
     }
 
+    console.log($scope.roadtrip.tripStart);
+    console.log($scope.roadtrip.tripEnd);
+
     var source = $scope.roadtrip.tripStart.replace(/ /g, '+');
     var destination = $scope.roadtrip.tripEnd.replace(/ /g, '+');
 
@@ -27,8 +30,11 @@ app.controller('exploreController', function($rootScope, $scope, $http, dataServ
 
     //Default Foursquare
     dataService.getCities(source, destination).then(function (response) {
+
         $scope.cities = response.data;
         $scope.places = [];
+
+        console.log($scope.cities);
 
         var citiesLength = Object.keys($scope.cities).length;
         for (var i = 0; i < citiesLength; i++) {
