@@ -33,12 +33,27 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
     app.get('/plantrip', function(req, res, next) {
         allCitiesLatLng = [];
         allCitiesKeyCount = 0;
-        
+
         request('https://maps.googleapis.com/maps/api/directions/json?origin='+req.query.source+'&destination='+req.query.destination+'&key='+googleapikey, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //directions = body; // Print the google web page.
-                console.log(directions);
+
                 directions = JSON.parse( response.body );
+
+                if(typeof directions === 'array'){
+                    if(directions.length == 0){                        
+                        res.json();
+                    }
+                }
+
+                if(directions.status == "NOT_FOUND"){
+                    res.json();
+                }
+
+                if(directions.status == "ZERO_RESULTS"){
+                    res.json();
+                }
+
                 if(directions.status == "OK"){
 
                     totalDistance = directions.routes[0].legs[0].distance.value;
