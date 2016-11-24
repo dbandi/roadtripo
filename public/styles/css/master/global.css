@@ -446,7 +446,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   font-style: normal;
 }
 
-.explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4, .delete-screen h4, .trip-route .trip-route-content h4, .trip-route .trip-route-content .trip-route-feature .route-feature-section p {
+.left-nav h1, .explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4, .delete-screen h4, .trip-route .trip-route-content h4, .trip-route .trip-route-content .trip-route-feature .route-feature-section p {
   font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
@@ -987,6 +987,16 @@ nav {
 
 .left-nav img {
   cursor: pointer;
+}
+
+.left-nav h1 {
+  font-size: 28px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: initial;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: 'Raleway', sans-serif;
 }
 
 .right-nav {

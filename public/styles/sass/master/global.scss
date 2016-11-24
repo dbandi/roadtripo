@@ -106,6 +106,11 @@ nav{
     img{
         cursor: pointer;
     }
+
+    h1{
+        @include web-font(Font-Bold, 28px, $default-color, initial, initial);
+        font-family: 'Raleway', sans-serif;
+    }
 }
 .right-nav{
     float: right;
