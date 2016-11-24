@@ -1077,7 +1077,20 @@ nav {
   margin-right: 16.66667%;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1800px) {
+  .listPlaces .main-container-section, .tripDetails .main-container-section, .myTrips .main-container-section, .tripRoute .main-container-section {
+    width: -webkit-calc(83.33333%);
+    width: -moz-calc(83.33333%);
+    width: calc(83.33333%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 8.33333%;
+    margin-right: 8.33333%;
+  }
+}
+
+@media (max-width: 1600px) {
   .listPlaces .main-container-section, .tripDetails .main-container-section, .myTrips .main-container-section, .tripRoute .main-container-section {
     width: -webkit-calc(100%);
     width: -moz-calc(100%);
@@ -1237,6 +1250,11 @@ nav {
   padding-bottom: 5px;
 }
 
+.full-screen-block .no-trips-found {
+  color: #ffffff;
+  padding-top: 5px;
+}
+
 .full-screen-block .form-group {
   display: table;
   margin: 0 auto;
@@ -1367,6 +1385,19 @@ nav {
   /*&:nth-child(4){
                 clear: both;
             }*/
+}
+
+@media (max-width: 1600px) {
+  .list-places-wrapper .list-places-block .individual-place-block {
+    width: -webkit-calc(33.33333%);
+    width: -moz-calc(33.33333%);
+    width: calc(33.33333%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
 }
 
 .list-places-wrapper .list-places-block .individual-place-block.trip-route {

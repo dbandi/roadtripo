@@ -179,7 +179,11 @@ nav{
         z-index: 10;
         @include layout(12, 10, 10, 2, 2);
 
-        @include media-queries-max(1280px){
+        @include media-queries-max(1800px){
+            @include layout(12, 10, 10, 1, 1);
+        }
+
+        @include media-queries-max(1600px){
             @include layout(12, 10, 10, 0, 0);
         }
 
@@ -282,6 +286,11 @@ nav{
             display: block;
             padding-bottom: 5px;
         }
+    }
+
+    .no-trips-found{
+        color: $default-color;
+        padding-top: 5px;
     }
 
     .form-group{
@@ -393,6 +402,11 @@ nav{
     .list-places-block{
         .individual-place-block{
             @include layout(4, 20, 20);
+
+            @include media-queries-max(1600px){
+                @include layout(4, 10, 10);
+            }
+
             margin-bottom: 30px;
             font-family: 'Montserrat';
 

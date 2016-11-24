@@ -96,25 +96,33 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     });
 
     app.get('/deleteTrip', function(req, res, next) {
-        /*if (typeof req.user !== 'undefined') {*/
-            var trip_id = req.query.trip_id;
-            connection.query('DELETE FROM trip WHERE trip_id = ?', [trip_id], function (err, result) {
-                if (!err){
-                    return res.sendStatus(200);
-                }
-                else{
-                    return res.sendStatus(400);
-                }
-            });
-        /*}
-        else{
-            return res.send("unauthorized");
-        }*/
+        var trip_id = req.query.trip_id;
+        connection.query('DELETE FROM trip WHERE trip_id = ?', [trip_id], function (err, result) {
+            if (!err){
+                return res.sendStatus(200);
+            }
+            else{
+                return res.sendStatus(400);
+            }
+        });
     });
 
     app.get('/searchtrip', function(req, res, next) {
         var search = req.query.search;
         connection.query('SELECT * FROM trip WHERE trip_name LIKE ?', '%' + search + '%', function(err, result) {
+            if (!err){
+                return res.send(result);
+            }
+            else{
+                return res.sendStatus(400);
+            }
+
+        });
+    });
+
+    app.get('/stateexplore', function(req, res, next) {
+        var search = req.query.search;
+        connection.query('SELECT * FROM trip WHERE trip_details LIKE ?', '%, ' + search + '%', function(err, result) {
             if (!err){
                 return res.send(result);
             }

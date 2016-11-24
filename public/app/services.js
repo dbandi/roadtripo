@@ -119,4 +119,12 @@ app.service('dataService', function($http) {
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }
+
+      this.stateExplore = function(search){
+          return $http({
+              method: 'GET',
+              url: '/stateexplore?search='+search,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
 });

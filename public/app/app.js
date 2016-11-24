@@ -24,6 +24,12 @@ var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngD
             templateUrl: 'app/components/road-trip/explore-places/explore-places.html'
         })
 
+        .state('trip.state', {
+            controller: 'stateExploreController',
+            url: '/state/:search',
+            templateUrl: 'app/components/road-trip/state-explore/state-explore.html'
+        })
+
         .state('trip.mytrips', {
             controller: 'mytripsController',
             url: '/mytrips',

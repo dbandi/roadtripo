@@ -11,7 +11,7 @@
                             <input type="text" ng-model="destination" ng-autocomplete="destination" details="destinationDetails"  placeholder="Destination"/>
                         </div>
                         <div class="form-button">
-                            <button type="button" ng-click="planTrip()">Start Trip</button>
+                            <button type="button" ng-disabled="!(!!source || !!destination);" ng-click="planTrip()">Start Trip</button>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <h4>Explore Places</h4>
                     <p>Discover on and off the road with the country's most classic drives.</p>
 
-                    <div class="explore-left-block" ng-click="getTrips(1)">
+                    <div class="explore-left-block" ui-sref="trip.route({ routeID: 1})">
                         <div class="single-explore-block">
                             <figure>
                                 <img src="images/explore-1.png" alt="img18">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="explore-right-block">
                         <div class="explore-top-right-block">
-                            <div class="single-explore-block" ng-click="getTrips(2)">
+                            <div class="single-explore-block" ui-sref="trip.route({ routeID: 13})">
                                 <figure>
                                     <img src="images/explore-2.png" alt="img18">
                                     <figcaption>
@@ -48,7 +48,7 @@
                                     </figcaption>
                                 </figure>
                             </div>
-                            <div class="single-explore-block" ng-click="getTrips(3)">
+                            <div class="single-explore-block" ui-sref="trip.route({ routeID: 14})">
                                 <figure>
                                     <img src="images/explore-3.png" alt="img18">
                                     <figcaption>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="explore-bottom-right-block">
-                            <div class="single-explore-block">
+                            <div class="single-explore-block" ui-sref="trip.route({ routeID: 15})">
                                 <figure>
                                     <img src="images/explore-4.png" alt="img18">
                                     <figcaption>
@@ -72,16 +72,16 @@
 
                     </div>
                     <div class="explore-full-block">
-                        <div class="single-explore-block">
+                        <div class="single-explore-block" ui-sref="trip.route({ routeID: 20})">
                             <figure>
                                 <img src="images/explore-7.png" alt="img18">
                                 <figcaption>
-                                    <h2>Strong <span>Apollo</span></h2>
-                                    <p>Apollo's last game of pool was so strange.</p>
+                                    <h2>San Fransisco</h2>
+                                    <p>San Diego</p>
                                 </figcaption>
                             </figure>
                         </div>
-                        <div class="single-explore-block">
+                        <div class="single-explore-block" ui-sref="trip.route({ routeID: 17})">
                             <figure>
                                 <img src="images/explore-5.png" alt="img18">
                                 <figcaption>
@@ -90,7 +90,7 @@
                                 </figcaption>
                             </figure>
                         </div>
-                        <div class="single-explore-block">
+                        <div class="single-explore-block" ui-sref="trip.route({ routeID: 17})">
                             <figure>
                                 <img src="images/explore-6.png" alt="img18">
                                 <figcaption>
@@ -113,19 +113,19 @@
                     <p>Discover on and off the road with the country's most classic drives.</p>
                 </div>
                 <div class="explore-roadtrip-block">
-                    <div class="single-roadtrip-block" ng-mouseover="mouseover(1)" ng-class="hoverActive[0]">
+                    <div class="single-roadtrip-block" ng-mouseover="mouseover(1)" ng-class="hoverActive[0]" ui-sref="trip.state({ search: 'MT'})">
                         <div class="explore_montana bg-img"></div>
                         <div class="explore-roatrip-content">
                             <h4 data-letters="Montana">Montana</h4>
                         </div>
                     </div>
-                    <div class="single-roadtrip-block" ng-mouseover="mouseover(2)" ng-class="hoverActive[1]">
+                    <div class="single-roadtrip-block" ng-mouseover="mouseover(2)" ng-class="hoverActive[1]" ui-sref="trip.state({ search: 'AZ'})">
                         <div class="explore_arizona bg-img"></div>
                         <div class="explore-roatrip-content">
                             <h4 data-letters="Arizona">Arizona</h4>
                         </div>
                     </div>
-                    <div class="single-roadtrip-block" ng-mouseover="mouseover(3)" ng-class="hoverActive[2]">
+                    <div class="single-roadtrip-block" ng-mouseover="mouseover(3)" ng-class="hoverActive[2]" ui-sref="trip.state({ search: 'CA'})">
                         <div class="explore_cali bg-img"></div>
                         <div class="explore-roatrip-content">
                             <h4 data-letters="California">California</h4>
@@ -146,7 +146,7 @@
                     <div class="explore-share-block">
                         <h4>Planning a USA Road Trip</h4>
                         <p>Check out the entertaining stories, beautiful images, and useful travel tips for you from around the world! </p>
-                        <a href="https://expertvagabond.com/" class="btn">Explore</a>
+                        <a  ui-sref="trip.state({ search: ''})" class="btn">Explore</a>
                     </div>
                 </div>
 

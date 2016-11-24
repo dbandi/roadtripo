@@ -1,9 +1,5 @@
 app.controller('exploreController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService) {
 
-    console.log($scope.roadtrip.tripStart);
-    console.log($scope.roadtrip.tripEnd);
-    console.log($rootScope.tripId);
-
     if(typeof $scope.roadtrip.tripStart == "undefined"){
         $state.go('trip.start');
     }
@@ -16,6 +12,8 @@ app.controller('exploreController', function($rootScope, $scope, $http, dataServ
 
     //Storing the default Result from Foursquare
     $scope.initPlaces = $scope.roadtrip.places;
+    $scope.cities = [];
+
     if($rootScope.tripId != 0){
         $scope.places = $scope.roadtrip.places;
     }
