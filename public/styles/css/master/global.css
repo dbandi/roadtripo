@@ -959,7 +959,7 @@ input {
 
 /* ======== NAV : GLOBAL ========= */
 nav {
-  position: fixed;
+  position: absolute;
   display: block;
   width: 100%;
   z-index: 1000;
@@ -999,6 +999,12 @@ nav {
   font-family: 'Raleway', sans-serif;
 }
 
+@media (max-width: 640px) {
+  .left-nav h1 {
+    font-size: 22px;
+  }
+}
+
 .right-nav {
   float: right;
 }
@@ -1007,6 +1013,12 @@ nav {
   margin-top: 5px;
   margin-left: 5px;
   float: left;
+}
+
+@media (max-width: 640px) {
+  .right-nav li a {
+    font-size: 11px;
+  }
 }
 
 .right-nav .my-trips {
@@ -2012,6 +2024,15 @@ nav {
   float: right;
 }
 
+@media (max-width: 1080px) {
+  .filter-nav ul li.filter-btn {
+    display: table;
+    clear: both;
+    float: none;
+    margin: 0 auto;
+  }
+}
+
 .filter-nav a.save-trip {
   font-size: 13px;
   text-transform: uppercase;
@@ -2550,6 +2571,23 @@ nav {
   margin-right: 0%;
 }
 
+@media (max-width: 768px) {
+  .explore-footer-section .footer-block .footer-logo {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .explore-footer-section .footer-block .footer-logo img {
+    margin: 20px auto;
+    display: table;
+  }
+}
+
 .explore-footer-section .footer-block .footer-links {
   width: -webkit-calc(75%);
   width: -moz-calc(75%);
@@ -2561,10 +2599,31 @@ nav {
   margin-right: 0%;
 }
 
+@media (max-width: 768px) {
+  .explore-footer-section .footer-block .footer-links {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .explore-footer-section .footer-block .footer-links ul {
   display: table;
   width: 100%;
   float: right;
+}
+
+@media (max-width: 768px) {
+  .explore-footer-section .footer-block .footer-links ul {
+    float: none;
+    width: auto;
+    margin: 0 auto;
+  }
 }
 
 .explore-footer-section .footer-block .footer-links ul li {
@@ -2579,6 +2638,14 @@ nav {
   letter-spacing: 1px;
   margin-bottom: 0px;
   margin-top: 0px;
+}
+
+@media (max-width: 640px) {
+  .explore-footer-section .footer-block .footer-links ul li {
+    float: none;
+    text-align: center;
+    padding: 5px;
+  }
 }
 
 /*********************************

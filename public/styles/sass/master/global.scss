@@ -82,7 +82,7 @@ input{
 
 /* ======== NAV : GLOBAL ========= */
 nav{
-    position: fixed;
+    position: absolute;
     display: block;
     width: 100%;
     z-index: 1000;
@@ -110,6 +110,10 @@ nav{
     h1{
         @include web-font(Font-Bold, 28px, $default-color, initial, initial);
         font-family: 'Raleway', sans-serif;
+
+        @include media-queries-max(640px){
+            font-size: 22px;
+        }
     }
 }
 .right-nav{
@@ -119,6 +123,12 @@ nav{
         margin-top: 5px;
         margin-left: 5px;
         float: left;
+
+        a{
+            @include media-queries-max(640px){
+                font-size: 11px;
+            }
+        }
     }
 
     .my-trips{
@@ -888,6 +898,13 @@ nav{
 
             &.filter-btn{
                 float: right;
+
+                @include media-queries-max(1080px){
+                    display: table;
+                    clear: both;
+                    float: none;
+                    margin: 0 auto;
+                }
             }
         }
     }
@@ -1238,20 +1255,46 @@ nav{
 
         .footer-logo{
             @include layout(3);
+
+            @include media-queries-max(768px){
+                @include layout(12);
+
+                img{
+                    margin: 20px auto;
+                    display: table;
+                }
+            }
         }
 
         .footer-links{
             @include layout(9);
 
+            @include media-queries-max(768px){
+                @include layout(12);
+            }
+
             ul{
                 display: table;
                 width: 100%;
                 float: right;
+
+                @include media-queries-max(768px){
+                    float: none;
+                    width: auto;
+                    margin: 0 auto;
+                }
+
                 li{
                     float: right;
                     padding: 0px 20px;
                     a{
                         @include web-font(Font-Semi-Bold, 18px, $default-color, initial, 1px);
+                    }
+
+                    @include media-queries-max(640px){
+                        float: none;
+                        text-align: center;
+                        padding: 5px;
                     }
                 }
             }
