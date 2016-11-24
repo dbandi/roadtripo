@@ -1411,6 +1411,45 @@ nav {
   margin-right: 0%;
 }
 
+@media (max-width: 1600px) {
+  .list-places-wrapper .list-places-block .individual-place-block.trip-route {
+    width: -webkit-calc(50%);
+    width: -moz-calc(50%);
+    width: calc(50%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 992px) {
+  .list-places-wrapper .list-places-block .individual-place-block.trip-route {
+    width: -webkit-calc(50%);
+    width: -moz-calc(50%);
+    width: calc(50%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-places-wrapper .list-places-block .individual-place-block.trip-route {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 @media (max-width: 992px) {
   .list-places-wrapper .list-places-block .individual-place-block {
     width: -webkit-calc(50%);
@@ -1889,6 +1928,19 @@ nav {
   margin-right: 0%;
   margin-bottom: 30px;
   font-family: 'Montserrat';
+}
+
+@media (max-width: 992px) {
+  .list-places-wrapper .list-places-block.my-trips-block .individual-place-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
 }
 
 .list-places-wrapper .list-places-block.my-trips-block .place-content-block {
@@ -2774,6 +2826,45 @@ nav {
   margin-top: 50px;
 }
 
+@media (max-width: 1760px) {
+  .trip-route-block {
+    width: -webkit-calc(50%);
+    width: -moz-calc(50%);
+    width: calc(50%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 1360px) {
+  .trip-route-block {
+    width: -webkit-calc(58.33333%);
+    width: -moz-calc(58.33333%);
+    width: calc(58.33333%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 992px) {
+  .trip-route-block {
+    width: -webkit-calc(100%);
+    width: -moz-calc(100%);
+    width: calc(100%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
 .trip-route-block a.save-trip {
   font-size: 13px;
   text-transform: uppercase;
@@ -2818,6 +2909,38 @@ nav {
   margin-right: 0%;
   position: fixed;
   right: 0;
+}
+
+@media (max-width: 1760px) {
+  .trip-map-block {
+    width: -webkit-calc(50%);
+    width: -moz-calc(50%);
+    width: calc(50%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 1360px) {
+  .trip-map-block {
+    width: -webkit-calc(41.66667%);
+    width: -moz-calc(41.66667%);
+    width: calc(41.66667%);
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 992px) {
+  .trip-map-block {
+    display: none;
+  }
 }
 
 .trip-map-block ng-map {

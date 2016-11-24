@@ -416,6 +416,18 @@ nav{
 
             &.trip-route{
                 @include layout(6, 20, 20);
+
+                @include media-queries-max(1600px){
+                    @include layout(6, 10, 10);
+                }
+
+                @include media-queries-max(992px){
+                    @include layout(6, 10, 10);
+                }
+
+                @include media-queries-max(768px){
+                    @include layout(12, 10, 10);
+                }
             }
 
             @include media-queries-max(992px){
@@ -814,6 +826,10 @@ nav{
                 @include layout(6, 20, 20);
                 margin-bottom: 30px;
                 font-family: 'Montserrat';
+
+                @include media-queries-max(992px){
+                    @include layout(12, 10, 10);
+                }
             }
 
             .place-content-block{
@@ -1437,6 +1453,18 @@ nav{
     @include layout(5, 0, 0);
     margin-top: 50px;
 
+    @include media-queries-max(1760px){
+        @include layout(6, 0, 0);
+    }
+
+    @include media-queries-max(1360px){
+        @include layout(7, 0, 0);
+    }
+
+    @include media-queries-max(992px){
+        @include layout(12, 0, 0);
+    }
+
     a.save-trip{
         font-size: 13px;
         text-transform: uppercase;
@@ -1477,6 +1505,18 @@ nav{
     @include layout(7, 0, 0);
     position: fixed;
     right: 0;
+
+    @include media-queries-max(1760px){
+        @include layout(6, 0, 0);
+    }
+
+    @include media-queries-max(1360px){
+        @include layout(5, 0, 0);
+    }
+
+    @include media-queries-max(992px){
+        display: none;
+    }
 
     ng-map{
         height: 100vh;

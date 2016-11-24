@@ -4,7 +4,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     var connection = mysql.createConnection({
       host     : 'localhost',
       user     : 'root',
-      password : '',
+      password : 'roadtripo*',
       database : 'roadtripo'
     });
     connection.connect();
