@@ -1,4 +1,4 @@
-var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate', 'LocalStorageModule', 'angular-parallax', 'angular-inview'])
+var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate', 'LocalStorageModule', 'angular-parallax', 'angular-inview', 'youtube-embed', 'angularVideoBg', 'video-background', 'slick'])
 
 // configuring our routes
 // =============================================================================
@@ -24,6 +24,12 @@ var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngD
             templateUrl: 'app/components/road-trip/explore-places/explore-places.html'
         })
 
+        .state('trip.cities', {
+            controller: 'citiesController',
+            url: '/cities/:search',
+            templateUrl: 'app/components/road-trip/explore-cities/explore-cities.html'
+        })
+
         .state('trip.state', {
             controller: 'stateExploreController',
             url: '/state/:search',
@@ -34,6 +40,12 @@ var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngD
             controller: 'mytripsController',
             url: '/mytrips',
             templateUrl: 'app/components/road-trip/my-trips/my-trips.html'
+        })
+
+        .state('trip.details', {
+            controller: 'detailsController',
+            url: '/details/:city/:type/:placename',
+            templateUrl: 'app/components/road-trip/places-details/places-details.html'
         })
 
         .state('trip.route', {

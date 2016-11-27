@@ -1,0 +1,50 @@
+<section class="listVideos">
+
+    <div class="main-container-section">
+        <div class="explore-cities-wrapper">
+            <div class="container">
+                <div class="explore-cities-block">
+
+                    <div class="explore-block" ng-if="exploreCityFoods.length > 0">
+                        <h4>Food & Drinks</h4>
+                        <div class="explore-block-list">
+                            <slick dots="true" infinite="false" speed="300" slides-to-show="5" touch-move="false" slides-to-scroll="1">
+                                <div class="item" ng-repeat="exploreCityFood in exploreCityFoods" ui-sref="trip.details({ city: '{{exploreCityName}}', type: 'food', placename: '{{exploreCityFood.foodNameId}}'})">
+                                    <div class="city-image" style="background-image: url('images/food/{{exploreCityFood.foodImage}}')">
+                                        <h5>{{exploreCityFood.foodName}}</h5>
+                                    </div>
+                                </div>
+                            </slick>
+                        </div>
+                    </div>
+
+                    <div class="explore-block" ng-if="exploreCityAdventures.length > 0">
+                        <h4>Adventure</h4>
+                        <div class="explore-block-list">
+                            <slick dots="true" infinite="false" speed="300" slides-to-show="5" touch-move="false" slides-to-scroll="1">
+                                <div class="item" ng-repeat="exploreCityAdventure in exploreCityAdventures" ui-sref="trip.cities({ search: '{{exploreCityAdventure.adventureId}}'})">
+                                    <div class="city-image" style="background-image: url('images/adventure/{{exploreCityAdventure.adventureImage}}')">
+                                        <h5>{{exploreCityAdventure.adventureName}}</h5>
+                                    </div>
+                                </div>
+                            </slick>
+                        </div>
+                    </div>
+
+                    <div class="explore-block" ng-if="exploreCityFoods.length > 0">
+                        <h4>Entertainment</h4>
+                        <div class="explore-block-list">
+                            <slick dots="true" infinite="false" speed="300" slides-to-show="5" touch-move="false" slides-to-scroll="1">
+                                <div class="item" ng-repeat="exploreCityFood in exploreCityFoods" ui-sref="trip.cities({ search: '{{exploreCityFood.foodId}}'})">
+                                    <div class="city-image" style="background-image: url('images/food/{{exploreCityFood.foodImage}}')">
+                                        <h5>{{exploreCityFood.foodName}}</h5>
+                                    </div>
+                                </div>
+                            </slick>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -67,6 +67,7 @@ app.use(flash());
 require('./app/auth.js')(app, passport, path, express, cookieParser, cookieSession, bodyParser, FacebookStrategy, GooglePlusStrategy, TwitterStrategy);
 require('./app/plantrip.js')(app, passport, path, express, NodeGeocoder, airbnb, Yelp, Bing, rp, request, Promise, _);
 require('./app/trip.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
+require('./app/explore.js')(app, passport, path, express, mysql, Yelp, rp, request, Promise, _);
 
 module.exports = app;
 

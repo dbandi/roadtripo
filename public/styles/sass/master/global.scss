@@ -73,6 +73,9 @@ input{
 .np-bot{
     padding-bottom: 0px;
 }
+.no-bg{
+    background-image: none !important;
+}
 .hide{
     display: none;
 }
@@ -113,6 +116,10 @@ nav{
 
         @include media-queries-max(640px){
             font-size: 22px;
+        }
+
+        &.dark{
+            color: #252525;
         }
     }
 }
@@ -171,6 +178,14 @@ nav{
     &.explore{
         background-image: url('../../../images/bg-explore.jpg');
         background-position: 50% 100%;
+
+        &.cities{
+            background-position: 50% 50%;
+
+            h1{
+                text-transform: capitalize;
+            }
+        }
     }
 }
 
@@ -247,6 +262,12 @@ nav{
     #map{
         /*height: 0 !important;
         opacity: 0;*/
+    }
+}
+
+.listVideos{
+    .explore{
+        height: auto;
     }
 }
 
@@ -942,6 +963,180 @@ nav{
     }
 }
 
+/* ===================
+    Explore Videos
+=================== */
+.explore-videos-section{
+    margin-bottom: 70px;
+
+    .container{
+        display: block;
+    }
+}
+
+.explore-videos-block{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    h4{
+        @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
+        text-align: center;
+        margin-bottom: 15px
+    }
+
+    p{
+        @include web-font(Font-Regular, 18px, $brand-text, initial, 1px);
+        text-align: center;
+        margin-bottom: 60px;
+        padding-top: 15px;
+        position: relative;
+
+        &:after{
+            content: '';
+            position: absolute;
+            width: 125px;
+            height: 3px;
+            background-color: $brand-color;
+            top: 0px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    .explore-videos{
+        h4{
+            @include web-font(Font-Semi-Bold, 18px, #686868, initial, 1px);
+            text-transform: uppercase;
+            text-align: left;
+            padding-left: 12px;
+            padding-bottom: 20px;
+        }
+
+        .videos-gallery{
+            .item{
+                //@include layout(2.4);
+                border: 10px solid $default-color;
+                cursor: pointer;
+
+                .city-image{
+                    height: 345px;
+                    @include img-cover();
+
+                    h5{
+                        @include center-block();
+                        @include web-font(Font-Regular, 36px, $default-color, initial, 1px);
+                        font-family: 'Pompiere', cursive;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ===================
+    Places Details
+=================== */
+.place-details-wrapper{
+
+    .place-details-block{
+        margin-top: 80px;
+
+        .place-details-info{
+            @include layout(7);
+
+            h1{
+                @include web-font(Font-Bold, 38px, $brand-text, initial, 1px);
+                font-family: $secondary-font;
+            }
+
+            p{
+                @include web-font(Font-Light, 16px, $brand-title, initial, 1px);
+                margin-top: 5px;
+                padding-left: 3px;
+                text-transform: capitalize;
+                font-family: $secondary-font;
+            }
+
+            .places-details-location{
+                margin: 30px 0px;
+
+                .place-details-list{
+                    padding: 10px 8px;
+                    border-top: 1px solid #f3f3f3;
+
+                    &:first-child{
+                        border-top: none;
+                    }
+
+                    h4{
+                        @include web-font(Font-Medium, 20px, $brand-text, initial, 1px);
+                        padding-bottom: 2px;
+                    }
+
+                    p{
+                        @include web-font(Font-Light, 14px, $brand-title, initial, 1px);
+                        padding-left: 0px;
+                    }
+
+                    .places-details-reviews{
+                        padding: 15px 0px;
+                        .review-header{
+                            .author_image{
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                @include img-cover();
+                                float: left;
+                                margin-right: 10px;
+                                background-color: #e8e8e8;
+                            }
+
+                            h6{
+                                @include web-font(Font-Regular, 16px, $brand-text, initial, 1px);
+                                font-family: $secondary-font;
+                                padding-top: 5px;
+                            }
+
+                            p{
+                                @include web-font(Font-Light, 12px, $brand-title, initial, initial);
+                            }
+                        }
+
+                        .review-content{
+                            clear: both;
+
+                            p{
+                                @include web-font(Font-Light, 14px, $brand-title, 21px, 1px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .place-details-media{
+            @include layout(5);
+            margin-top: 120px;
+
+            .place-details-youtube{
+                margin: 20px 0px;
+            }
+
+            .place-details-streetview{
+                margin: 20px 0px;
+            }
+
+            .place-details-map{
+                margin: 20px 0px;
+            }
+        }
+    }
+}
+
+/* ===================
+    Explore Places
+=================== */
 .explore-places-section{
     margin-bottom: 70px;
 }
@@ -1191,6 +1386,48 @@ nav{
     }
 }
 
+/*********************************
+            My Cities
+*********************************/
+.explore-cities-wrapper{
+
+    .container{
+        display: block;
+    }
+
+    .explore-cities-block{
+
+        .explore-block{
+            margin: 60px 0px;
+            h4{
+                @include web-font(Font-Semi-Bold, 18px, #686868, initial, 1px);
+                text-transform: uppercase;
+                text-align: left;
+                padding-left: 12px;
+                padding-bottom: 20px;
+            }
+
+            .explore-block-list{
+                .item{
+                    //@include layout(2.4);
+                    border: 10px solid $default-color;
+                    cursor: pointer;
+
+                    .city-image{
+                        height: 345px;
+                        @include img-cover();
+
+                        h5{
+                            @include center-block();
+                            @include web-font(Font-Regular, 36px, $default-color, initial, 1px);
+                            font-family: 'Pompiere', cursive;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 /*********************************
             My Trip

@@ -19,11 +19,35 @@
         </div>
     </div>
 
+    <div class="explore-videos-section">
+        <div class="explore-videos-wrapper">
+            <div class="container">
+                <div class="explore-videos-block">
+                    <h4>Explore Places</h4>
+                    <p>Discover places with authentic experience.</p>
+
+                    <div class="explore-videos">
+                        <h4>Featured Cities</h4>
+                        <div class="videos-gallery" ng-if="exploreCities.length > 0">
+                            <slick dots="true" infinite="false" speed="300" slides-to-show="5" touch-move="false" slides-to-scroll="1">
+                                <div class="item" ng-repeat="exploreCity in exploreCities" ui-sref="trip.cities({ search: '{{exploreCity.cityNameId}}'})">
+                                    <div class="city-image" style="background-image: url('images/trips/{{exploreCity.cityImage}}')">
+                                        <h5>{{exploreCity.cityName}}</h5>
+                                    </div>
+                                </div>
+                            </slick>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="explore-places-section">
         <div class="explore-places-wrapper">
             <div class="container">
                 <div class="explore-places-block">
-                    <h4>Explore Places</h4>
+                    <h4>Explore Trips</h4>
                     <p>Discover on and off the road with the country's most classic drives.</p>
 
                     <div class="explore-left-block" ui-sref="trip.route({ routeID: 1})">

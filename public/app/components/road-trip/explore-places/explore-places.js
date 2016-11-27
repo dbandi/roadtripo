@@ -29,7 +29,7 @@ app.controller('exploreController', function($rootScope, $scope, $http, dataServ
     $scope.showHotels = false;
 
     //Default Foursquare
-    dataService.getCities(source, destination).then(function (response) {
+    dataService.getCitiesInRoute(source, destination).then(function (response) {
 
         $scope.cities = response.data;
         $scope.places = [];
@@ -40,6 +40,7 @@ app.controller('exploreController', function($rootScope, $scope, $http, dataServ
         }
 
         var citiesLength = Object.keys($scope.cities).length;
+        console.log($scope.cities);
         for (var i = 0; i < citiesLength; i++) {
             var placetypes = 'Popular+with+Visitors';
 

@@ -23,7 +23,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
     var totalMilesDistance = 0;
     var totalDuration = 0;
     var allCities = new Array();
-    var allCitiesLatLng = {};
+    var allCitiesLatLng = [];
     var allCitiesKeyCount = 0;
     var allLatLong = {};
 
@@ -41,7 +41,7 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
                 directions = JSON.parse( response.body );
 
                 if(typeof directions === 'array'){
-                    if(directions.length == 0){                        
+                    if(directions.length == 0){
                         res.json();
                     }
                 }
@@ -138,7 +138,6 @@ module.exports = function(app, passport, path, express, NodeGeocoder, airbnb, Ye
 	// Places ===========================
 	// =====================================
     app.get('/places', function(req, res, next) {
-
         var placetypes = req.query.placetypes;
         var lat = req.query.lat;
         var lng = req.query.lng;

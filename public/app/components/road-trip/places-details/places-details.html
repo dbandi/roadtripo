@@ -1,0 +1,55 @@
+<section class="placeDetails">
+
+    <div class="main-container-section">
+        <div class="place-details-wrapper">
+            <div class="container">
+                <div class="place-details-block">
+                    <div class="place-details-info">
+                        <div class="place-details-title">
+                            <h1>{{detailsPlaceName}}</h1>
+                            <p>{{detailsCity}}</p>
+                        </div>
+
+                        <div class="places-details-location">
+                            <div class="place-details-list" ng-repeat="detailsPlaceList in detailsPlaceLists|limitTo:10">
+                                <h4>{{detailsPlaceList.name}}</h4>
+                                <p>{{detailsPlaceList.vicinity}}</p>
+
+                                <div class="places-details-reviews" ng-repeat="placeReview in detailsPlaceList.reviews|limitTo:3">
+                                    <div class="review-header">
+                                        <div class="author_image" style="background-image: url({{placeReview.profile_photo_url}})"></div>
+                                        <h6>{{placeReview.author_name}}</h6>
+                                        <p>{{placeReview.relative_time_description}}</p>
+                                    </div>
+                                    <div class="review-content">
+                                        <h6>{{placeReview.rating}}</h6>
+                                        <p>{{placeReview.text}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="place-details-media">
+                        <div class="place-details-youtube">
+                            <youtube-video video-url="detailVideo" player-vars="playerVars" player-width="'100%'" player-height="'300px'"></youtube-video>
+                        </div>
+
+                        <div class="place-details-streetview">
+                            <div style="width:100%; height:400px" id="street-view">
+                                <ng-map street-view="StreetViewPanorama(document.querySelector('#street-view'), {position:new google.maps.LatLng(40.688738,-74.043871)})">
+                                  <marker position="40.688738,-74.043871"></marker>
+                                </ng-map>
+                            </div>
+                        </div>
+
+                        <div class="place-details-map">
+                            <ng-map zoom="11" center="[40.74, -74.18]">
+                                <marker position="[40.72, -74.20]" title="marker" animation="Animation.DROP"></marker>
+                              </ng-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

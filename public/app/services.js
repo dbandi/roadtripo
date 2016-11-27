@@ -1,6 +1,8 @@
 app.service('dataService', function($http) {
 
-    this.getCities = function(source, destination) {
+    this.getCitiesInRoute = function(source, destination) {
+        console.log(source);
+        console.log(destination);
         return $http({
             method: 'GET',
             url: '/plantrip?source='+source+'&destination='+destination,
@@ -124,6 +126,54 @@ app.service('dataService', function($http) {
           return $http({
               method: 'GET',
               url: '/stateexplore?search='+search,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.citiesExplore = function(search){
+          return $http({
+              method: 'GET',
+              url: '/citiesexplore?search='+search,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.getCities = function(){
+          return $http({
+              method: 'GET',
+              url: '/getcities',
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.getCityLatLng = function(city){
+          return $http({
+              method: 'GET',
+              url: '/getcitylatlng?city='+city,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.placeLocationDetails = function(placename, lat, lng, type){
+          return $http({
+              method: 'GET',
+              url: '/placeLocationDetails?placename='+placename+'&type='+type+'&lat='+lat+'&lng='+lng,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.placeReviewsDetails = function(placeid){
+          return $http({
+              method: 'GET',
+              url: '/placeReviewsDetails?placeid='+placeid,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.getFoodDetails = function(food_name_id){
+          return $http({
+              method: 'GET',
+              url: '/getfooddetails?food_name_id='+food_name_id,
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }

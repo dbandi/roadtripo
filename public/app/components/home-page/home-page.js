@@ -11,6 +11,8 @@ app.controller('roadtripoController', function($rootScope, $scope, $http, dataSe
     $rootScope.tripId = 0;
     $scope.tripPlanId = 0;
 
+    $rootScope.headerVideo = [];
+
     $scope.source = "";
     $scope.destination = "";
 
@@ -126,6 +128,14 @@ app.controller('roadtripoController', function($rootScope, $scope, $http, dataSe
                 $scope.signUpError = "Sorry! You could not sign up.";
             }
         });
-
     };
+
+    $rootScope.logoStyle = function(){
+        if($state.current.name == 'trip.details'){
+            return 'dark';
+        }
+        else{
+            return '';
+        }
+    }
 });

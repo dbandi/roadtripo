@@ -374,7 +374,7 @@ a {
   font-style: normal;
 }
 
-.i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .listPlaces .main-container-section .main-container-header h6, .tripDetails .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6, .tripRoute .main-container-section .main-container-header h6, .listPlaces .main-container-section .main-container-header h1, .tripDetails .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1, .tripRoute .main-container-section .main-container-header h1, .listPlaces .main-container-section .main-container-header p, .tripDetails .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p, .tripRoute .main-container-section .main-container-header p, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .list-tripDetail-wrapper .tripDetail-block h2, .login-section-wrapper .screen-logo-section p, .login-section-wrapper .login-title {
+.i-navigation-section .i-nav-wrapper > ul li a, .i-navigation-section .i-nav-wrapper > ul li ul li a, .listPlaces .main-container-section .main-container-header h6, .tripDetails .main-container-section .main-container-header h6, .myTrips .main-container-section .main-container-header h6, .tripRoute .main-container-section .main-container-header h6, .listPlaces .main-container-section .main-container-header h1, .tripDetails .main-container-section .main-container-header h1, .myTrips .main-container-section .main-container-header h1, .tripRoute .main-container-section .main-container-header h1, .listPlaces .main-container-section .main-container-header p, .tripDetails .main-container-section .main-container-header p, .myTrips .main-container-section .main-container-header p, .tripRoute .main-container-section .main-container-header p, .full-screen-block h1, .full-screen-block h4, .full-screen-block .form-group .form-input input, .place-details-wrapper .place-details-block .place-details-info p, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list p, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header p, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-content p, .list-tripDetail-wrapper .tripDetail-block h2, .login-section-wrapper .screen-logo-section p, .login-section-wrapper .login-title {
   font-family: "Ubuntu";
   font-weight: 300;
   font-style: normal;
@@ -392,7 +392,7 @@ a {
   font-style: normal;
 }
 
-body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .like-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .filter-nav ul li a, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p, .explore-roadtrip-section .explore-roadtrip-header h4, .explore-roadtrip-section .explore-roadtrip-header p, .explore-footer-section .explore-footer-block .explore-share-block h4, .explore-footer-section .explore-footer-block .explore-share-block p, .trip-route .trip-route-content .trip-route-feature .route-feature-section span {
+body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .like-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .filter-nav ul li a, .explore-videos-block h4, .explore-videos-block p, .explore-videos-block .explore-videos .videos-gallery .item .city-image h5, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header h6, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p, .explore-roadtrip-section .explore-roadtrip-header h4, .explore-roadtrip-section .explore-roadtrip-header p, .explore-cities-wrapper .explore-cities-block .explore-block .explore-block-list .item .city-image h5, .explore-footer-section .explore-footer-block .explore-share-block h4, .explore-footer-section .explore-footer-block .explore-share-block p, .trip-route .trip-route-content .trip-route-feature .route-feature-section span {
   font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
@@ -410,7 +410,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   font-style: normal;
 }
 
-.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .delete-screen p, .list-tripDetail-wrapper .tripDetail-block h4, .trip-route .trip-route-content p {
+.btn, .i-navigation-section .i-nav-wrapper > ul > li:last-child a, .full-screen-block .form-group .form-button button, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list h4, .delete-screen p, .list-tripDetail-wrapper .tripDetail-block h4, .trip-route .trip-route-content p {
   font-family: "Ubuntu";
   font-weight: 500;
   font-style: normal;
@@ -428,7 +428,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   font-style: normal;
 }
 
-.explore-places-block figcaption h2, .explore-footer-section .footer-block .footer-links ul li a {
+.explore-videos-block .explore-videos h4, .explore-places-block figcaption h2, .explore-cities-wrapper .explore-cities-block .explore-block h4, .explore-footer-section .footer-block .footer-links ul li a {
   font-family: "Ubuntu";
   font-weight: 600;
   font-style: normal;
@@ -446,7 +446,7 @@ body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list
   font-style: normal;
 }
 
-.left-nav h1, .explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4, .delete-screen h4, .trip-route .trip-route-content h4, .trip-route .trip-route-content .trip-route-feature .route-feature-section p {
+.left-nav h1, .place-details-wrapper .place-details-block .place-details-info h1, .explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block .explore-roatrip-content h4, .delete-screen h4, .trip-route .trip-route-content h4, .trip-route .trip-route-content .trip-route-feature .route-feature-section p {
   font-family: "Ubuntu";
   font-weight: 700;
   font-style: normal;
@@ -953,6 +953,10 @@ input {
   padding-bottom: 0px;
 }
 
+.no-bg {
+  background-image: none !important;
+}
+
 .hide {
   display: none;
 }
@@ -1003,6 +1007,10 @@ nav {
   .left-nav h1 {
     font-size: 22px;
   }
+}
+
+.left-nav h1.dark {
+  color: #252525;
 }
 
 .right-nav {
@@ -1072,6 +1080,14 @@ nav {
 .full-screen-section.explore {
   background-image: url("../../../images/bg-explore.jpg");
   background-position: 50% 100%;
+}
+
+.full-screen-section.explore.cities {
+  background-position: 50% 50%;
+}
+
+.full-screen-section.explore.cities h1 {
+  text-transform: capitalize;
 }
 
 .listPlaces, .tripDetails, .myTrips, .tripRoute {
@@ -1187,6 +1203,10 @@ nav {
 .listPlaces #map, .tripDetails #map, .myTrips #map, .tripRoute #map {
   /*height: 0 !important;
         opacity: 0;*/
+}
+
+.listVideos .explore {
+  height: auto;
 }
 
 .full-screen-block {
@@ -2063,6 +2083,251 @@ nav {
   color: #ffffff;
 }
 
+/* ===================
+    Explore Videos
+=================== */
+.explore-videos-section {
+  margin-bottom: 70px;
+}
+
+.explore-videos-section .container, .explore-videos-section .container-fluid {
+  display: block;
+}
+
+.explore-videos-block {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.explore-videos-block h4 {
+  font-size: 36px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.explore-videos-block p {
+  font-size: 18px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 60px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.explore-videos-block p:after {
+  content: '';
+  position: absolute;
+  width: 125px;
+  height: 3px;
+  background-color: #2eb6f5;
+  top: 0px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.explore-videos-block .explore-videos h4 {
+  font-size: 18px;
+  color: #686868;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-transform: uppercase;
+  text-align: left;
+  padding-left: 12px;
+  padding-bottom: 20px;
+}
+
+.explore-videos-block .explore-videos .videos-gallery .item {
+  border: 10px solid #ffffff;
+  cursor: pointer;
+}
+
+.explore-videos-block .explore-videos .videos-gallery .item .city-image {
+  height: 345px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.explore-videos-block .explore-videos .videos-gallery .item .city-image h5 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: table;
+  margin: 0 auto;
+  font-size: 36px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: 'Pompiere', cursive;
+  text-align: center;
+}
+
+/* ===================
+    Places Details
+=================== */
+.place-details-wrapper .place-details-block {
+  margin-top: 80px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info {
+  width: -webkit-calc(58.33333%);
+  width: -moz-calc(58.33333%);
+  width: calc(58.33333%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.place-details-wrapper .place-details-block .place-details-info h1 {
+  font-size: 38px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: "Montserrat";
+}
+
+.place-details-wrapper .place-details-block .place-details-info p {
+  font-size: 16px;
+  color: #4c525b;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-top: 5px;
+  padding-left: 3px;
+  text-transform: capitalize;
+  font-family: "Montserrat";
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location {
+  margin: 30px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list {
+  padding: 10px 8px;
+  border-top: 1px solid #f3f3f3;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list:first-child {
+  border-top: none;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list h4 {
+  font-size: 20px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-bottom: 2px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list p {
+  font-size: 14px;
+  color: #4c525b;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-left: 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews {
+  padding: 15px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header .author_image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  float: left;
+  margin-right: 10px;
+  background-color: #e8e8e8;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header h6 {
+  font-size: 16px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: "Montserrat";
+  padding-top: 5px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header p {
+  font-size: 12px;
+  color: #4c525b;
+  line-height: initial;
+  letter-spacing: initial;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-content {
+  clear: both;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-content p {
+  font-size: 14px;
+  color: #4c525b;
+  line-height: 21px;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-media {
+  width: -webkit-calc(41.66667%);
+  width: -moz-calc(41.66667%);
+  width: calc(41.66667%);
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 120px;
+}
+
+.place-details-wrapper .place-details-block .place-details-media .place-details-youtube {
+  margin: 20px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-media .place-details-streetview {
+  margin: 20px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-media .place-details-map {
+  margin: 20px 0px;
+}
+
+/* ===================
+    Explore Places
+=================== */
 .explore-places-section {
   margin-bottom: 70px;
 }
@@ -2489,6 +2754,59 @@ nav {
 .explore-roadtrip-section .explore-roadtrip-block .single-roadtrip-block:hover h4:before {
   width: 100%;
   padding: 20px 0px;
+}
+
+/*********************************
+            My Cities
+*********************************/
+.explore-cities-wrapper .container, .explore-cities-wrapper .container-fluid {
+  display: block;
+}
+
+.explore-cities-wrapper .explore-cities-block .explore-block {
+  margin: 60px 0px;
+}
+
+.explore-cities-wrapper .explore-cities-block .explore-block h4 {
+  font-size: 18px;
+  color: #686868;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-transform: uppercase;
+  text-align: left;
+  padding-left: 12px;
+  padding-bottom: 20px;
+}
+
+.explore-cities-wrapper .explore-cities-block .explore-block .explore-block-list .item {
+  border: 10px solid #ffffff;
+  cursor: pointer;
+}
+
+.explore-cities-wrapper .explore-cities-block .explore-block .explore-block-list .item .city-image {
+  height: 345px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.explore-cities-wrapper .explore-cities-block .explore-block .explore-block-list .item .city-image h5 {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: table;
+  margin: 0 auto;
+  font-size: 36px;
+  color: #ffffff;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: 'Pompiere', cursive;
 }
 
 /*********************************

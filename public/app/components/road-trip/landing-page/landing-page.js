@@ -1,4 +1,4 @@
-app.controller('startController', function($rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService, $cacheFactory) {
+app.controller('startController', function($location, $window, $rootScope, $scope, $http, dataService, dataFactory, NgMap, ngDialog, $animate, $state, localStorageService, $cacheFactory) {
 
     $scope.planTrip = function(){
 
@@ -6,14 +6,10 @@ app.controller('startController', function($rootScope, $scope, $http, dataServic
         $scope.roadtrip.tripEnd = $scope.destination;
         $scope.roadtrip.places = [];
 
-        console.log($scope.source);
-        console.log($scope.destination);
-
         $state.go('trip.explore');
     };
 
     $scope.mouseover = function(roatripIndex){
-        console.log(roatripIndex);
         $scope.hoverActive = [];
         for (var i = 0; i < 3; i++) {
             if( (i+1) == roatripIndex){
@@ -24,4 +20,26 @@ app.controller('startController', function($rootScope, $scope, $http, dataServic
             }
         }
     };
+
+    $scope.exploreCities = [];
+    dataService.getCities().then(function (response) {
+        var citiesList = response.data;
+
+        angular.forEach(citiesList, function(value, key) {
+            var newCity = {
+                cityId: value.city_id,
+                cityName: value.city_name,
+                cityNameId: value.city_name_id,
+                cityImage: value.city_image
+            }
+
+            $scope.exploreCities.push(newCity);
+
+        });
+    });
+
+    /*$scope.viewCityVideos = function(city_id){
+        $state.go('trip.cities', {'search': city_id}, {reload: true});
+        //window.open('#/trip/videos/' + city_id);
+    }*/
 });

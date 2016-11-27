@@ -120,9 +120,10 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         });
     });
 
-    app.get('/stateexplore', function(req, res, next) {
-        var search = req.query.search;
-        connection.query('SELECT * FROM trip WHERE trip_details LIKE ?', '%, ' + search + '%', function(err, result) {
+    app.get('/getcitylatlng', function(req, res, next) {
+        var city = req.query.city;
+
+        connection.query('SELECT * FROM cities WHERE city_name_id = ?', [city], function(err, result) {
             if (!err){
                 return res.send(result);
             }
