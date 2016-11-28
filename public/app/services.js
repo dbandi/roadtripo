@@ -177,4 +177,12 @@ app.service('dataService', function($http) {
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }
+
+      this.getAttractionsDetails = function(venue_id){
+          return $http({
+              method: 'GET',
+              url: '/placeAttractionDetails?venue_id='+venue_id,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
 });

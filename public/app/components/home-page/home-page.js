@@ -130,8 +130,8 @@ app.controller('roadtripoController', function($rootScope, $scope, $http, dataSe
         });
     };
 
-    $rootScope.logoStyle = function(){
-        if($state.current.name == 'trip.details'){
+    $scope.logoStyle = function(){
+        if($state.current.name == 'trip.explorefood' || $state.current.name == 'trip.cities' || $state.current.name == 'trip.exploreattractions'){
             return 'dark';
         }
         else{

@@ -1,4 +1,4 @@
-var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate', 'LocalStorageModule', 'angular-parallax', 'angular-inview', 'youtube-embed', 'angularVideoBg', 'video-background', 'slick'])
+var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate', 'LocalStorageModule', 'angular-parallax', 'angular-inview', 'youtube-embed', 'angularVideoBg', 'video-background', 'slick', 'vAccordion'])
 
 // configuring our routes
 // =============================================================================
@@ -21,13 +21,13 @@ var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngD
         .state('trip.explore', {
             controller: 'exploreController',
             url: '/explore',
-            templateUrl: 'app/components/road-trip/explore-places/explore-places.html'
+            templateUrl: 'app/components/road-trip/list-places/list-places.html'
         })
 
         .state('trip.cities', {
             controller: 'citiesController',
             url: '/cities/:search',
-            templateUrl: 'app/components/road-trip/explore-cities/explore-cities.html'
+            templateUrl: 'app/components/explore-world/explore-cities/explore-cities.html'
         })
 
         .state('trip.state', {
@@ -42,10 +42,16 @@ var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngD
             templateUrl: 'app/components/road-trip/my-trips/my-trips.html'
         })
 
-        .state('trip.details', {
-            controller: 'detailsController',
-            url: '/details/:city/:type/:placename',
-            templateUrl: 'app/components/road-trip/places-details/places-details.html'
+        .state('trip.explorefood', {
+            controller: 'exploreFoodController',
+            url: '/explorefood/:city/:type/:placename',
+            templateUrl: 'app/components/explore-world/explore-places/explore-food/explore-food.html'
+        })
+
+        .state('trip.exploreattractions', {
+            controller: 'exploreAttractionsController',
+            url: '/exploreattractions/:city/:type/:placename',
+            templateUrl: 'app/components/explore-world/explore-places/explore-attractions/explore-attractions.html'
         })
 
         .state('trip.route', {

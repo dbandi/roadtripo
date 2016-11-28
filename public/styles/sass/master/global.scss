@@ -89,6 +89,10 @@ nav{
     display: block;
     width: 100%;
     z-index: 1000;
+
+    &.dark{
+        position: relative;
+    }
 }
 .nav-wrapper{
     padding: 35px 50px;
@@ -113,16 +117,24 @@ nav{
     h1{
         @include web-font(Font-Bold, 28px, $default-color, initial, initial);
         font-family: 'Raleway', sans-serif;
+        cursor: pointer;
 
         @include media-queries-max(640px){
             font-size: 22px;
         }
+    }
+}
 
-        &.dark{
-            color: #252525;
+nav{
+    &.dark{
+        .left-nav{
+            h1{
+                color: #252525;
+            }
         }
     }
 }
+
 .right-nav{
     float: right;
 
@@ -268,6 +280,36 @@ nav{
 .listVideos{
     .explore{
         height: auto;
+    }
+}
+
+.explore-header-block{
+    margin-top: 30px;
+    margin-bottom: 0px;
+    h4{
+        @include web-font(Font-Regular, 36px, $brand-text, initial, 1px);
+        text-align: center;
+        margin-bottom: 15px;
+        text-transform: capitalize;
+    }
+
+    p{
+        @include web-font(Font-Regular, 18px, $brand-text, initial, 1px);
+        text-align: center;
+        padding-top: 15px;
+        position: relative;
+
+        &:after{
+            content: '';
+            position: absolute;
+            width: 125px;
+            height: 3px;
+            background-color: $brand-color;
+            top: 0px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+        }
     }
 }
 
@@ -1021,12 +1063,13 @@ nav{
                 .city-image{
                     height: 345px;
                     @include img-cover();
+                    text-align: center;
 
                     h5{
                         @include center-block();
                         @include web-font(Font-Regular, 36px, $default-color, initial, 1px);
-                        font-family: 'Pompiere', cursive;
                         text-align: center;
+                        font-family: 'Pompiere', cursive;
                     }
                 }
             }
@@ -1040,7 +1083,21 @@ nav{
 .place-details-wrapper{
 
     .place-details-block{
-        margin-top: 80px;
+        margin-top: 125px;
+
+        .vAccordion--default v-accordion{
+            margin-top: 0px;
+        }
+
+        .vAccordion--default v-pane-content > div{
+            opacity: 1;
+            transform: none !important;
+            padding-bottom: 0px;
+        }
+
+        .vAccordion--default v-pane-header{
+            border: none;
+        }
 
         .place-details-info{
             @include layout(7);
@@ -1061,9 +1118,17 @@ nav{
             .places-details-location{
                 margin: 30px 0px;
 
+                .rating-block{
+                    span{
+                        i{
+                            color: #e74c3c;
+                            font-size: 12px;
+                        }
+                    }
+                }
+
                 .place-details-list{
                     padding: 10px 8px;
-                    border-top: 1px solid #f3f3f3;
 
                     &:first-child{
                         border-top: none;
@@ -1072,16 +1137,54 @@ nav{
                     h4{
                         @include web-font(Font-Medium, 20px, $brand-text, initial, 1px);
                         padding-bottom: 2px;
+                        float: left;
+                        margin-right: 15px;
                     }
 
                     p{
                         @include web-font(Font-Light, 14px, $brand-title, initial, 1px);
                         padding-left: 0px;
+                        clear: both;
+                    }
+
+                    .place-is-open{
+                        margin-top: 3px;
+                        float: left;
+
+                        span{
+                            color: $default-color;
+                            padding: 3px 10px;
+                            border-radius: 2px;
+                            font-size: 10px;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                        }
+                        .open-now{
+                            background-color: #2ecc71;
+                        }
+
+                        .closed-now{
+                            background-color: #e74c3c;
+                        }
                     }
 
                     .places-details-reviews{
                         padding: 15px 0px;
+
+                        v-pane{
+                            padding: 6px 0px;
+                        }
+
                         .review-header{
+                            .rating-block{
+                                margin-top: 5px;
+                                margin-left: 10px;
+                                float: left;
+                                i{
+                                    font-size: 9px;
+                                }
+                            }
+
                             .author_image{
                                 width: 40px;
                                 height: 40px;
@@ -1092,23 +1195,40 @@ nav{
                                 background-color: #e8e8e8;
                             }
 
+                            .author_details{
+                                float: left;
+                            }
+
                             h6{
                                 @include web-font(Font-Regular, 16px, $brand-text, initial, 1px);
                                 font-family: $secondary-font;
                                 padding-top: 5px;
+                                float: left;
                             }
 
                             p{
+                                clear: both;
                                 @include web-font(Font-Light, 12px, $brand-title, initial, initial);
                             }
                         }
 
+                        v-pane-content{
+                            clear: both;
+                        }
+
                         .review-content{
                             clear: both;
+                            padding: 10px 0px;
 
                             p{
                                 @include web-font(Font-Light, 14px, $brand-title, 21px, 1px);
+                                padding-left: 5
+                                0px;
                             }
+                        }
+
+                        v-pane-header{
+                            border: none;
                         }
                     }
                 }
@@ -1117,10 +1237,17 @@ nav{
 
         .place-details-media{
             @include layout(5);
-            margin-top: 120px;
+            //margin-top: 120px;
 
             .place-details-youtube{
-                margin: 20px 0px;
+                margin: 10px 0px;
+
+                .place-details-youtube{
+                    iframe{
+                        border-top: 10px solid #fff;
+                        border-bottom: 10px solid #fff;
+                    }
+                }
             }
 
             .place-details-streetview{
@@ -1421,6 +1548,7 @@ nav{
                             @include center-block();
                             @include web-font(Font-Regular, 36px, $default-color, initial, 1px);
                             font-family: 'Pompiere', cursive;
+                            text-align: center;
                         }
                     }
                 }

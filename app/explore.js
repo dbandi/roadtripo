@@ -1,6 +1,8 @@
 module.exports = function(app, passport, path, express, mysql, Yelp, rp, request, Promise, _) {
 
     var googleapikey = 'AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM';
+    var foursquareauth = 'MX12PJNE4ETCS2HTTXZLLUHUCQ5EBIHINKG0VJWHMYHJVQ1Z';
+
     /* =========== MySql Connection ============ */
     var connection = mysql.createConnection({
       multipleStatements: true,
@@ -26,7 +28,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     app.get('/citiesexplore', function(req, res, next) {
         var search = req.query.search;
 
-        connection.query('SELECT * FROM food WHERE city_name_id = ?; SELECT * FROM adventure WHERE city_name_id = ?', [search, search], function(err, result) {
+        connection.query('SELECT * FROM food WHERE city_name_id = ?; SELECT * FROM adventure WHERE city_name_id = ?; SELECT * FROM attractions WHERE city_name_id = ?;', [search, search, search], function(err, result) {
             if (!err){
                 return res.send(result);
             }
@@ -64,7 +66,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     });
 
     // =====================================
-	// Google Get Places ===========================
+	// Google Get Places ===================
 	// =====================================
     app.get('/placeLocationDetails', function(req, res, next) {
         var placename = req.query.placename;
@@ -112,5 +114,30 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
             .catch(function (err) {
                 console.log(err);
         });
+    });
+
+    // =====================================
+	// Foursquare Place Detail ===================
+	// =====================================
+    app.get('/placeAttractionDetails', function(req, res, next) {
+        var venue_id = req.query.venue_id;
+
+        var placesNearby = {
+            method: 'GET',
+            uri: 'https://api.foursquare.com/v2/venues/'+venue_id+'?oauth_token='+foursquareauth+'&v=20161127',
+            resolveWithFullResponse: true
+        };
+
+        rp(placesNearby)
+            .then(function (response) {
+                if (response.statusCode == 200) {
+                    results = JSON.parse( response.body );
+                    res.json(results);
+                }
+            })
+            .catch(function (err) {
+                console.log(err);
+        });
+
     });
 };

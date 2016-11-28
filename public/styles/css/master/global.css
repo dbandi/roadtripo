@@ -392,7 +392,7 @@ a {
   font-style: normal;
 }
 
-body, .i-navigation-section .i-nav-wrapper > ul li a, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .like-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .filter-nav ul li a, .explore-videos-block h4, .explore-videos-block p, .explore-videos-block .explore-videos .videos-gallery .item .city-image h5, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header h6, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p, .explore-roadtrip-section .explore-roadtrip-header h4, .explore-roadtrip-section .explore-roadtrip-header p, .explore-cities-wrapper .explore-cities-block .explore-block .explore-block-list .item .city-image h5, .explore-footer-section .explore-footer-block .explore-share-block h4, .explore-footer-section .explore-footer-block .explore-share-block p, .trip-route .trip-route-content .trip-route-feature .route-feature-section span {
+body, .i-navigation-section .i-nav-wrapper > ul li a, .explore-header-block h4, .explore-header-block p, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-image-block .trip-category, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .like-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-left-block span, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper .place-content-block .distance-price-block .distance-price-right-block ul li, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper h4, .list-places-wrapper .list-places-block .individual-place-block .individual-place-block-wrapper p, .filter-nav ul li a, .explore-videos-block h4, .explore-videos-block p, .explore-videos-block .explore-videos .videos-gallery .item .city-image h5, .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header h6, .explore-places-block h4, .explore-places-block p, .explore-places-block figcaption p, .explore-roadtrip-section .explore-roadtrip-header h4, .explore-roadtrip-section .explore-roadtrip-header p, .explore-cities-wrapper .explore-cities-block .explore-block .explore-block-list .item .city-image h5, .explore-footer-section .explore-footer-block .explore-share-block h4, .explore-footer-section .explore-footer-block .explore-share-block p, .trip-route .trip-route-content .trip-route-feature .route-feature-section span {
   font-family: "Ubuntu";
   font-weight: 400;
   font-style: normal;
@@ -969,6 +969,10 @@ nav {
   z-index: 1000;
 }
 
+nav.dark {
+  position: relative;
+}
+
 .nav-wrapper {
   padding: 35px 50px;
   z-index: 10000;
@@ -1001,6 +1005,7 @@ nav {
   margin-bottom: 0px;
   margin-top: 0px;
   font-family: 'Raleway', sans-serif;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {
@@ -1009,7 +1014,7 @@ nav {
   }
 }
 
-.left-nav h1.dark {
+nav.dark .left-nav h1 {
   color: #252525;
 }
 
@@ -1207,6 +1212,47 @@ nav {
 
 .listVideos .explore {
   height: auto;
+}
+
+.explore-header-block {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.explore-header-block h4 {
+  font-size: 36px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.explore-header-block p {
+  font-size: 18px;
+  color: #343638;
+  line-height: initial;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+  padding-top: 15px;
+  position: relative;
+}
+
+.explore-header-block p:after {
+  content: '';
+  position: absolute;
+  width: 125px;
+  height: 3px;
+  background-color: #2eb6f5;
+  top: 0px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 }
 
 .full-screen-block {
@@ -2158,6 +2204,7 @@ nav {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  text-align: center;
 }
 
 .explore-videos-block .explore-videos .videos-gallery .item .city-image h5 {
@@ -2174,15 +2221,29 @@ nav {
   letter-spacing: 1px;
   margin-bottom: 0px;
   margin-top: 0px;
-  font-family: 'Pompiere', cursive;
   text-align: center;
+  font-family: 'Pompiere', cursive;
 }
 
 /* ===================
     Places Details
 =================== */
 .place-details-wrapper .place-details-block {
-  margin-top: 80px;
+  margin-top: 125px;
+}
+
+.place-details-wrapper .place-details-block .vAccordion--default v-accordion {
+  margin-top: 0px;
+}
+
+.place-details-wrapper .place-details-block .vAccordion--default v-pane-content > div {
+  opacity: 1;
+  transform: none !important;
+  padding-bottom: 0px;
+}
+
+.place-details-wrapper .place-details-block .vAccordion--default v-pane-header {
+  border: none;
 }
 
 .place-details-wrapper .place-details-block .place-details-info {
@@ -2223,9 +2284,13 @@ nav {
   margin: 30px 0px;
 }
 
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .rating-block span i {
+  color: #e74c3c;
+  font-size: 12px;
+}
+
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list {
   padding: 10px 8px;
-  border-top: 1px solid #f3f3f3;
 }
 
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list:first-child {
@@ -2240,6 +2305,8 @@ nav {
   margin-bottom: 0px;
   margin-top: 0px;
   padding-bottom: 2px;
+  float: left;
+  margin-right: 15px;
 }
 
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list p {
@@ -2250,10 +2317,47 @@ nav {
   margin-bottom: 0px;
   margin-top: 0px;
   padding-left: 0px;
+  clear: both;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .place-is-open {
+  margin-top: 3px;
+  float: left;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .place-is-open span {
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .place-is-open .open-now {
+  background-color: #2ecc71;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .place-is-open .closed-now {
+  background-color: #e74c3c;
 }
 
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews {
   padding: 15px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews v-pane {
+  padding: 6px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header .rating-block {
+  margin-top: 5px;
+  margin-left: 10px;
+  float: left;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header .rating-block i {
+  font-size: 9px;
 }
 
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header .author_image {
@@ -2268,6 +2372,10 @@ nav {
   background-color: #e8e8e8;
 }
 
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header .author_details {
+  float: left;
+}
+
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header h6 {
   font-size: 16px;
   color: #343638;
@@ -2277,9 +2385,11 @@ nav {
   margin-top: 0px;
   font-family: "Montserrat";
   padding-top: 5px;
+  float: left;
 }
 
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-header p {
+  clear: both;
   font-size: 12px;
   color: #4c525b;
   line-height: initial;
@@ -2288,8 +2398,13 @@ nav {
   margin-top: 0px;
 }
 
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews v-pane-content {
+  clear: both;
+}
+
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-content {
   clear: both;
+  padding: 10px 0px;
 }
 
 .place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews .review-content p {
@@ -2299,6 +2414,11 @@ nav {
   letter-spacing: 1px;
   margin-bottom: 0px;
   margin-top: 0px;
+  padding-left: 5 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-info .places-details-location .place-details-list .places-details-reviews v-pane-header {
+  border: none;
 }
 
 .place-details-wrapper .place-details-block .place-details-media {
@@ -2310,11 +2430,15 @@ nav {
   padding-right: 10px;
   margin-left: 0%;
   margin-right: 0%;
-  margin-top: 120px;
 }
 
 .place-details-wrapper .place-details-block .place-details-media .place-details-youtube {
-  margin: 20px 0px;
+  margin: 10px 0px;
+}
+
+.place-details-wrapper .place-details-block .place-details-media .place-details-youtube .place-details-youtube iframe {
+  border-top: 10px solid #fff;
+  border-bottom: 10px solid #fff;
 }
 
 .place-details-wrapper .place-details-block .place-details-media .place-details-streetview {
@@ -2807,6 +2931,7 @@ nav {
   margin-bottom: 0px;
   margin-top: 0px;
   font-family: 'Pompiere', cursive;
+  text-align: center;
 }
 
 /*********************************
