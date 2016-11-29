@@ -17,15 +17,15 @@ app.controller('exploreAttractionsController', function($window, $compile, $root
     };
 
     dataService.getAttractionsDetails($scope.exploreAttractionsPlaceNameID).then(function (response) {
-        $scope.exploreAttractionsVideo = response.data[0].food_video;
-        $scope.exploreAttractionsPlaceName = response.data[0].food_name;
+        $scope.exploreAttractionsVideo = response.data[0].attractions_video;
+        $scope.exploreAttractionsPlaceName = response.data[0].attractions_name;
     });
 
     dataService.getCityLatLng($scope.exploreAttractionsCity).then(function (response) {
         $scope.exploreAttractionsCityLat = response.data[0].city_lat;
         $scope.exploreAttractionsCityLng = response.data[0].city_long;
 
-        dataService.getAttractionsDetails($scope.exploreAttractionsPlaceNameID).then(function (response) {
+        dataService.placeAttractionsDetails($scope.exploreAttractionsPlaceNameID).then(function (response) {
             console.log(response);
         });
     });

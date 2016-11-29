@@ -1,9 +1,21 @@
-<section class="listVideos">
+<section class="listCities">
 
-    <div class="explore-header-block">
-        <h4>Explore {{exploreCityName}}</h4>
-        <p>Discover the place with authentic experience.</p>
+    <div class="full-screen-section explore">
+        <video-bg playlist="videos" allow-click-events="true" player-callback="callback(player)">
+            <div class="full-screen-banner" style="background-image: url({{exploreCityImage}});">
+                <div class="full-screen-wrapper">
+                    <div class="container">
+                        <div class="full-screen-block explore">
+                            <h4>Explore</h4>
+                            <img ng-click="playVideo()" ng-if="playIcon" src="../../../images/play.png"/>
+                            <h1>{{exploreCityName}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </video-bg>
     </div>
+
 
     <div class="main-container-section">
         <div class="explore-cities-wrapper">

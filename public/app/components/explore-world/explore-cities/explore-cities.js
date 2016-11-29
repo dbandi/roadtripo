@@ -2,6 +2,32 @@ app.controller('citiesController', function($window, $compile, $rootScope, $scop
 
     $scope.search = $stateParams.search;
     $scope.exploreCityName = $scope.search.replace(/_/g, " ");
+    $scope.exploreCityImage = '../../../images/trips/' + $scope.search + '.jpg';
+
+    $scope.playIcon = true;
+    $scope.videos = [{
+        videoId: '',
+        mute: true
+    }];
+
+    dataService.getCity($scope.search).then(function (response) {
+        $scope.exploreCityImage = '../../../images/trips/' + response.data[0].city_image;
+        $scope.videos = [{
+            videoId: response.data[0].city_video,
+            mute: true
+        }];
+    });
+
+    $scope.callback = function(player){
+        $scope.playIcon = false;
+        $timeout(function() {
+            $scope.exploreCityImage = '';
+        }, 1000);
+    };
+
+    $scope.playVideo = function(){
+        $window.location.reload();
+    };
 
     $scope.exploreCityFoods = [];
     $scope.exploreCityAdventures = [];
@@ -13,6 +39,7 @@ app.controller('citiesController', function($window, $compile, $rootScope, $scop
         $scope.exploreCityAttractions = [];
 
         var citiesArray = response.data;
+        console.log(citiesArray);
 
         angular.forEach(citiesArray, function(citiesPlaceList, key) {
 

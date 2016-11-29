@@ -1,4 +1,4 @@
-var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate', 'LocalStorageModule', 'angular-parallax', 'angular-inview', 'youtube-embed', 'angularVideoBg', 'video-background', 'slick', 'vAccordion'])
+var app = angular.module('roadtripo',['ui.router','ngAutocomplete','ngMap', 'ngDialog', 'ngAnimate', 'LocalStorageModule', 'angular-parallax', 'angular-inview', 'youtube-embed', 'angularVideoBg', 'slick', 'vAccordion'])
 
 // configuring our routes
 // =============================================================================

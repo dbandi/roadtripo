@@ -1,95 +1,125 @@
-<section class="placeDetails">
+<section class="foodDetails">
+
+    <div class="full-screen-section explore">
+        <video-bg playlist="videos" allow-click-events="true" player-callback="callback(player)">
+            <div class="full-screen-banner" style="background-image: url({{exploreFoodImage}});">
+                <div class="full-screen-wrapper">
+                    <div class="container">
+                        <div class="full-screen-block explore">
+                            <h1>{{exploreFoodPlaceName}}</h1>
+                            <img ng-click="playVideo()" ng-if="playIcon" src="../../../images/play.png"/>
+                            <h4>{{exploreFoodCity}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </video-bg>
+    </div>
 
     <div class="main-container-section">
         <div class="place-details-wrapper">
             <div class="container">
                 <div class="place-details-block">
                     <div class="place-details-info">
-                        <div class="place-details-title">
-                            <h1>{{exploreFoodPlaceName}}</h1>
-                            <p>{{exploreFoodCity}}</p>
-                        </div>
+                        <div class="places-details-content">
 
-                        <div class="places-details-location">
-                            <v-accordion class="vAccordion--default">
-                                <v-pane ng-repeat="exploreFoodPlaceList in exploreFoodPlaceLists|limitTo:10" expanded="exploreFoodPlaceList.isExpanded">
-                                    <div class="place-details-list" ng-click="setMapLocation(exploreFoodPlaceList.geometry.location.lat,exploreFoodPlaceList.geometry.location.lng);">
+                            <div class="places-details-content-img">
+                                <img ng-src="{{foodPlaceImage}}"/>
+                            </div>
+                            <div class="places-details-content-title">
+                                <h4>{{foodPlaceTitle}}</h4>
+                                <p>{{foodPlaceVicinity}}</p>
+                                <div class="rating-block">
+                                    <span ng-repeat="i in getNumber(foodPlaceRating) track by $index">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-show="isDecimal(foodPlaceRating)">
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="place-is-open">
+                                    <span class="open-now" ng-if="foodPlaceOpenNow == true">Open Now</span>
+                                    <span class="closed-now" ng-if="foodPlaceOpenNow == false">Closed Now</span>
+                                </div>
+                            </div>
+
+                            <div class="places-details-reviews">
+                                <v-accordion ng-if="foodPlaceReviews">
+                                    <div class="places-details-reviews-block">
+                                      <v-pane ng-repeat="placeReview in foodPlaceReviews | limitTo:3" expanded="placeReview.isExpanded">
                                         <v-pane-header>
+                                            <div class="review-header">
+                                                <div class="author_image" style="background-image: url({{placeReview.profile_photo_url}})"></div>
+                                                <div class="author_details">
+                                                    <h6>{{placeReview.author_name}}</h6>
+                                                    <div class="rating-block">
+                                                        <span ng-repeat="i in getNumber(placeReview.rating) track by $index">
+                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                        </span>
+                                                        <span ng-show="isDecimal(placeReview.rating)">
+                                                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                                        </span>
+                                                    </div>
 
-                                            <h4>{{exploreFoodPlaceList.name}}</h4>
-                                            <div class="place-is-open">
-                                                <span class="open-now" ng-if="exploreFoodPlaceList.opening_hours.open_now == true">Open</span>
-                                                <span class="closed-now" ng-if="exploreFoodPlaceList.opening_hours.open_now == false">Closed</span>
-                                            </div>
-
-                                            <p>{{exploreFoodPlaceList.vicinity}}</p>
-                                            <div class="rating-block">
-                                                <span ng-repeat="i in getNumber(exploreFoodPlaceList.rating) track by $index">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                </span>
-                                                <span ng-show="isDecimal(exploreFoodPlaceList.rating)">
-                                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                                </span>
+                                                    <p>{{placeReview.relative_time_description}}</p>
+                                                </div>
                                             </div>
                                         </v-pane-header>
 
                                         <v-pane-content>
-                                            <v-accordion ng-if="detailsPlaceList.reviews">
-                                                <div class="places-details-reviews">
-                                                  <v-pane ng-repeat="placeReview in exploreFoodPlaceList.reviews|limitTo:3" expanded="placeReview.isExpanded">
-                                                    <v-pane-header>
-                                                        <div class="review-header">
-                                                            <div class="author_image" style="background-image: url({{placeReview.profile_photo_url}})"></div>
-                                                            <div class="author_details">
-                                                                <h6>{{placeReview.author_name}}</h6>
-                                                                <div class="rating-block">
-                                                                    <span ng-repeat="i in getNumber(placeReview.rating) track by $index">
-                                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                                    </span>
-                                                                    <span ng-show="isDecimal(placeReview.rating)">
-                                                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                                                    </span>
-                                                                </div>
-
-                                                                <p>{{placeReview.relative_time_description}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </v-pane-header>
-
-                                                    <v-pane-content>
-                                                        <div class="review-content">
-                                                            <p>{{placeReview.text}}</p>
-                                                        </div>
-                                                    </v-pane-content>
-                                                  </v-pane>
-                                                </div>
-                                            </v-accordion>
+                                            <div class="review-content">
+                                                <p>{{placeReview.text}}</p>
+                                            </div>
                                         </v-pane-content>
+                                      </v-pane>
                                     </div>
-                                </v-pane>
-                            </v-accordion>
-                        </div>
-                    </div>
-                    <div class="place-details-media">
-                        <div class="place-details-youtube">
-                            <youtube-video video-url="exploreFoodVideo" player-vars="playerVars" player-width="'100%'" player-height="'300px'"></youtube-video>
-                        </div>
-
-                        <div class="place-details-streetview">
-                            <div style="width:100%; height:400px" id="street-view">
-                                <ng-map street-view="StreetViewPanorama(document.querySelector('#street-view'), {position:new google.maps.LatLng({{exploreFoodCityLat}},{{exploreFoodCityLng}})})">
-                                  <marker position="{{exploreFoodCityLat}},{{exploreFoodCityLng}}"></marker>
-                                </ng-map>
+                                </v-accordion>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="place-details-media">
                         <div class="place-details-map">
-                            <ng-map zoom="11" center="[{{exploreFoodCityLat}}, {{exploreFoodCityLng}}]">
+                            <ng-map zoom="11" center="[{{exploreFoodCityLat}}, {{exploreFoodCityLng}}]"
+                            styles="[{'featureType':'water','elementType':'geometry','stylers':[{'color':'#e9e9e9'},{'lightness':17}]},{'featureType':'landscape','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':20}]},{'featureType':'road.highway','elementType':'geometry.fill','stylers':[{'color':'#ffffff'},{'lightness':17}]},{'featureType':'road.highway','elementType':'geometry.stroke','stylers':[{'color':'#ffffff'},{'lightness':29},{'weight':0.2}]},{'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':18}]},{'featureType':'road.local','elementType':'geometry','stylers':[{'color':'#ffffff'},{'lightness':16}]},{'featureType':'poi','elementType':'geometry','stylers':[{'color':'#f5f5f5'},{'lightness':21}]},{'featureType':'poi.park','elementType':'geometry','stylers':[{'color':'#dedede'},{'lightness':21}]},{'elementType':'labels.text.stroke','stylers':[{'visibility':'on'},{'color':'#ffffff'},{'lightness':16}]},{'elementType':'labels.text.fill','stylers':[{'saturation':36},{'color':'#333333'},{'lightness':40}]},{'elementType':'labels.icon','stylers':[{'visibility':'off'}]},{'featureType':'transit','elementType':'geometry','stylers':[{'color':'#f2f2f2'},{'lightness':19}]},{'featureType':'administrative','elementType':'geometry.fill','stylers':[{'color':'#fefefe'},{'lightness':20}]},{'featureType':'administrative','elementType':'geometry.stroke','stylers':[{'color':'#fefefe'},{'lightness':17},{'weight':1.2}]}]"
+                            >
                                 <marker position="[{{exploreFoodCityLat}}, {{exploreFoodCityLng}}]" title="marker" animation="Animation.DROP"></marker>
                               </ng-map>
                         </div>
                     </div>
                 </div>
+
+                <div class="places-details-location">
+                    <div class="place-details-location-block" ng-repeat="exploreFoodPlaceList in exploreFoodPlaceLists|limitTo:10" expanded="exploreFoodPlaceList.isExpanded">
+                        <div class="place-details-list" ng-click="updateFoodPlace(exploreFoodPlaceList);">
+                            <div class="place-details-image">
+                                <img ng-src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{exploreFoodPlaceList.photos[0].photo_reference}}&key=AIzaSyBll4kPCZuJIaBsvCv_gHCRTzk5-e-8WjM" />
+                            </div>
+                            <div class="place-address-block">
+                                <h4>{{exploreFoodPlaceList.name}}</h4>
+                                <p>{{exploreFoodPlaceList.vicinity}}</p>
+                                <div class="rating-block">
+                                    <span ng-repeat="i in getNumber(exploreFoodPlaceList.rating) track by $index">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-show="isDecimal(exploreFoodPlaceList.rating)">
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="place-details-streetview">
+                    <div style="width:100%; height:400px" id="street-view">
+                        <ng-map street-view="StreetViewPanorama(document.querySelector('#street-view'), {position:new google.maps.LatLng({{exploreFoodCityLat}},{{exploreFoodCityLng}})})">
+                          <marker position="{{exploreFoodCityLat}},{{exploreFoodCityLng}}"></marker>
+                        </ng-map>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

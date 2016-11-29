@@ -25,6 +25,19 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
         });
     });
 
+    app.get('/getcity', function(req, res, next) {
+        var city_name_id = req.query.city_name_id;
+        connection.query('SELECT * FROM cities WHERE city_name_id = ?', [city_name_id], function(err, result) {
+            if (!err){
+                return res.send(result);
+            }
+            else{
+                return res.sendStatus(400);
+            }
+
+        });
+    });
+
     app.get('/citiesexplore', function(req, res, next) {
         var search = req.query.search;
 
@@ -55,6 +68,19 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     app.get('/getfooddetails', function(req, res, next) {
         var food_name_id = req.query.food_name_id;
         connection.query('SELECT * FROM food WHERE food_name_id = ?', [food_name_id], function(err, result) {
+            if (!err){
+                return res.send(result);
+            }
+            else{
+                return res.sendStatus(400);
+            }
+
+        });
+    });
+
+    app.get('/getattractionsdetails', function(req, res, next) {
+        var attractions_name_id = req.query.attractions_name_id;
+        connection.query('SELECT * FROM attractions WHERE attractions_name_id = ?', [attractions_name_id], function(err, result) {
             if (!err){
                 return res.send(result);
             }
@@ -119,7 +145,7 @@ module.exports = function(app, passport, path, express, mysql, Yelp, rp, request
     // =====================================
 	// Foursquare Place Detail ===================
 	// =====================================
-    app.get('/placeAttractionDetails', function(req, res, next) {
+    app.get('/placeAttractionsDetails', function(req, res, next) {
         var venue_id = req.query.venue_id;
 
         var placesNearby = {

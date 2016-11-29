@@ -146,6 +146,14 @@ app.service('dataService', function($http) {
           });
       }
 
+      this.getCity = function(city_name_id){
+          return $http({
+              method: 'GET',
+              url: '/getcity?city_name_id='+city_name_id,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
       this.getCityLatLng = function(city){
           return $http({
               method: 'GET',
@@ -178,10 +186,18 @@ app.service('dataService', function($http) {
           });
       }
 
-      this.getAttractionsDetails = function(venue_id){
+      this.getAttractionsDetails = function(attractions_name_id){
           return $http({
               method: 'GET',
-              url: '/placeAttractionDetails?venue_id='+venue_id,
+              url: '/getattractionsdetails?attractions_name_id='+attractions_name_id,
+              headers: {'Content-Type': 'application/json; charset=utf-8'}
+          });
+      }
+
+      this.placeAttractionsDetails = function(venue_id){
+          return $http({
+              method: 'GET',
+              url: '/placeAttractionsDetails?venue_id='+venue_id,
               headers: {'Content-Type': 'application/json; charset=utf-8'}
           });
       }

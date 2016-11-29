@@ -30,7 +30,7 @@
                         <h4>Featured Cities</h4>
                         <div class="videos-gallery" ng-if="exploreCities.length > 0">
                             <slick dots="true" infinite="false" speed="300" slides-to-show="5" touch-move="false" slides-to-scroll="1">
-                                <div class="item" ng-repeat="exploreCity in exploreCities" ui-sref="trip.cities({ search: '{{exploreCity.cityNameId}}'})">
+                                <div class="item" ng-repeat="exploreCity in exploreCities" ui-sref-opts="{reload:true}" ui-sref="trip.cities({ search: '{{exploreCity.cityNameId}}'})">
                                     <div class="city-image" style="background-image: url('images/trips/{{exploreCity.cityImage}}')">
                                         <h5>{{exploreCity.cityName}}</h5>
                                     </div>
